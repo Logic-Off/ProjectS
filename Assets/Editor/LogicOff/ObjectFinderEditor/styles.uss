@@ -1,0 +1,59 @@
+﻿.objectFinder-currentObjectField {
+
+}
+
+.objectFinder-currentObjectLabel {
+
+}
+
+.objectFinder-findObjectsButton {
+    flex-grow: 1;
+    height: 30;
+    min-width: 100;
+}
+
+.objectFinder-objectsListView {
+
+}
+
+.objectFinder-objectListElement {
+    justify-content: center;
+}
+
+.objectFinder-panel {
+    flex-grow: 1;
+}
+
+.objectFinder-buttonContainer{
+    flex-grow: 1;
+    height: 60;
+    flex-direction: row;
+    max-height: 60;
+    min-height: 60;
+}
+
+.objectFinder-rightContainer {
+    flex-grow: 1;
+    min-width: 150;
+}
+
+.objectFinder-rightTogglesContainer{
+    flex-grow: 1;
+    height: 60;
+    flex-direction: column;
+    max-height: 60;
+    min-height: 60;
+    align-self: flex-start;
+}
+
+.objectFinder-toggle{
+    align-self: center;
+    flex-direction: row-reverse;
+}
+
+.objectFinder-refreshPathsButton{
+    flex-grow: 1;
+    height: 20;
+    min-height: 20;
+    max-height: 20;
+}

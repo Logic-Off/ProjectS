@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <uie:ToolbarButton display-tooltip-when-elided="true" enable-rich-text="false" style="min-width: 65px; max-width: none; color: rgb(0, 255, 255); -unity-font-definition: url(&apos;project://database/Assets/Editor/LogicOff/Toolbar/Fonts/JetBrainsMono-Regular%20SDF.asset?fileID=11400000&amp;guid=97c54bd689434e5439019d663185257e&amp;type=2#JetBrainsMono-Regular SDF&apos;); justify-content: space-between; align-items: center; -unity-text-align: upper-center; flex-direction: row; white-space: nowrap; height: auto; min-height: 23px; flex-grow: 0;">
+        <ui:Label text="LabelLabelLabel" display-tooltip-when-elided="true" style="flex-grow: 1;" />
+        <ui:VisualElement style="flex-grow: 0; flex-shrink: 1; background-image: url(&apos;project://database/Assets/HorrorEyes/HE%20Project/Textures/UI/MobileControll/ArrowL.png?fileID=2800000&amp;guid=1d9e07877d60633448f82f2c10d5285f&amp;type=3#ArrowL&apos;); width: 15px; height: 15px; justify-content: flex-start; align-items: stretch; flex-direction: column; -unity-background-scale-mode: stretch-to-fill; rotate: 270deg;" />
+    </uie:ToolbarButton>
+</ui:UXML>

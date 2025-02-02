@@ -1,0 +1,4 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+	<uie:ToolbarButton text="Button" display-tooltip-when-elided="true"
+	                   style="width: auto; height: auto; -unity-font-definition: url(&apos;project://database/Assets/Plugins/LogicOff/Toolbar/Editor/Fonts/JetBrainsMono-Regular%20SDF.asset?fileID=11400000&amp;guid=97c54bd689434e5439019d663185257e&amp;type=2#JetBrainsMono-Regular SDF&apos;); -unity-text-align: middle-center; color: rgb(0, 255, 255); border-top-left-radius: 3px; border-bottom-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; padding-top: 0; padding-left: 0; padding-right: 0; border-top-width: 1px; border-bottom-width: 1px; min-height: 23px; min-width: 65px; white-space: normal; font-size: 11px;"/>
+</ui:UXML>

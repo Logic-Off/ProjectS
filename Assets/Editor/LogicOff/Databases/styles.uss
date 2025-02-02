@@ -1,0 +1,33 @@
+﻿.databases-toolbar {
+    height: 21px;
+}
+
+.databases-mainContainer {
+    flex-grow: 1;
+    flex-direction: row;
+}
+
+.databases-subContainer {
+    flex-grow: 1;
+    flex-direction: row;
+}
+
+.databases-listView {
+    height: 100px;
+    max-width: 150px;
+    min-width: 150px;
+    max-height: none;
+    border-right-width: 3;
+    border-right-color: black;
+    border-top-width: 3;
+    border-top-color: black;
+}
+
+.databases-listView-label {
+    height: 20px;
+    padding-top: 3px;
+}
+
+.databases-infoContainer {
+    flex-grow: 1;
+}

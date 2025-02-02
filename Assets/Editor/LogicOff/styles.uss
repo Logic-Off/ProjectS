@@ -1,0 +1,87 @@
+﻿.primeContainer {
+	width: 10000;
+}
+
+.square-button25 {
+	min-width: 25;
+	max-width: 25;
+	min-height: 25;
+	max-height: 25;
+}
+
+.max-width450 {
+	max-width: 450;
+}
+
+.min-width450 {
+	min-width: 450;
+}
+
+.max-width120 {
+	max-width: 120;
+}
+
+.min-width120 {
+	min-width: 120;
+}
+
+.min-widthAuto {
+	min-width: auto;
+}
+
+.row {
+	flex-direction: row;
+}
+
+.justify-content-spaceBetween {
+	justify-content: space-between;
+}
+
+.width-auto {
+	width: auto;
+}
+
+.margin-right55 {
+	margin-right: 55;
+}
+
+.width300 {
+	width: 300;
+}
+
+.width120 {
+	width: 120;
+}
+
+.errorDropdown {
+	background-color: rgba(255, 0, 0, 0.85);
+	border-radius: 7;
+}
+
+.errorDropdown-label {
+	color: mintcream;
+}
+
+.unity-label {
+	-unity-font: resource("Assets/Assets/Fonts/JetBrainsMono-Regular.ttf");
+}
+
+.context-viewer-group-header {
+	padding-left: 5px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	margin: 2px;
+	background-color: #202020;
+}
+
+.context-viewer-element-header {
+	padding-left: 5px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	margin: 2px;
+	background-color: rgba(0, 31, 49, 0.71);
+}
+
+.grow1 {
+	flex-grow: 1;
+}
