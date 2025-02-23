@@ -17,7 +17,34 @@ public partial class StructureEntity
 	/// </summary>
 	public void CopyComponentTo(IComponent component)	{
 		#if !ENTITAS_REDUX_NO_IMPL
-
+		if (component is Ecs.Common.IdComponent Id)
+		{
+			CopyIdTo(Id);
+		}
+		else if (component is Ecs.Common.NameComponent Name)
+		{
+			CopyNameTo(Name);
+		}
+		else if (component is Ecs.Common.PositionComponent Position)
+		{
+			CopyPositionTo(Position);
+		}
+		else if (component is Ecs.Common.NewPositionComponent NewPosition)
+		{
+			CopyNewPositionTo(NewPosition);
+		}
+		else if (component is Ecs.Common.RotationComponent Rotation)
+		{
+			CopyRotationTo(Rotation);
+		}
+		else if (component is Ecs.Common.NewRotationComponent NewRotation)
+		{
+			CopyNewRotationTo(NewRotation);
+		}
+		else if (component is Ecs.Common.PrefabComponent Prefab)
+		{
+			CopyPrefabTo(Prefab);
+		}
 		#endif
 	}
 

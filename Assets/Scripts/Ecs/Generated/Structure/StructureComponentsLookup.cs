@@ -12,23 +12,47 @@ using System.Collections.Generic;
 using JCMG.EntitasRedux;
 
 public static class StructureComponentsLookup {
+	public const int Id = 0;
+	public const int Name = 1;
+	public const int NewPosition = 2;
+	public const int NewRotation = 3;
+	public const int Position = 4;
+	public const int Prefab = 5;
+	public const int Rotation = 6;
 
-
-	public const int TotalComponents = 0;
+	public const int TotalComponents = 7;
 
 	public static readonly string[] ComponentNames =
 	{
-
+		"Id",
+		"Name",
+		"NewPosition",
+		"NewRotation",
+		"Position",
+		"Prefab",
+		"Rotation"
 	};
 
 	public static readonly System.Type[] ComponentTypes =
 	{
-
+		typeof(Ecs.Common.IdComponent),
+		typeof(Ecs.Common.NameComponent),
+		typeof(Ecs.Common.NewPositionComponent),
+		typeof(Ecs.Common.NewRotationComponent),
+		typeof(Ecs.Common.PositionComponent),
+		typeof(Ecs.Common.PrefabComponent),
+		typeof(Ecs.Common.RotationComponent)
 	};
 
 	public static readonly Dictionary<Type, int> ComponentTypeToIndex = new Dictionary<Type, int>
 	{
-
+		{ typeof(Ecs.Common.IdComponent), 0 },
+		{ typeof(Ecs.Common.NameComponent), 1 },
+		{ typeof(Ecs.Common.NewPositionComponent), 2 },
+		{ typeof(Ecs.Common.NewRotationComponent), 3 },
+		{ typeof(Ecs.Common.PositionComponent), 4 },
+		{ typeof(Ecs.Common.PrefabComponent), 5 },
+		{ typeof(Ecs.Common.RotationComponent), 6 }
 	};
 
 	/// <summary>
