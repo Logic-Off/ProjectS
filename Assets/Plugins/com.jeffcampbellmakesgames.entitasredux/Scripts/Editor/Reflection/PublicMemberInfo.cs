@@ -26,13 +26,11 @@ THE SOFTWARE.
 using System;
 using System.Reflection;
 
-namespace JCMG.EntitasRedux.Editor
-{
+namespace JCMG.EntitasRedux.Editor {
 	/// <summary>
 	/// Represents information about a public member of an object.
 	/// </summary>
-	public class PublicMemberInfo
-	{
+	public class PublicMemberInfo {
 		public readonly AttributeInfo[] attributes;
 		public readonly string name;
 		public readonly Type type;
@@ -40,51 +38,41 @@ namespace JCMG.EntitasRedux.Editor
 		private readonly FieldInfo _fieldInfo;
 		private readonly PropertyInfo _propertyInfo;
 
-		public PublicMemberInfo(FieldInfo info)
-		{
+		public PublicMemberInfo(FieldInfo info) {
 			_fieldInfo = info;
 			type = _fieldInfo.FieldType;
 			name = _fieldInfo.Name;
 			attributes = GetAttributes(_fieldInfo.GetCustomAttributes(false));
 		}
 
-		public PublicMemberInfo(PropertyInfo info)
-		{
+		public PublicMemberInfo(PropertyInfo info) {
 			_propertyInfo = info;
 			type = _propertyInfo.PropertyType;
 			name = _propertyInfo.Name;
 			attributes = GetAttributes(_propertyInfo.GetCustomAttributes(false));
 		}
 
-		public PublicMemberInfo(Type type, string name, AttributeInfo[] attributes = null)
-		{
+		public PublicMemberInfo(Type type, string name, AttributeInfo[] attributes = null) {
 			this.type = type;
 			this.name = name;
 			this.attributes = attributes;
 		}
 
-		public object GetValue(object obj)
-		{
+		public object GetValue(object obj) {
 			return _fieldInfo == null ? _propertyInfo.GetValue(obj, null) : _fieldInfo.GetValue(obj);
 		}
 
-		public void SetValue(object obj, object value)
-		{
-			if (_fieldInfo != null)
-			{
+		public void SetValue(object obj, object value) {
+			if (_fieldInfo != null) {
 				_fieldInfo.SetValue(obj, value);
-			}
-			else
-			{
+			} else {
 				_propertyInfo.SetValue(obj, value, null);
 			}
 		}
 
-		private static AttributeInfo[] GetAttributes(object[] attributes)
-		{
+		private static AttributeInfo[] GetAttributes(object[] attributes) {
 			var attributeInfoArray = new AttributeInfo[attributes.Length];
-			for (var index = 0; index < attributes.Length; ++index)
-			{
+			for (var index = 0; index < attributes.Length; ++index) {
 				var attribute = attributes[index];
 				attributeInfoArray[index] = new AttributeInfo(attribute, attribute.GetType().GetPublicMemberInfos());
 			}

@@ -28,16 +28,13 @@ using UnityEditor;
 using UnityEditor.ProjectWindowCallback;
 using UnityEngine;
 
-namespace JCMG.EntitasRedux.Editor
-{
+namespace JCMG.EntitasRedux.Editor {
 	/// <summary>
 	/// Helper methods for creating scripts from template files.
 	/// </summary>
-	public static class ScriptTools
-	{
+	public static class ScriptTools {
 		// ReSharper disable once ClassNeverInstantiated.Local
-		private class DoCreateScriptAsset : EndNameEditAction
-		{
+		private class DoCreateScriptAsset : EndNameEditAction {
 			// Script replace tokens
 			private const string CLASS_NAME_TOKEN = "#SCRIPTNAME#";
 			private const string NAMESPACE_TOKEN = "#NAMESPACE#";
@@ -48,17 +45,14 @@ namespace JCMG.EntitasRedux.Editor
 
 			private static readonly char[] TRIM_END_CHARS;
 
-			static DoCreateScriptAsset()
-			{
-				TRIM_END_CHARS = new[]
-				{
+			static DoCreateScriptAsset() {
+				TRIM_END_CHARS = new[] {
 					'/',
 					'.'
 				};
 			}
 
-			public override void Action(int instanceID, string pathName, string resourceFile)
-			{
+			public override void Action(int instanceID, string pathName, string resourceFile) {
 				var text = File.ReadAllText(resourceFile);
 				var fileName = Path.GetFileName(pathName);
 				var fileNameWithoutExtension = Path.GetFileNameWithoutExtension(pathName);
@@ -96,8 +90,7 @@ namespace JCMG.EntitasRedux.Editor
 		/// <param name="templateFolderGUID">The Unity meta <see cref="GUID"/> value of the folder where the
 		/// <paramref name="fileName"/> resides.</param>
 		/// <param name="fileName">The name of the script file with .txt extension</param>
-		public static void CreateScriptAsset(string templateFolderGUID, string fileName)
-		{
+		public static void CreateScriptAsset(string templateFolderGUID, string fileName) {
 			// Construct script path and initial name
 			var scriptTemplateFolderPath = AssetDatabase.GUIDToAssetPath(templateFolderGUID);
 			var scriptPath = Path.Combine(scriptTemplateFolderPath, fileName);
@@ -111,7 +104,8 @@ namespace JCMG.EntitasRedux.Editor
 				endNameAction,
 				newFileName,
 				csIcon,
-				scriptPath);
+				scriptPath
+			);
 		}
 	}
 }

@@ -26,20 +26,16 @@ THE SOFTWARE.
 using System;
 using UnityEngine;
 
-namespace JCMG.EntitasRedux
-{
-	public class EntityLink : MonoBehaviour
-	{
+namespace JCMG.EntitasRedux {
+	public class EntityLink : MonoBehaviour {
 		public IEntity Entity => _entity;
 
 		private bool _applicationIsQuitting;
 
 		private IEntity _entity;
 
-		public void Link(IEntity entity)
-		{
-			if (_entity != null)
-			{
+		public void Link(IEntity entity) {
+			if (_entity != null) {
 				throw new Exception("EntityLink is already linked to " + _entity + "!");
 			}
 
@@ -47,10 +43,8 @@ namespace JCMG.EntitasRedux
 			_entity.Retain(this);
 		}
 
-		public void Unlink()
-		{
-			if (_entity == null)
-			{
+		public void Unlink() {
+			if (_entity == null) {
 				throw new Exception("EntityLink is already unlinked!");
 			}
 
@@ -58,25 +52,22 @@ namespace JCMG.EntitasRedux
 			_entity = null;
 		}
 
-		private void OnDestroy()
-		{
-			if (!_applicationIsQuitting && _entity != null)
-			{
+		private void OnDestroy() {
+			if (!_applicationIsQuitting && _entity != null) {
 				Debug.LogWarning(
 					"EntityLink got destroyed but is still linked to " +
 					_entity +
 					"!\n" +
-					"Please call gameObject.Unlink() before it is destroyed.");
+					"Please call gameObject.Unlink() before it is destroyed."
+				);
 			}
 		}
 
-		private void OnApplicationQuit()
-		{
+		private void OnApplicationQuit() {
 			_applicationIsQuitting = true;
 		}
 
-		public override string ToString()
-		{
+		public override string ToString() {
 			return "EntityLink(" + gameObject.name + ")";
 		}
 	}

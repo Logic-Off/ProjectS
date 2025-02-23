@@ -23,13 +23,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-namespace JCMG.EntitasRedux.Editor
-{
+namespace JCMG.EntitasRedux.Editor {
 	/// <summary>
 	/// Represents methods for an object that can render user preferences in the editor.
 	/// </summary>
-	public interface IAbstractUserPreferencesDrawer
-	{
+	public interface IAbstractUserPreferencesDrawer {
 		/// <summary>
 		/// The ascending order in which this drawer should be shown with regards to other <see cref="IAbstractUserPreferencesDrawer"/>
 		/// instances.

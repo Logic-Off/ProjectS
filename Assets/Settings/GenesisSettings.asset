@@ -37,9 +37,8 @@ MonoBehaviour:
         EntitasRedux.Core.Plugins.EntityGenerator, EntitasRedux.Core.Plugins.EntityIndexGenerator,
         EntitasRedux.Core.Plugins.EventEntityApiGenerator, EntitasRedux.Core.Plugins.EventListenerComponentGenerator,
         EntitasRedux.Core.Plugins.EventListenerInterfaceGenerator, EntitasRedux.Core.Plugins.EventSystemGenerator,
-        EntitasRedux.Core.Plugins.EventSystemsGenerator, EntitasRedux.Unity.BlueprintPlugins.BlueprintClassGenerator,
-        EntitasRedux.Unity.VisualDebuggingPlugins.ContextObserverGenerator, EntitasRedux.Unity.VisualDebuggingPlugins.FeatureClassGenerator,
-        Genesis.Unity.Factory.Plugin.ScriptableFactoryCodeGenerator
+        EntitasRedux.Unity.BlueprintPlugins.BlueprintClassGenerator, EntitasRedux.Unity.VisualDebuggingPlugins.ContextObserverGenerator,
+        EntitasRedux.Unity.VisualDebuggingPlugins.FeatureClassGenerator, Genesis.Unity.Factory.Plugin.ScriptableFactoryCodeGenerator
     - key: Genesis.PostProcessors
       value: Genesis.Core.Plugin.AddFileHeaderPostProcessor, Genesis.Core.Plugin.CleanTargetDirectoryPostProcessor,
         Genesis.Core.Plugin.NewLinePostProcessor, Genesis.Core.Plugin.MergeFilesPostProcessor,
@@ -60,9 +59,8 @@ MonoBehaviour:
         EntitasRedux.Core.Plugins.EntityGenerator, EntitasRedux.Core.Plugins.EntityIndexGenerator,
         EntitasRedux.Core.Plugins.EventEntityApiGenerator, EntitasRedux.Core.Plugins.EventListenerComponentGenerator,
         EntitasRedux.Core.Plugins.EventListenerInterfaceGenerator, EntitasRedux.Core.Plugins.EventSystemGenerator,
-        EntitasRedux.Core.Plugins.EventSystemsGenerator, EntitasRedux.Unity.BlueprintPlugins.BlueprintClassGenerator,
-        EntitasRedux.Unity.VisualDebuggingPlugins.ContextObserverGenerator, EntitasRedux.Unity.VisualDebuggingPlugins.FeatureClassGenerator,
-        Genesis.Unity.Factory.Plugin.ScriptableFactoryCodeGenerator
+        EntitasRedux.Unity.BlueprintPlugins.BlueprintClassGenerator, EntitasRedux.Unity.VisualDebuggingPlugins.ContextObserverGenerator,
+        EntitasRedux.Unity.VisualDebuggingPlugins.FeatureClassGenerator, Genesis.Unity.Factory.Plugin.ScriptableFactoryCodeGenerator
     - key: Genesis.AllPostProcessors
       value: Genesis.Core.Plugin.AddFileHeaderPostProcessor, Genesis.Core.Plugin.CleanTargetDirectoryPostProcessor,
         Genesis.Core.Plugin.NewLinePostProcessor, Genesis.Core.Plugin.MergeFilesPostProcessor,

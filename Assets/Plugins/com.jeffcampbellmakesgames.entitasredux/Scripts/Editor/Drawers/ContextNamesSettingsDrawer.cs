@@ -26,10 +26,8 @@ THE SOFTWARE.
 using JCMG.Genesis.Editor;
 using UnityEditor;
 
-namespace JCMG.EntitasRedux.Editor.Plugins
-{
-	internal sealed class ContextNamesSettingsDrawer : AbstractSettingsDrawer
-	{
+namespace JCMG.EntitasRedux.Editor.Plugins {
+	internal sealed class ContextNamesSettingsDrawer : AbstractSettingsDrawer {
 		public override string Title => TITLE;
 
 		public override int Order => 50;
@@ -39,30 +37,24 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 		private const string TITLE = "EntitasRedux Context Names";
 		private const string CONTEXT_NAMES_LABEL = "Context Names";
 
-		public ContextNamesSettingsDrawer()
-		{
+		public ContextNamesSettingsDrawer() {
 			_config = new ContextSettingsConfig();
 		}
 
-		public override void Initialize(GenesisSettings settings)
-		{
+		public override void Initialize(GenesisSettings settings) {
 			base.Initialize(settings);
 
 			_config.Configure(settings);
 		}
 
-		protected override void DrawContentBody(GenesisSettings settings)
-		{
-			using (new EditorGUILayout.HorizontalScope())
-			{
+		protected override void DrawContentBody(GenesisSettings settings) {
+			using (new EditorGUILayout.HorizontalScope()) {
 				EditorGUILayout.LabelField(CONTEXT_NAMES_LABEL);
 
-				using (var scope = new EditorGUI.ChangeCheckScope())
-				{
+				using (var scope = new EditorGUI.ChangeCheckScope()) {
 					var newValue = EditorGUILayout.TextField(_config.RawContextNames);
 
-					if (scope.changed)
-					{
+					if (scope.changed) {
 						_config.RawContextNames = newValue;
 
 						EditorUtility.SetDirty(settings);

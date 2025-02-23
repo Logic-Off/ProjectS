@@ -26,34 +26,25 @@ THE SOFTWARE.
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace JCMG.EntitasRedux.Blueprints
-{
-	public abstract class BlueprintBehaviourBase : MonoBehaviour
-	{
+namespace JCMG.EntitasRedux.Blueprints {
+	public abstract class BlueprintBehaviourBase : MonoBehaviour {
 		public List<IComponent> Components => _components;
 
-		[SerializeReference]
-		protected List<IComponent> _components;
+		[SerializeReference] protected List<IComponent> _components;
 
-		protected virtual void Reset()
-		{
+		protected virtual void Reset() {
 			_components = new List<IComponent>();
 		}
 
-		public void Validate()
-		{
+		public void Validate() {
 			OnValidate();
 		}
 
-		protected virtual void OnValidate()
-		{
+		protected virtual void OnValidate() {
 			// Remove components that have become null due to serialization issues or other reason
-			if (_components != null)
-			{
-				for (var i = _components.Count - 1; i >= 0; i--)
-				{
-					if (_components[i] == null)
-					{
+			if (_components != null) {
+				for (var i = _components.Count - 1; i >= 0; i--) {
+					if (_components[i] == null) {
 						_components.RemoveAt(i);
 					}
 				}

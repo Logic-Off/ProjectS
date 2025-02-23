@@ -25,13 +25,11 @@ THE SOFTWARE.
 
 using UnityEditor;
 
-namespace JCMG.EntitasRedux.Editor
-{
+namespace JCMG.EntitasRedux.Editor {
 	/// <summary>
 	/// Menu items for creating C# scripts for EntitasRedux
 	/// </summary>
-	internal static class CreateScriptMenuItems
-	{
+	internal static class CreateScriptMenuItems {
 		private const string SCRIPT_TEMPLATE_FOLDER_GUID = "5a15a764f3e073b4cbdd6195a11a98ec";
 
 		public const string COMPONENT_FILE_NAME = "Component.txt";
@@ -45,44 +43,37 @@ namespace JCMG.EntitasRedux.Editor
 		private const string MENU_ITEM_PREFIX = "Assets/Create/EntitasRedux/";
 
 		[MenuItem(MENU_ITEM_PREFIX + "Component")]
-		private static void CreateEntitasComponent()
-		{
+		private static void CreateEntitasComponent() {
 			ScriptTools.CreateScriptAsset(SCRIPT_TEMPLATE_FOLDER_GUID, COMPONENT_FILE_NAME);
 		}
 
 		[MenuItem(MENU_ITEM_PREFIX + "InitializeSystem")]
-		private static void CreateEntitasInitializeSystem()
-		{
+		private static void CreateEntitasInitializeSystem() {
 			ScriptTools.CreateScriptAsset(SCRIPT_TEMPLATE_FOLDER_GUID, INITIALIZE_SYSTEM_FILE_NAME);
 		}
 
 		[MenuItem(MENU_ITEM_PREFIX + "FixedUpdateSystem")]
-		private static void CreateEntitasFixedUpdateSystem()
-		{
+		private static void CreateEntitasFixedUpdateSystem() {
 			ScriptTools.CreateScriptAsset(SCRIPT_TEMPLATE_FOLDER_GUID, FIXED_UPDATE_SYSTEM_FILE_NAME);
 		}
 
 		[MenuItem(MENU_ITEM_PREFIX + "UpdateSystem")]
-		private static void CreateEntitasUpdateSystem()
-		{
+		private static void CreateEntitasUpdateSystem() {
 			ScriptTools.CreateScriptAsset(SCRIPT_TEMPLATE_FOLDER_GUID, UPDATE_SYSTEM_FILE_NAME);
 		}
 
 		[MenuItem(MENU_ITEM_PREFIX + "LateUpdateSystem")]
-		private static void CreateEntitasLateUpdateSystem()
-		{
+		private static void CreateEntitasLateUpdateSystem() {
 			ScriptTools.CreateScriptAsset(SCRIPT_TEMPLATE_FOLDER_GUID, LATE_UPDATE_SYSTEM_FILE_NAME);
 		}
 
 		[MenuItem(MENU_ITEM_PREFIX + "ReactiveSystem")]
-		private static void CreateEntitasReactiveSystem()
-		{
+		private static void CreateEntitasReactiveSystem() {
 			ScriptTools.CreateScriptAsset(SCRIPT_TEMPLATE_FOLDER_GUID, REACTIVE_SYSTEM_FILE_NAME);
 		}
 
 		[MenuItem(MENU_ITEM_PREFIX + "CleanupSystem")]
-		private static void CreateEntitasCleanupSystem()
-		{
+		private static void CreateEntitasCleanupSystem() {
 			ScriptTools.CreateScriptAsset(SCRIPT_TEMPLATE_FOLDER_GUID, CLEANUP_SYSTEM_FILE_NAME);
 		}
 	}

@@ -26,23 +26,19 @@ THE SOFTWARE.
 using UnityEditor;
 using UnityEngine;
 
-namespace JCMG.EntitasRedux.Editor
-{
+namespace JCMG.EntitasRedux.Editor {
 	/// <summary>
 	/// Helper methods for <see cref="EditorPrefs"/>.
 	/// </summary>
-	public static class PreferenceTools
-	{
+	public static class PreferenceTools {
 		/// <summary>
 		/// Returns the current int preference; if none exists, the default is set and returned.
 		/// </summary>
 		/// <param name="key"></param>
 		/// <param name="defaultValue"></param>
 		/// <returns></returns>
-		public static int GetIntPref(string key, int defaultValue)
-		{
-			if (!EditorPrefs.HasKey(key))
-			{
+		public static int GetIntPref(string key, int defaultValue) {
+			if (!EditorPrefs.HasKey(key)) {
 				EditorPrefs.SetInt(key, defaultValue);
 			}
 
@@ -55,10 +51,8 @@ namespace JCMG.EntitasRedux.Editor
 		/// <param name="key"></param>
 		/// <param name="defaultValue"></param>
 		/// <returns></returns>
-		public static float GetFloatPref(string key, float defaultValue)
-		{
-			if (!EditorPrefs.HasKey(key))
-			{
+		public static float GetFloatPref(string key, float defaultValue) {
+			if (!EditorPrefs.HasKey(key)) {
 				EditorPrefs.SetFloat(key, defaultValue);
 			}
 
@@ -71,10 +65,8 @@ namespace JCMG.EntitasRedux.Editor
 		/// <param name="key"></param>
 		/// <param name="defaultValue"></param>
 		/// <returns></returns>
-		public static string GetStringPref(string key, string defaultValue)
-		{
-			if (!EditorPrefs.HasKey(key))
-			{
+		public static string GetStringPref(string key, string defaultValue) {
+			if (!EditorPrefs.HasKey(key)) {
 				EditorPrefs.SetString(key, defaultValue);
 			}
 
@@ -87,10 +79,8 @@ namespace JCMG.EntitasRedux.Editor
 		/// <param name="key"></param>
 		/// <param name="defaultValue"></param>
 		/// <returns></returns>
-		public static bool GetBoolPref(string key, bool defaultValue)
-		{
-			if (!EditorPrefs.HasKey(key))
-			{
+		public static bool GetBoolPref(string key, bool defaultValue) {
+			if (!EditorPrefs.HasKey(key)) {
 				EditorPrefs.SetBool(key, defaultValue);
 			}
 
@@ -103,10 +93,8 @@ namespace JCMG.EntitasRedux.Editor
 		/// <param name="key"></param>
 		/// <param name="defaultValue"></param>
 		/// <returns></returns>
-		public static Color GetColorPref(string key, Color defaultValue)
-		{
-			if (!EditorPrefs.HasKey(key))
-			{
+		public static Color GetColorPref(string key, Color defaultValue) {
+			if (!EditorPrefs.HasKey(key)) {
 				EditorPrefs.SetString(key, defaultValue.ToHexWithAlpha());
 			}
 

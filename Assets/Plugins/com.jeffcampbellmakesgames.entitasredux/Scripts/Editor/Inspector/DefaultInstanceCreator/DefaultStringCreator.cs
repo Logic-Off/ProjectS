@@ -25,17 +25,13 @@ THE SOFTWARE.
 
 using System;
 
-namespace JCMG.EntitasRedux.Editor
-{
-	public class DefaultStringCreator : IDefaultInstanceCreator
-	{
-		public bool HandlesType(Type type)
-		{
+namespace JCMG.EntitasRedux.Editor {
+	public class DefaultStringCreator : IDefaultInstanceCreator {
+		public bool HandlesType(Type type) {
 			return type == typeof(string);
 		}
 
-		public object CreateDefault(Type type)
-		{
+		public object CreateDefault(Type type) {
 			return string.Empty;
 		}
 	}

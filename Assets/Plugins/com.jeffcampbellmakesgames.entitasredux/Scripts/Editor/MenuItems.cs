@@ -26,58 +26,51 @@ THE SOFTWARE.
 using UnityEditor;
 using UnityEngine;
 
-namespace JCMG.EntitasRedux.Editor
-{
+namespace JCMG.EntitasRedux.Editor {
 	/// <summary>
 	/// Menu items for this library
 	/// </summary>
-	internal static class MenuItems
-	{
+	internal static class MenuItems {
 		private const string SCRIPTING_SYMBOL = "ENTITAS_REDUX_NO_IMPL";
 		private const string ENABLED_REFACTOR_MODE_MSG = "[EntitasRedux] Enabled refactor mode...";
 		private const string DISABLED_REFACTOR_MODE_MSG = "[EntitasRedux] Disabled refactor mode...";
 
 		#region Refactor Mode
 
-		#if !ENTITAS_REDUX_NO_IMPL
+#if !ENTITAS_REDUX_NO_IMPL
 
 		[MenuItem("Tools/JCMG/EntitasRedux/Enable Refactor Mode #%r")]
-		internal static void EnableRefactorMode()
-		{
+		internal static void EnableRefactorMode() {
 			RefactorModeTools.EnableRefactorMode();
 		}
 
-		#else
-
+#else
 		[MenuItem("Tools/JCMG/EntitasRedux/Disable Refactor Mode #%r")]
 		internal static void DisableRefactorMode()
 		{
 			RefactorModeTools.DisableRefactorMode();
 		}
 
-		#endif
+#endif
 
 		#endregion
 
 		[MenuItem("Tools/JCMG/EntitasRedux/Submit bug or feature request")]
-		internal static void OpenURLToGitHubIssuesSection()
-		{
+		internal static void OpenURLToGitHubIssuesSection() {
 			const string GITHUB_ISSUES_URL = "https://github.com/jeffcampbellmakesgames/unity-coc/issues";
 
 			Application.OpenURL(GITHUB_ISSUES_URL);
 		}
 
 		[MenuItem("Tools/JCMG/EntitasRedux/Donate to support development")]
-		internal static void OpenURLToKoFi()
-		{
+		internal static void OpenURLToKoFi() {
 			const string KOFI_URL = "https://ko-fi.com/stampyturtle";
 
 			Application.OpenURL(KOFI_URL);
 		}
 
 		[MenuItem("Tools/JCMG/EntitasRedux/About")]
-		internal static void OpenAboutModalDialog()
-		{
+		internal static void OpenAboutModalDialog() {
 			AboutWindow.View();
 		}
 	}

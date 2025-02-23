@@ -29,20 +29,15 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-namespace JCMG.EntitasRedux.Editor
-{
-	public static class EditorGUILayoutTools
-	{
+namespace JCMG.EntitasRedux.Editor {
+	public static class EditorGUILayoutTools {
 		private const int DEFAULT_FOLDOUT_MARGIN = 11;
 
-		public static Texture2D LoadTexture(string label)
-		{
+		public static Texture2D LoadTexture(string label) {
 			var assets = AssetDatabase.FindAssets(label);
-			if (assets.Length != 0)
-			{
+			if (assets.Length != 0) {
 				var str = assets[0];
-				if (str != null)
-				{
+				if (str != null) {
 					return AssetDatabase.LoadAssetAtPath<Texture2D>(AssetDatabase.GUIDToAssetPath(str));
 				}
 			}
@@ -50,14 +45,13 @@ namespace JCMG.EntitasRedux.Editor
 			return null;
 		}
 
-		public static bool ObjectFieldButton(string label, string buttonText)
-		{
+		public static bool ObjectFieldButton(string label, string buttonText) {
 			EditorGUILayout.BeginHorizontal();
 			EditorGUILayout.LabelField(
 				label,
-				GUILayout.Width(146f));
-			if (buttonText.Length > 24)
-			{
+				GUILayout.Width(146f)
+			);
+			if (buttonText.Length > 24) {
 				buttonText = "..." + buttonText.Substring(buttonText.Length - 24);
 			}
 
@@ -69,16 +63,14 @@ namespace JCMG.EntitasRedux.Editor
 		public static string ObjectFieldOpenFolderPanel(
 			string label,
 			string buttonText,
-			string defaultPath)
-		{
-			if (!ObjectFieldButton(label, buttonText))
-			{
+			string defaultPath
+		) {
+			if (!ObjectFieldButton(label, buttonText)) {
 				return null;
 			}
 
 			var path = defaultPath ?? "Assets/";
-			if (!Directory.Exists(path))
-			{
+			if (!Directory.Exists(path)) {
 				path = "Assets/";
 			}
 
@@ -86,45 +78,35 @@ namespace JCMG.EntitasRedux.Editor
 				.Replace(Directory.GetCurrentDirectory() + "/", string.Empty);
 		}
 
-		public static bool MiniButton(string c)
-		{
+		public static bool MiniButton(string c) {
 			return MiniButton(c, EditorStyles.miniButton);
 		}
 
-		public static bool MiniButtonLeft(string c)
-		{
+		public static bool MiniButtonLeft(string c) {
 			return MiniButton(c, EditorStyles.miniButtonLeft);
 		}
 
-		public static bool MiniButtonMid(string c)
-		{
+		public static bool MiniButtonMid(string c) {
 			return MiniButton(c, EditorStyles.miniButtonMid);
 		}
 
-		public static bool MiniButtonRight(string c)
-		{
+		public static bool MiniButtonRight(string c) {
 			return MiniButton(c, EditorStyles.miniButtonRight);
 		}
 
-		private static bool MiniButton(string c, GUIStyle style)
-		{
+		private static bool MiniButton(string c, GUIStyle style) {
 			GUILayoutOption[] guiLayoutOptionArray1;
-			if (c.Length != 1)
-			{
+			if (c.Length != 1) {
 				guiLayoutOptionArray1 = new GUILayoutOption[0];
-			}
-			else
-			{
-				guiLayoutOptionArray1 = new GUILayoutOption[1]
-				{
+			} else {
+				guiLayoutOptionArray1 = new GUILayoutOption[1] {
 					GUILayout.Width(19f)
 				};
 			}
 
 			var guiLayoutOptionArray2 = guiLayoutOptionArray1;
 			var num = GUILayout.Button(c, style, guiLayoutOptionArray2) ? 1 : 0;
-			if (num == 0)
-			{
+			if (num == 0) {
 				return num != 0;
 			}
 
@@ -132,8 +114,7 @@ namespace JCMG.EntitasRedux.Editor
 			return num != 0;
 		}
 
-		public static bool Foldout(bool foldout, string content, GUIStyle style, int leftMargin = 11)
-		{
+		public static bool Foldout(bool foldout, string content, GUIStyle style, int leftMargin = 11) {
 			EditorGUILayout.BeginHorizontal();
 			GUILayout.Space(leftMargin);
 			foldout = EditorGUILayout.Foldout(foldout, content, style);
@@ -141,13 +122,11 @@ namespace JCMG.EntitasRedux.Editor
 			return foldout;
 		}
 
-		public static string SearchTextField(string searchString)
-		{
+		public static string SearchTextField(string searchString) {
 			var changed = GUI.changed;
 			GUILayout.BeginHorizontal();
-			searchString = GUILayout.TextField(searchString, GUI.skin.FindStyle("ToolbarSeachTextField"));
-			if (GUILayout.Button(string.Empty, GUI.skin.FindStyle("ToolbarSeachCancelButton")))
-			{
+			searchString = GUILayout.TextField(searchString, GUI.skin.FindStyle("ToolbarSearchTextField"));
+			if (GUILayout.Button(string.Empty, GUI.skin.FindStyle("ToolbarSearchCancelButton"))) {
 				searchString = string.Empty;
 			}
 
@@ -156,48 +135,41 @@ namespace JCMG.EntitasRedux.Editor
 			return searchString;
 		}
 
-		public static bool MatchesSearchString(string str, string search)
-		{
+		public static bool MatchesSearchString(string str, string search) {
 			var strArray = search.Split(
-				new char[1]
-				{
+				new char[1] {
 					' '
 				},
-				StringSplitOptions.RemoveEmptyEntries);
+				StringSplitOptions.RemoveEmptyEntries
+			);
 			return strArray.Length == 0 || strArray.Any(str.Contains);
 		}
 
-		public static bool DrawSectionHeaderToggle(string header, bool value)
-		{
+		public static bool DrawSectionHeaderToggle(string header, bool value) {
 			return GUILayout.Toggle(
 				value,
 				header,
 				EntitasReduxStyles.SectionHeader,
-				Array.Empty<GUILayoutOption>());
+				Array.Empty<GUILayoutOption>()
+			);
 		}
 
-		public static Rect BeginVerticalBox()
-		{
+		public static Rect BeginVerticalBox() {
 			return EditorGUILayout.BeginVertical(GUI.skin.box);
 		}
 
-		public static void EndVerticalBox()
-		{
+		public static void EndVerticalBox() {
 			EditorGUILayout.EndVertical();
 		}
 
-		public static Texture2D CreateSimpleUITexture2D(Color color)
-		{
+		public static Texture2D CreateSimpleUITexture2D(Color color) {
 			const int TEX_DIMENSIONS = 2;
-			var tex = new Texture2D(TEX_DIMENSIONS, TEX_DIMENSIONS)
-			{
+			var tex = new Texture2D(TEX_DIMENSIONS, TEX_DIMENSIONS) {
 				wrapMode = TextureWrapMode.Repeat
 			};
 
-			for (var x = 0; x < TEX_DIMENSIONS; x++)
-			{
-				for (var y = 0; y < TEX_DIMENSIONS; y++)
-				{
+			for (var x = 0; x < TEX_DIMENSIONS; x++) {
+				for (var y = 0; y < TEX_DIMENSIONS; y++) {
 					tex.SetPixel(x, y, color);
 				}
 			}
@@ -211,8 +183,8 @@ namespace JCMG.EntitasRedux.Editor
 			Rect rect,
 			float borderWidth,
 			Color innerColor,
-			Color borderColor)
-		{
+			Color borderColor
+		) {
 			var innerRect = new Rect(rect);
 			innerRect.x += borderWidth;
 			innerRect.y += borderWidth;

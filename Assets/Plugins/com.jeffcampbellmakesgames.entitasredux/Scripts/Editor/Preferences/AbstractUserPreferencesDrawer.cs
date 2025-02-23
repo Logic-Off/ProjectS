@@ -23,29 +23,23 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-namespace JCMG.EntitasRedux.Editor
-{
+namespace JCMG.EntitasRedux.Editor {
 	/// <summary>
 	/// An abstract drawer for drawing user preferences
 	/// </summary>
-	public abstract class AbstractUserPreferencesDrawer : IAbstractUserPreferencesDrawer
-	{
+	public abstract class AbstractUserPreferencesDrawer : IAbstractUserPreferencesDrawer {
 		/// <summary>
 		/// The ascending order in which this drawer should be shown with regards to other <see cref="IAbstractUserPreferencesDrawer"/>
 		/// instances.
 		/// </summary>
 		public virtual int Order => 100;
 
-		protected AbstractUserPreferencesDrawer()
-		{
-		}
+		protected AbstractUserPreferencesDrawer() { }
 
 		/// <summary>
 		/// Performs any needed setup or initialization prior to drawing user preferences
 		/// </summary>
-		public virtual void Initialize()
-		{
-		}
+		public virtual void Initialize() { }
 
 		/// <summary>
 		/// Draws user preferences

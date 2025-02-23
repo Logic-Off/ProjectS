@@ -27,13 +27,11 @@ using System.Linq;
 using Genesis.Shared;
 using UnityEditor;
 
-namespace JCMG.EntitasRedux.Editor
-{
+namespace JCMG.EntitasRedux.Editor {
 	/// <summary>
 	/// User preferences for EntitasRedux
 	/// </summary>
-	internal static class EntitasReduxPreferences
-	{
+	internal static class EntitasReduxPreferences {
 		// Menu Item
 		private const string PREFERENCES_TITLE_PATH = "Preferences/EntitasRedux";
 
@@ -43,10 +41,8 @@ namespace JCMG.EntitasRedux.Editor
 		// Searchable Fields
 		private static readonly string[] KEYWORDS;
 
-		static EntitasReduxPreferences()
-		{
-			KEYWORDS = new[]
-			{
+		static EntitasReduxPreferences() {
+			KEYWORDS = new[] {
 				"Entitas",
 				"Redux",
 				"Entitas Redux",
@@ -60,30 +56,24 @@ namespace JCMG.EntitasRedux.Editor
 					.OrderBy(x => x.Order)
 					.ToArray();
 
-			foreach (var drawer in PREFERENCES_DRAWERS)
-			{
+			foreach (var drawer in PREFERENCES_DRAWERS) {
 				drawer.Initialize();
 			}
 		}
 
 		[SettingsProvider]
-		private static SettingsProvider CreatePersonalPreferenceSettingsProvider()
-		{
-			return new SettingsProvider(PREFERENCES_TITLE_PATH, SettingsScope.User)
-			{
+		private static SettingsProvider CreatePersonalPreferenceSettingsProvider() {
+			return new SettingsProvider(PREFERENCES_TITLE_PATH, SettingsScope.User) {
 				guiHandler = DrawPersonalPrefsGUI, keywords = KEYWORDS
 			};
 		}
 
-		public static void DrawGUI()
-		{
+		public static void DrawGUI() {
 			DrawPersonalPrefsGUI();
 		}
 
-		private static void DrawPersonalPrefsGUI(string value = "")
-		{
-			foreach (var drawer in PREFERENCES_DRAWERS)
-			{
+		private static void DrawPersonalPrefsGUI(string value = "") {
+			foreach (var drawer in PREFERENCES_DRAWERS) {
 				drawer.DrawContent();
 			}
 		}

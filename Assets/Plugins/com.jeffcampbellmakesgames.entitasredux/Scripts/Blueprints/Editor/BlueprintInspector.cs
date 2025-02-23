@@ -32,16 +32,14 @@ using JCMG.EntitasRedux.Editor;
 using UnityEditor;
 using UnityEngine;
 
-namespace JCMG.EntitasRedux.Blueprints.Editor
-{
-	public abstract class BlueprintInspector : UnityEditor.Editor
-	{
+namespace JCMG.EntitasRedux.Blueprints.Editor {
+	public abstract class BlueprintInspector : UnityEditor.Editor {
 		/// <summary>
 		/// Returns true if the context has any valid components that can be selected in the inspector, otherwise false.
 		/// </summary>
 		protected bool ContextHasSerializableComponents => _componentTypes.Length > 0 ||
-														 _componentDisplayNames.Length > 0 ||
-														 _componentInfo.Length > 0;
+		                                                   _componentDisplayNames.Length > 0 ||
+		                                                   _componentInfo.Length > 0;
 
 		private static readonly IEnumerable<Assembly> ASSEMBLIES;
 
@@ -55,17 +53,16 @@ namespace JCMG.EntitasRedux.Blueprints.Editor
 
 		// UI
 		private const string ADD_BUTTON_TEXT = "Add";
+
 		private const string NO_VALID_COMPONENTS_WARNING =
 			"There are not any serializable components with a default constructor for the context [{0}]. Only components " +
 			"that meet that criteria will be available for blueprint usage.";
 
-		static BlueprintInspector()
-		{
+		static BlueprintInspector() {
 			ASSEMBLIES = ReflectionTools.GetAvailableAssemblies();
 		}
 
-		protected virtual void OnEnable()
-		{
+		protected virtual void OnEnable() {
 			// Get blueprint type info
 			_targetType = target.GetType();
 			_contextName = GetContextNameFromBlueprintType(_targetType);
@@ -76,17 +73,15 @@ namespace JCMG.EntitasRedux.Blueprints.Editor
 				out _componentTypes,
 				out _componentDisplayNames,
 				out _componentInfo,
-				out _totalNumberOfComponents);
+				out _totalNumberOfComponents
+			);
 		}
 
-		protected void DrawComponentArrayGUI(List<IComponent> components)
-		{
+		protected void DrawComponentArrayGUI(List<IComponent> components) {
 			var unfoldedComponents = EntityDrawer.GetUnfoldedComponents(_contextName, _totalNumberOfComponents);
-			for (var i = 0; i < components.Count; i++)
-			{
+			for (var i = 0; i < components.Count; i++) {
 				var index = GetComponentIndex(components[i]);
-				if (components[i] == null || index == -1)
-				{
+				if (components[i] == null || index == -1) {
 					continue;
 				}
 
@@ -97,33 +92,29 @@ namespace JCMG.EntitasRedux.Blueprints.Editor
 					index,
 					components[i],
 					OnComponentRemoved,
-					OnComponentChanged);
+					OnComponentChanged
+				);
 			}
 		}
 
-		protected void DrawComponentSelectorGUI(List<IComponent> components, Action onComponentAdded)
-		{
-			if (!ContextHasSerializableComponents)
-			{
+		protected void DrawComponentSelectorGUI(List<IComponent> components, Action onComponentAdded) {
+			if (!ContextHasSerializableComponents) {
 				EditorGUILayout.HelpBox(string.Format(NO_VALID_COMPONENTS_WARNING, _contextName), MessageType.Warning);
-			}
-			else
-			{
-				using (new EditorGUILayout.HorizontalScope())
-				{
+			} else {
+				using (new EditorGUILayout.HorizontalScope()) {
 					// Select a component type specific to this blueprint's context.
 					_selectedComponentIndex = EditorGUILayout.Popup(_selectedComponentIndex, _componentDisplayNames);
 
 					// Add component if not already present in the blueprint.
 					using (new EditorGUI.DisabledScope(
-						HasComponentType(
-							components,
-							_componentTypes[_selectedComponentIndex])))
-					{
-						if (GUILayout.Button(ADD_BUTTON_TEXT))
-						{
+						       HasComponentType(
+							       components,
+							       _componentTypes[_selectedComponentIndex]
+						       )
+					       )) {
+						if (GUILayout.Button(ADD_BUTTON_TEXT)) {
 							var componentInstance = Activator.CreateInstance(_componentTypes[_selectedComponentIndex]);
-							components.Add((IComponent)componentInstance);
+							components.Add((IComponent) componentInstance);
 
 							onComponentAdded?.Invoke();
 						}
@@ -138,14 +129,11 @@ namespace JCMG.EntitasRedux.Blueprints.Editor
 		/// </summary>
 		/// <param name="component"></param>
 		/// <returns></returns>
-		protected int GetComponentIndex(IComponent component)
-		{
+		protected int GetComponentIndex(IComponent component) {
 			var result = -1;
 			var componentType = component.GetType();
-			for (var i = 0; i < _componentInfo.Length; i++)
-			{
-				if (componentType != _componentInfo[i].type)
-				{
+			for (var i = 0; i < _componentInfo.Length; i++) {
+				if (componentType != _componentInfo[i].type) {
 					continue;
 				}
 
@@ -162,13 +150,10 @@ namespace JCMG.EntitasRedux.Blueprints.Editor
 		/// <param name="components"></param>
 		/// <param name="componentType"></param>
 		/// <returns></returns>
-		protected bool HasComponentType(List<IComponent> components, Type componentType)
-		{
+		protected bool HasComponentType(List<IComponent> components, Type componentType) {
 			var result = false;
-			for (var i = 0; i < components.Count; i++)
-			{
-				if (components[i].GetType() != componentType)
-				{
+			for (var i = 0; i < components.Count; i++) {
+				if (components[i].GetType() != componentType) {
 					continue;
 				}
 
@@ -179,12 +164,13 @@ namespace JCMG.EntitasRedux.Blueprints.Editor
 			return result;
 		}
 
-		protected void GetComponentInfo(string contextTypeName,
-										out Type[] componentTypes,
-										out string[] componentDisplayNames,
-										out EntityDrawer.ComponentInfo[] componentInfo,
-										out int totalNumberOfComponents)
-		{
+		protected void GetComponentInfo(
+			string contextTypeName,
+			out Type[] componentTypes,
+			out string[] componentDisplayNames,
+			out EntityDrawer.ComponentInfo[] componentInfo,
+			out int totalNumberOfComponents
+		) {
 			// Get static component lookup type for the context this blueprint is associated with
 			var componentLookupTypeName = GetContextLookupTypeNameFromContextName(contextTypeName);
 			var componentLookupType = GetTypeByName(componentLookupTypeName);
@@ -195,14 +181,16 @@ namespace JCMG.EntitasRedux.Blueprints.Editor
 			// Get component names
 			var componentNamesMemberInfo = componentLookupType.GetField(
 				COMPONENT_NAMES_MEMBER_NAME,
-				BindingFlags.Public | BindingFlags.Static);
-			var allComponentDisplayNames = (string[])componentNamesMemberInfo.GetValue(null);
+				BindingFlags.Public | BindingFlags.Static
+			);
+			var allComponentDisplayNames = (string[]) componentNamesMemberInfo.GetValue(null);
 
 			// Get component types
 			var componentTypesMemberInfo = componentLookupType.GetField(
 				COMPONENT_TYPES_MEMBER_NAME,
-				BindingFlags.Public | BindingFlags.Static);
-			var allComponentTypes = (Type[])componentTypesMemberInfo.GetValue(null);
+				BindingFlags.Public | BindingFlags.Static
+			);
+			var allComponentTypes = (Type[]) componentTypesMemberInfo.GetValue(null);
 
 			// Regardless of how many components we end up filtering down to for a developer to be able to add
 			// the total number of components always reflects the total for the context.
@@ -212,24 +200,23 @@ namespace JCMG.EntitasRedux.Blueprints.Editor
 			var componentTypesList = new List<Type>();
 			var componentDisplayNamesList = new List<string>();
 			var componentInfoList = new List<EntityDrawer.ComponentInfo>();
-			for (var i = 0; i < allComponentTypes.Length; i++)
-			{
+			for (var i = 0; i < allComponentTypes.Length; i++) {
 				// If our component type is not serializable OR does not provide a default constructor, don't enable
 				// selection of it.
 				if (!allComponentTypes[i].IsSerializable ||
-					allComponentTypes[i].GetConstructor(Type.EmptyTypes) == null)
-				{
+				    allComponentTypes[i].GetConstructor(Type.EmptyTypes) == null) {
 					continue;
 				}
 
 				componentTypesList.Add(allComponentTypes[i]);
 				componentDisplayNamesList.Add(allComponentDisplayNames[i]);
-				componentInfoList.Add(new EntityDrawer.ComponentInfo()
-				{
-					index = i,
-					name = allComponentDisplayNames[i],
-					type = allComponentTypes[i]
-				});
+				componentInfoList.Add(
+					new EntityDrawer.ComponentInfo() {
+						index = i,
+						name = allComponentDisplayNames[i],
+						type = allComponentTypes[i]
+					}
+				);
 			}
 
 			componentTypes = componentTypesList.ToArray();
@@ -237,32 +224,28 @@ namespace JCMG.EntitasRedux.Blueprints.Editor
 			componentInfo = componentInfoList.ToArray();
 		}
 
-		protected string GetContextNameFromBlueprintType(Type type)
-		{
+		protected string GetContextNameFromBlueprintType(Type type) {
 			const string BLUEPRINT_BEHAVIOR_SUFFIX = "BlueprintBehaviour";
 			const string BLUEPRINT_SUFFIX = "Blueprint";
 
 			return type.Name
-					.Replace(BLUEPRINT_BEHAVIOR_SUFFIX, string.Empty)
-					.Replace(BLUEPRINT_SUFFIX, string.Empty);
+				.Replace(BLUEPRINT_BEHAVIOR_SUFFIX, string.Empty)
+				.Replace(BLUEPRINT_SUFFIX, string.Empty);
 		}
 
-		protected string GetContextLookupTypeNameFromContextName(string contextName)
-		{
+		protected string GetContextLookupTypeNameFromContextName(string contextName) {
 			const string COMPONENTS_LOOKUP_SUFFIX = "ComponentsLookup";
 
 			return contextName + COMPONENTS_LOOKUP_SUFFIX;
 		}
 
-		protected Type GetTypeByName(string typeName)
-		{
+		protected Type GetTypeByName(string typeName) {
 			return ASSEMBLIES.SelectMany(x => x.GetTypes()).FirstOrDefault(y => y.Name == typeName);
 		}
 
 		protected abstract void OnComponentRemoved(IComponent component);
 
-		protected void OnComponentChanged()
-		{
+		protected void OnComponentChanged() {
 			EditorUtility.SetDirty(target);
 		}
 	}

@@ -25,10 +25,8 @@ THE SOFTWARE.
 
 using System;
 
-namespace JCMG.EntitasRedux.Editor
-{
-	public interface IDefaultInstanceCreator
-	{
+namespace JCMG.EntitasRedux.Editor {
+	public interface IDefaultInstanceCreator {
 		bool HandlesType(Type type);
 
 		object CreateDefault(Type type);

@@ -25,18 +25,13 @@ THE SOFTWARE.
 
 using UnityEngine;
 
-namespace JCMG.EntitasRedux.Editor
-{
-	public static class EntitasReduxStyles
-	{
+namespace JCMG.EntitasRedux.Editor {
+	public static class EntitasReduxStyles {
 		public const string GROUP_BOX_STYLE = "GroupBox";
 
-		public static GUIStyle SectionHeader
-		{
-			get
-			{
-				if (_SECTION_HEADER == null)
-				{
+		public static GUIStyle SectionHeader {
+			get {
+				if (_SECTION_HEADER == null) {
 					_SECTION_HEADER = new GUIStyle("OL Title");
 					_SECTION_HEADER.fontStyle = FontStyle.Bold;
 				}
@@ -45,12 +40,9 @@ namespace JCMG.EntitasRedux.Editor
 			}
 		}
 
-		public static GUIStyle SectionContent
-		{
-			get
-			{
-				if (_SECTION_CONTENT == null)
-				{
+		public static GUIStyle SectionContent {
+			get {
+				if (_SECTION_CONTENT == null) {
 					_SECTION_CONTENT = new GUIStyle("OL Box");
 					_SECTION_CONTENT.stretchHeight = false;
 				}

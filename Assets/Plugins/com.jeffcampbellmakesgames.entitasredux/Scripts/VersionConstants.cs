@@ -23,13 +23,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-namespace JCMG.EntitasRedux
-{
+namespace JCMG.EntitasRedux {
 	/// <summary>
 	/// Version info for this library.
 	/// </summary>
-	public static class VersionConstants
-	{
+	public static class VersionConstants {
 		/// <summary>
 		/// The semantic version
 		/// </summary>
