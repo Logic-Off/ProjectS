@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
-using Installers;
+﻿using System;
+using System.Collections.Generic;
 using JCMG.EntitasRedux;
+using Utopia;
 
 namespace Ecs.Shared {
-	[Install(InstallerId.Project)]
+	[InstallerGenerator("Project")]
 	public class LoadLocationSystem : ReactiveSystem<SharedEntity> {
 		private readonly SharedContext _shared;
 		private readonly ILoadSceneController _controller;
@@ -11,6 +12,7 @@ namespace Ecs.Shared {
 		public LoadLocationSystem(SharedGlobalContext shared, ILoadSceneController controller) : base(shared.Context) {
 			_shared = shared;
 			_controller = controller;
+			D.Error("[LoadLocationSystem]");
 		}
 
 		protected override ICollector<SharedEntity> GetTrigger(IContext<SharedEntity> context)

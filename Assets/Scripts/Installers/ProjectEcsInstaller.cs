@@ -1,5 +1,4 @@
 ﻿using Ecs.Shared;
-using Zenject;
 
 namespace Installers {
 	public sealed class ProjectEcsInstaller : AEcsInstaller {

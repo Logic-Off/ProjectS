@@ -10,6 +10,12 @@
       },
       "hash": "63103d2350b2668405c2b3ba2e09e9ee0f5a743c"
     },
+    "com.logicoff.utopia": {
+      "version": "file:com.logicoff.utopia",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.unity.addressables": {
       "version": "2.2.2",
       "depth": 0,

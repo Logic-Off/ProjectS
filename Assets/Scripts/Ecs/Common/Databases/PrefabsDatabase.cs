@@ -1,7 +1,9 @@
-﻿namespace Ecs.Common {
+﻿using Utopia;
+
+namespace Ecs.Common {
 	public interface IPrefabsDatabase : IDatabase<string, PrefabData> { }
 
-	[Install(InstallerId.Game)]
+	[InstallerGenerator("Game")]
 	public sealed class PrefabsDatabase : ADatabase<string, PrefabData>, IPrefabsDatabase {
 		public PrefabsDatabase(PrefabsDatabaseAsset database) {
 			foreach (var data in database.All)

@@ -1,0 +1,8 @@
+﻿{
+  "name": "com.logicoff.utopia",
+  "version": "1.0.0",
+  "displayName": "Utopia",
+  "description": "Code generator",
+  "unity": "2022.3",
+  "dependencies": { }
+}

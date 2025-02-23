@@ -5,9 +5,10 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
+using Utopia;
 
 namespace Ecs.Shared {
-	[Install(InstallerId.Project)]
+	[InstallerGenerator("Project")]
 	public class LoadSceneController : ILoadSceneController {
 		private readonly IScenesDatabase _scenesDatabase;
 		private readonly SharedContext _shared;

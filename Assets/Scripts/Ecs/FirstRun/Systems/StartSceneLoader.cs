@@ -1,9 +1,9 @@
 ﻿using Ecs.Shared;
-using Installers;
+using Utopia;
 using Zenject;
 
 namespace Ecs {
-	[Install(InstallerId.Project, 500_000, EInstallType.NonLazy)]
+	[InstallerGenerator("Project", 500_000, EInstallType.NonLazy)]
 	public class StartSceneLoader : IInitializable {
 		private readonly SharedContext _shared;
 		

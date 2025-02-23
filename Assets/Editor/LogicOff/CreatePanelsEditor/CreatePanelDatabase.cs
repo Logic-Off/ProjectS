@@ -119,12 +119,13 @@ namespace LogicOff.CreatePanelsEditor {
 
 		private string GetModel() {
 			var builder = new StringBuilder();
-			builder.Append("using LogicOff;\n\n");
+			builder.Append("using LogicOff;\n");
+			builder.Append("using Utopia;\n\n");
 			builder.Append($"namespace Ui.{_target.FolderName}").Append(" {\n");
 			builder.Append("	/// <summary>\n");
 			builder.Append("	///\n");
 			builder.Append("	/// </summary>\n");
-			builder.Append("	[Install(InstallerId.Game)]\n");
+			builder.Append("	[InstallerGenerator(\"Game\")]\n");
 			builder.Append($"	public class {_target.PanelName}Model").Append(" { }\n");
 			builder.Append("}\n");
 			return builder.ToString();
@@ -132,12 +133,13 @@ namespace LogicOff.CreatePanelsEditor {
 
 		private string GetPresenter() {
 			var builder = new StringBuilder();
-			builder.Append("using LogicOff;\n\n");
+			builder.Append("using LogicOff;\n");
+			builder.Append("using Utopia;\n\n");
 			builder.Append($"namespace Ui.{_target.FolderName}").Append(" {\n");
 			builder.Append("	/// <summary>\n");
 			builder.Append("	///\n");
 			builder.Append("	/// </summary>\n");
-			builder.Append("	[Install(InstallerId.Game)]\n");
+			builder.Append("	[InstallerGenerator(\"Game\")]\n");
 			builder.Append($"	public class {_target.PanelName}Presenter").Append(" { }\n");
 			builder.Append("}\n");
 			return builder.ToString();
