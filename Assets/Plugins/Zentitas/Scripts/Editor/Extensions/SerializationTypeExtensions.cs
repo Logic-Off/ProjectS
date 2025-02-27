@@ -1,8 +1,7 @@
 ﻿/*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -30,16 +29,15 @@ using System.Text.RegularExpressions;
 namespace Zentitas.Editor {
 	public static class SerializationTypeExtensions {
 		public static string ToCompilableString(this Type type) {
-			if (SerializationTools.TryGetBuiltInTypeToString(type, out var str)) {
+			if (SerializationTools.TryGetBuiltInTypeToString(type, out var str))
 				return str;
-			} else if (type.IsGenericType) {
+			else if (type.IsGenericType)
 				return type.FullName.Split('`')[0] +
 				       "<" +
 				       string.Join(", ", type.GetGenericArguments().Select(argType => argType.ToCompilableString()).ToArray()) +
 				       ">";
-			} else if (type.IsArray) {
+			else if (type.IsArray)
 				return type.GetElementType().ToCompilableString() + "[" + new string(',', type.GetArrayRank() - 1) + "]";
-			}
 
 			return type.IsNested ? type.FullName.Replace('+', '.') : type.FullName;
 		}
@@ -47,15 +45,13 @@ namespace Zentitas.Editor {
 		public static Type ToType(this string typeString) {
 			var typeString1 = GenerateTypeString(typeString);
 			var type1 = Type.GetType(typeString1);
-			if (type1 != null) {
+			if (type1 != null)
 				return type1;
-			}
 
 			foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies()) {
 				var type2 = assembly.GetType(typeString1);
-				if (type2 != null) {
+				if (type2 != null)
 					return type2;
-				}
 			}
 
 			return null;
@@ -66,15 +62,12 @@ namespace Zentitas.Editor {
 			return strArray.Last();
 		}
 
-		public static string RemoveDots(this string fullTypeName) {
-			return fullTypeName.Replace(".", string.Empty);
-		}
+		public static string RemoveDots(this string fullTypeName) => fullTypeName.Replace(".", string.Empty);
 
 		private static string GenerateTypeString(string typeString) {
 			if (SerializationTools.TryGetBuiltInTypeToString(typeString, out var str) ||
-			    SerializationTools.TryGetBuiltInTypeString(typeString, out str)) {
+			    SerializationTools.TryGetBuiltInTypeString(typeString, out str))
 				return str;
-			}
 
 			typeString = GenerateGenericArguments(typeString);
 			typeString = GenerateArray(typeString);

@@ -1,8 +1,7 @@
 /*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,13 +22,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-namespace Zentitas.VisualDebugging.Editor
-{
-	internal static class VisualDebuggingEntitasExtension
-	{
-		public static IEntity CreateEntity(this IContext context)
-		{
-			return (IEntity)context.GetType().GetMethod("CreateEntity").Invoke(context, null);
-		}
+namespace Zentitas.VisualDebugging.Editor {
+	internal static class VisualDebuggingEntitasExtension {
+		public static IEntity CreateEntity(this IContext context) => (IEntity) context.GetType().GetMethod("CreateEntity").Invoke(context, null);
 	}
 }

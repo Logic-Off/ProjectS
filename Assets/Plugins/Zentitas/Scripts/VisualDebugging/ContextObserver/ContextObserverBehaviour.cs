@@ -1,8 +1,7 @@
 /*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -25,36 +24,25 @@ THE SOFTWARE.
 
 using UnityEngine;
 
-namespace Zentitas.VisualDebugging
-{
+namespace Zentitas.VisualDebugging {
 	[ExecuteInEditMode]
-	public class ContextObserverBehaviour : MonoBehaviour
-	{
+	public class ContextObserverBehaviour : MonoBehaviour {
 		public ContextObserver ContextObserver => _contextObserver;
 
 		private ContextObserver _contextObserver;
 
-		public void Init(ContextObserver contextObserver)
-		{
+		public void Init(ContextObserver contextObserver) {
 			_contextObserver = contextObserver;
 			Update();
 		}
 
-		private void Update()
-		{
+		private void Update() {
 			if (_contextObserver == null)
-			{
 				gameObject.DestroyGameObject();
-			}
 			else if (_contextObserver.GameObject != null)
-			{
 				_contextObserver.GameObject.name = _contextObserver.ToString();
-			}
 		}
 
-		private void OnDestroy()
-		{
-			_contextObserver.Deactivate();
-		}
+		private void OnDestroy() => _contextObserver.Deactivate();
 	}
 }

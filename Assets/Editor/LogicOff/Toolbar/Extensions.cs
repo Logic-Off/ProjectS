@@ -1,8 +1,5 @@
 ﻿using System;
 using System.IO;
-using Common;
-using Installers;
-using JCMG.Genesis.Editor;
 using LogicOff.Databases;
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -33,12 +30,6 @@ namespace LogicOff.Toolbar {
 
 		public static void OnGenerate(string option) {
 			switch (option) {
-				case "Installers":
-					InstallerGeneratorExtensions.Generate();
-					break;
-				case "ECS":
-					GenesisCLIRunner.RunCodeGeneration();
-					break;
 				default:
 					throw new Exception($"Option {option} not found");
 			}

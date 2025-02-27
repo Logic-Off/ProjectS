@@ -1,8 +1,7 @@
 ﻿/*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -58,16 +57,13 @@ namespace Zentitas.Editor {
 			this.attributes = attributes;
 		}
 
-		public object GetValue(object obj) {
-			return _fieldInfo == null ? _propertyInfo.GetValue(obj, null) : _fieldInfo.GetValue(obj);
-		}
+		public object GetValue(object obj) => _fieldInfo == null ? _propertyInfo.GetValue(obj, null) : _fieldInfo.GetValue(obj);
 
 		public void SetValue(object obj, object value) {
-			if (_fieldInfo != null) {
+			if (_fieldInfo != null)
 				_fieldInfo.SetValue(obj, value);
-			} else {
+			else
 				_propertyInfo.SetValue(obj, value, null);
-			}
 		}
 
 		private static AttributeInfo[] GetAttributes(object[] attributes) {

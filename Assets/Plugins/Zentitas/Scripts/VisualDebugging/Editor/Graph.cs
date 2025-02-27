@@ -1,8 +1,7 @@
 ﻿/*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -28,10 +27,8 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-namespace Zentitas.VisualDebugging.Editor
-{
-	internal sealed class Graph
-	{
+namespace Zentitas.VisualDebugging.Editor {
+	internal sealed class Graph {
 		private const float ANCHOR_RADIUS = 1f;
 		private const string AXIS_FORMAT = "{0:0.0}";
 		private const float AXIS_ROUNDING = 1f;
@@ -46,8 +43,7 @@ namespace Zentitas.VisualDebugging.Editor
 		private readonly GUIStyle _labelTextStyle;
 		private readonly Vector3[] _linePoints;
 
-		public Graph(int dataLength)
-		{
+		public Graph(int dataLength) {
 			_labelTextStyle = new GUIStyle(GUI.skin.label);
 			_labelTextStyle.alignment = TextAnchor.UpperRight;
 
@@ -56,8 +52,7 @@ namespace Zentitas.VisualDebugging.Editor
 			_centeredStyle.normal.textColor = Color.white;
 
 			_linePoints = new Vector3[dataLength];
-			_cachedLinePointVertices = new []
-			{
+			_cachedLinePointVertices = new[] {
 				new Vector3(-1f, 1f, 0.0f) * ANCHOR_RADIUS,
 				new Vector3(1f, 1f, 0.0f) * ANCHOR_RADIUS,
 				new Vector3(1f, -1f, 0.0f) * ANCHOR_RADIUS,
@@ -65,24 +60,22 @@ namespace Zentitas.VisualDebugging.Editor
 			};
 		}
 
-		public void Draw(float[] data, float height, Color lineColor)
-		{
+		public void Draw(float[] data, float height, Color lineColor) {
 			var controlRect = EditorGUILayout.GetControlRect();
 			var rect = GUILayoutUtility.GetRect(controlRect.width, height);
 			var top = rect.y + Y_BORDER;
 			var floor = rect.y + rect.height - Y_BORDER;
 			var availableHeight = floor - top;
 			var max = data.Length != 0 ? data.Max() : 0.0f;
-			if (Math.Abs(max % (double)AXIS_ROUNDING) > 0.001)
-			{
-				max = (float)(max + (double)AXIS_ROUNDING - max % (double)AXIS_ROUNDING);
-			}
+			if (Math.Abs(max % (double) AXIS_ROUNDING) > 0.001)
+				max = (float) (max + (double) AXIS_ROUNDING - max % (double) AXIS_ROUNDING);
 
 			DrawGridLines(
 				top,
 				rect.width,
 				availableHeight,
-				max);
+				max
+			);
 
 			DrawAverage(
 				data,
@@ -90,7 +83,8 @@ namespace Zentitas.VisualDebugging.Editor
 				floor,
 				rect.width,
 				availableHeight,
-				max);
+				max
+			);
 
 			DrawLine(
 				data,
@@ -98,29 +92,27 @@ namespace Zentitas.VisualDebugging.Editor
 				rect.width,
 				availableHeight,
 				max,
-				lineColor);
+				lineColor
+			);
 		}
 
-		public void Draw(float[][] data, float width, float height, Color[] lineColors)
-		{
+		public void Draw(float[][] data, float width, float height, Color[] lineColors) {
 			var rect = GUILayoutUtility.GetRect(width, height);
 			var top = rect.y + Y_BORDER;
 			var floor = rect.y + rect.height - Y_BORDER;
 			var availableHeight = floor - top;
 			var max = Mathf.Max(0.0f, data.Select(x => x.Max()).Max());
-			if (Math.Abs(max % (double)AXIS_ROUNDING) > 0.001)
-			{
-				max = (float)(max + (double)AXIS_ROUNDING - max % (double)AXIS_ROUNDING);
-			}
+			if (Math.Abs(max % (double) AXIS_ROUNDING) > 0.001)
+				max = (float) (max + (double) AXIS_ROUNDING - max % (double) AXIS_ROUNDING);
 
 			DrawGridLines(
 				top,
 				rect.width,
 				availableHeight,
-				max);
+				max
+			);
 
-			for (var i = 0; i < data.Length; i++)
-			{
+			for (var i = 0; i < data.Length; i++) {
 				var newData = data[i];
 
 				DrawLine(
@@ -129,18 +121,17 @@ namespace Zentitas.VisualDebugging.Editor
 					rect.width,
 					availableHeight,
 					max,
-					lineColors[i]);
+					lineColors[i]
+				);
 			}
 		}
 
-		private void DrawGridLines(float top, float width, float availableHeight, float max)
-		{
+		private void DrawGridLines(float top, float width, float availableHeight, float max) {
 			var color = Handles.color;
 			Handles.color = Color.grey;
 			var num1 = GRID_LINES + 1;
 			var num2 = availableHeight / num1;
-			for (var index = 0; index <= num1; ++index)
-			{
+			for (var index = 0; index <= num1; ++index) {
 				var num3 = top + num2 * index;
 				Handles.DrawLine(new Vector2(X_BORDER, num3), new Vector2(width - RIGHT_LINE_PADDING, num3));
 				GUI.Label(
@@ -148,9 +139,11 @@ namespace Zentitas.VisualDebugging.Editor
 						0.0f,
 						num3 - 8f,
 						X_BORDER - 2f,
-						50f),
-					string.Format(AXIS_FORMAT, (float)(max * (1.0 - index / (double)num1))),
-					_labelTextStyle);
+						50f
+					),
+					string.Format(AXIS_FORMAT, (float) (max * (1.0 - index / (double) num1))),
+					_labelTextStyle
+				);
 			}
 
 			Handles.color = color;
@@ -162,8 +155,8 @@ namespace Zentitas.VisualDebugging.Editor
 			float floor,
 			float width,
 			float availableHeight,
-			float max)
-		{
+			float max
+		) {
 			var color = Handles.color;
 			Handles.color = Color.yellow;
 			var num1 = data.Average();
@@ -178,8 +171,8 @@ namespace Zentitas.VisualDebugging.Editor
 			float width,
 			float availableHeight,
 			float max,
-			Color lineColor)
-		{
+			Color lineColor
+		) {
 			var num1 = (width - X_BORDER - RIGHT_LINE_PADDING) / data.Length;
 			var color = Handles.color;
 			var rect = new Rect();
@@ -188,14 +181,12 @@ namespace Zentitas.VisualDebugging.Editor
 			Handles.color = lineColor;
 			Handles.matrix = Matrix4x4.identity;
 			HandleUtility.handleMaterial.SetPass(0);
-			for (var index = 0; index < data.Length; ++index)
-			{
+			for (var index = 0; index < data.Length; ++index) {
 				var num3 = data[index];
 				var num4 = floor - availableHeight * (num3 / max);
 				var vector21 = new Vector2(X_BORDER + num1 * index, num4);
 				_linePoints[index] = new Vector3(vector21.x, vector21.y, 0.0f);
-				if (!flag)
-				{
+				if (!flag) {
 					var num6 = ANCHOR_RADIUS * 3f;
 					var num7 = ANCHOR_RADIUS * 6f;
 					var vector22 = vector21 - Vector2.up * 0.5f;
@@ -203,9 +194,9 @@ namespace Zentitas.VisualDebugging.Editor
 						vector22.x - num6,
 						vector22.y - num6,
 						num7,
-						num7);
-					if (rect.Contains(Event.current.mousePosition))
-					{
+						num7
+					);
+					if (rect.Contains(Event.current.mousePosition)) {
 						flag = true;
 						num2 = num3;
 					}
@@ -217,8 +208,7 @@ namespace Zentitas.VisualDebugging.Editor
 
 			Handles.matrix = Matrix4x4.identity;
 			Handles.DrawAAPolyLine(2f, data.Length, _linePoints);
-			if (flag)
-			{
+			if (flag) {
 				ref var local1 = ref rect;
 				local1.y = local1.y - 16f;
 				ref var local2 = ref rect;

@@ -1,8 +1,7 @@
 ﻿/*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +30,7 @@ namespace Zentitas.Editor {
 	/// Helper methods for Unity serialization.
 	/// </summary>
 	public static class SerializationTools {
-		private static readonly Dictionary<string, string> BUILT_IN_TYPES_TO_STRING = new Dictionary<string, string> {
+		private static readonly Dictionary<string, string> BUILT_IN_TYPES_TO_STRING = new() {
 			{"System.Boolean", "bool"},
 			{"System.Byte", "byte"},
 			{"System.SByte", "sbyte"},
@@ -50,7 +49,7 @@ namespace Zentitas.Editor {
 			{"System.Void", "void"}
 		};
 
-		private static readonly Dictionary<string, string> BUILT_IN_TYPE_STRINGS = new Dictionary<string, string> {
+		private static readonly Dictionary<string, string> BUILT_IN_TYPE_STRINGS = new() {
 			{"bool", "System.Boolean"},
 			{"byte", "System.Byte"},
 			{"sbyte", "System.SByte"},
@@ -69,16 +68,10 @@ namespace Zentitas.Editor {
 			{"void", "System.Void"}
 		};
 
-		public static bool TryGetBuiltInTypeToString(string typeString, out string name) {
-			return BUILT_IN_TYPES_TO_STRING.TryGetValue(typeString, out name);
-		}
+		public static bool TryGetBuiltInTypeToString(string typeString, out string name) => BUILT_IN_TYPES_TO_STRING.TryGetValue(typeString, out name);
 
-		public static bool TryGetBuiltInTypeToString(Type type, out string name) {
-			return BUILT_IN_TYPES_TO_STRING.TryGetValue(type.FullName, out name);
-		}
+		public static bool TryGetBuiltInTypeToString(Type type, out string name) => BUILT_IN_TYPES_TO_STRING.TryGetValue(type.FullName, out name);
 
-		public static bool TryGetBuiltInTypeString(string typeString, out string name) {
-			return BUILT_IN_TYPE_STRINGS.TryGetValue(typeString, out name);
-		}
+		public static bool TryGetBuiltInTypeString(string typeString, out string name) => BUILT_IN_TYPE_STRINGS.TryGetValue(typeString, out name);
 	}
 }

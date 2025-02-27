@@ -1,8 +1,7 @@
 /*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -27,18 +26,10 @@ using System;
 using UnityEditor;
 using UnityEngine;
 
-namespace Zentitas.Editor
-{
-	public class AnimationCurveTypeDrawer : ITypeDrawer
-	{
-		public bool HandlesType(Type type)
-		{
-			return type == typeof(AnimationCurve);
-		}
+namespace Zentitas.Editor {
+	public class AnimationCurveTypeDrawer : ITypeDrawer {
+		public bool HandlesType(Type type) => type == typeof(AnimationCurve);
 
-		public object DrawAndGetNewValue(Type memberType, string memberName, object value, object target)
-		{
-			return EditorGUILayout.CurveField(memberName, (AnimationCurve)value);
-		}
+		public object DrawAndGetNewValue(Type memberType, string memberName, object value, object target) => EditorGUILayout.CurveField(memberName, (AnimationCurve) value);
 	}
 }

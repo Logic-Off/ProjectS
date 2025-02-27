@@ -1,8 +1,7 @@
 /*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -28,21 +27,16 @@ using System.Diagnostics;
 using System.Linq;
 using UnityEngine;
 
-namespace Zentitas.VisualDebugging
-{
-	public class DebugSystems : Systems
-	{
+namespace Zentitas.VisualDebugging {
+	public class DebugSystems : Systems {
 		/// <summary>
 		/// Returns the total number of <see cref="IInitializeSystem"/> instances in this <see cref="DebugSystems"/> and
 		/// any child <see cref="DebugSystems"/>.
 		/// </summary>
-		public int TotalInitializeSystemsCount
-		{
-			get
-			{
+		public int TotalInitializeSystemsCount {
+			get {
 				var total = 0;
-				for (var i = 0; i < _initializeSystems.Count; i++)
-				{
+				for (var i = 0; i < _initializeSystems.Count; i++) {
 					var system = _initializeSystems[i];
 					total += system is DebugSystems debugSystems ? debugSystems.TotalInitializeSystemsCount : 1;
 				}
@@ -55,13 +49,10 @@ namespace Zentitas.VisualDebugging
 		/// Returns the total number of <see cref="IUpdateSystem"/> instances in this <see cref="DebugSystems"/> and
 		/// any child <see cref="DebugSystems"/>.
 		/// </summary>
-		public int TotalUpdateSystemsCount
-		{
-			get
-			{
+		public int TotalUpdateSystemsCount {
+			get {
 				var total = 0;
-				for (var i = 0; i < _updateSystems.Count; i++)
-				{
+				for (var i = 0; i < _updateSystems.Count; i++) {
 					var system = _updateSystems[i];
 					total += system is DebugSystems debugSystems ? debugSystems.TotalUpdateSystemsCount : 1;
 				}
@@ -74,13 +65,10 @@ namespace Zentitas.VisualDebugging
 		/// Returns the total number of <see cref="IFixedUpdateSystem"/> instances in this <see cref="DebugSystems"/> and
 		/// any child <see cref="DebugSystems"/>.
 		/// </summary>
-		public int TotalFixedUpdateSystemsCount
-		{
-			get
-			{
+		public int TotalFixedUpdateSystemsCount {
+			get {
 				var total = 0;
-				for (var i = 0; i < _fixedUpdateSystems.Count; i++)
-				{
+				for (var i = 0; i < _fixedUpdateSystems.Count; i++) {
 					var system = _fixedUpdateSystems[i];
 					total += system is DebugSystems debugSystems ? debugSystems.TotalFixedUpdateSystemsCount : 1;
 				}
@@ -93,13 +81,10 @@ namespace Zentitas.VisualDebugging
 		/// Returns the total number of <see cref="ILateUpdateSystem"/> instances in this <see cref="DebugSystems"/> and
 		/// any child <see cref="DebugSystems"/>.
 		/// </summary>
-		public int TotalLateUpdateSystemsCount
-		{
-			get
-			{
+		public int TotalLateUpdateSystemsCount {
+			get {
 				var total = 0;
-				for (var i = 0; i < _lateUpdateSystems.Count; i++)
-				{
+				for (var i = 0; i < _lateUpdateSystems.Count; i++) {
 					var system = _lateUpdateSystems[i];
 					total += system is DebugSystems debugSystems ? debugSystems.TotalLateUpdateSystemsCount : 1;
 				}
@@ -112,13 +97,10 @@ namespace Zentitas.VisualDebugging
 		/// Returns the total number of <see cref="IReactiveSystem"/> instances in this <see cref="DebugSystems"/> and
 		/// any child <see cref="DebugSystems"/>.
 		/// </summary>
-		public int TotalReactiveSystemsCount
-		{
-			get
-			{
+		public int TotalReactiveSystemsCount {
+			get {
 				var total = 0;
-				for (var i = 0; i < _reactiveSystems.Count; i++)
-				{
+				for (var i = 0; i < _reactiveSystems.Count; i++) {
 					var system = _reactiveSystems[i];
 					total += system is DebugSystems debugSystems ? debugSystems.TotalReactiveSystemsCount : 1;
 				}
@@ -131,13 +113,10 @@ namespace Zentitas.VisualDebugging
 		/// Returns the total number of <see cref="ICleanupSystem"/> instances in this <see cref="DebugSystems"/> and
 		/// any child <see cref="DebugSystems"/>.
 		/// </summary>
-		public int TotalCleanupSystemsCount
-		{
-			get
-			{
+		public int TotalCleanupSystemsCount {
+			get {
 				var total = 0;
-				for (var i = 0; i < _cleanupSystems.Count; i++)
-				{
+				for (var i = 0; i < _cleanupSystems.Count; i++) {
 					var system = _cleanupSystems[i];
 					total += system is DebugSystems debugSystems ? debugSystems.TotalCleanupSystemsCount : 1;
 				}
@@ -150,13 +129,10 @@ namespace Zentitas.VisualDebugging
 		/// Returns the total number of <see cref="ITearDownSystem"/> instances in this <see cref="DebugSystems"/> and
 		/// any child <see cref="DebugSystems"/>.
 		/// </summary>
-		public int TotalTearDownSystemsCount
-		{
-			get
-			{
+		public int TotalTearDownSystemsCount {
+			get {
 				var total = 0;
-				for (var i = 0; i < _tearDownSystems.Count; i++)
-				{
+				for (var i = 0; i < _tearDownSystems.Count; i++) {
 					var system = _tearDownSystems[i];
 					total += system is DebugSystems debugSystems ? debugSystems.TotalTearDownSystemsCount : 1;
 				}
@@ -169,13 +145,10 @@ namespace Zentitas.VisualDebugging
 		/// Returns the total number of <see cref="ISystem"/> instances in this <see cref="DebugSystems"/> and
 		/// any child <see cref="DebugSystems"/>.
 		/// </summary>
-		public int TotalSystemsCount
-		{
-			get
-			{
+		public int TotalSystemsCount {
+			get {
 				var total = 0;
-				for (var i = 0; i < _systems.Count; i++)
-				{
+				for (var i = 0; i < _systems.Count; i++) {
 					var system = _systems[i];
 					total += system is DebugSystems debugSystems ? debugSystems.TotalSystemsCount : 1;
 				}
@@ -249,22 +222,13 @@ namespace Zentitas.VisualDebugging
 
 		public static AvgResetInterval avgResetInterval;
 
-		static DebugSystems()
-		{
-			avgResetInterval = AvgResetInterval.Slow;
-		}
+		static DebugSystems() => avgResetInterval = AvgResetInterval.Slow;
 
-		public DebugSystems(string name)
-		{
-			Initialize(name);
-		}
+		public DebugSystems(string name) => Initialize(name);
 
-		protected DebugSystems(bool noInit)
-		{
-		}
+		protected DebugSystems(bool noInit) { }
 
-		protected void Initialize(string name)
-		{
+		protected void Initialize(string name) {
 			_name = name;
 			_gameObject = new GameObject(name);
 			_gameObject.AddComponent<DebugSystemsBehaviour>().Init(this);
@@ -285,19 +249,15 @@ namespace Zentitas.VisualDebugging
 			_stopwatch = new Stopwatch();
 		}
 
-		public override Systems Add(ISystem system)
-		{
+		public override Systems Add(ISystem system) {
 			_systems.Add(system);
 
 			SystemInfo childSystemInfo;
 
-			if (system is DebugSystems debugSystems)
-			{
+			if (system is DebugSystems debugSystems) {
 				childSystemInfo = debugSystems.SystemInfo;
 				debugSystems.GameObject.transform.SetParent(_gameObject.transform, false);
-			}
-			else
-			{
+			} else {
 				childSystemInfo = new SystemInfo(system);
 			}
 
@@ -306,68 +266,46 @@ namespace Zentitas.VisualDebugging
 			childSystemInfo.parentSystemInfo = _systemInfo;
 
 			if (childSystemInfo.IsInitializeSystems)
-			{
 				_initializeSystemInfos.Add(childSystemInfo);
-			}
 
 			if (childSystemInfo.IsUpdateSystems || childSystemInfo.IsReactiveSystems)
-			{
 				_updateSystemInfos.Add(childSystemInfo);
-			}
 
 			if (childSystemInfo.IsFixedUpdateSystems)
-			{
 				_fixedUpdateSystemInfos.Add(childSystemInfo);
-			}
 
 			if (childSystemInfo.IsLateUpdateSystems)
-			{
 				_lateUpdateSystemInfos.Add(childSystemInfo);
-			}
 
 			if (childSystemInfo.IsReactiveSystems)
-			{
 				_reactiveSystemInfos.Add(childSystemInfo);
-			}
 
 			if (childSystemInfo.IsCleanupSystems)
-			{
 				_cleanupSystemInfos.Add(childSystemInfo);
-			}
 
 			if (childSystemInfo.IsTearDownSystems)
-			{
 				_tearDownSystemInfos.Add(childSystemInfo);
-			}
 
 			return base.Add(system);
 		}
 
-		public void ResetDurations()
-		{
-			for (var i = 0; i < _allSystemInfos.Count; i++)
-			{
+		public void ResetDurations() {
+			for (var i = 0; i < _allSystemInfos.Count; i++) {
 				var systemInfo = _allSystemInfos[i];
 				systemInfo.ResetFrameDurations();
 			}
 
-			for (var i = 0; i < _systems.Count; i++)
-			{
+			for (var i = 0; i < _systems.Count; i++) {
 				var system = _systems[i];
 				if (system is DebugSystems debugSystems)
-				{
 					debugSystems.ResetDurations();
-				}
 			}
 		}
 
-		public override void Initialize()
-		{
-			for (var i = 0; i < _initializeSystems.Count; i++)
-			{
+		public override void Initialize() {
+			for (var i = 0; i < _initializeSystems.Count; i++) {
 				var systemInfo = _initializeSystemInfos[i];
-				if (systemInfo.isActive)
-				{
+				if (systemInfo.isActive) {
 					_stopwatch.Reset();
 					_stopwatch.Start();
 					_initializeSystems[i].Initialize();
@@ -377,19 +315,14 @@ namespace Zentitas.VisualDebugging
 			}
 		}
 
-		public override void Update()
-		{
+		public override void Update() {
 			_updateDuration = 0;
-			if (Time.frameCount % (int)avgResetInterval == 0)
-			{
+			if (Time.frameCount % (int) avgResetInterval == 0)
 				ResetDurations();
-			}
 
-			for (var i = 0; i < _updateSystems.Count; i++)
-			{
+			for (var i = 0; i < _updateSystems.Count; i++) {
 				var systemInfo = _updateSystemInfos[i];
-				if (systemInfo.isActive)
-				{
+				if (systemInfo.isActive) {
 					_stopwatch.Reset();
 					_stopwatch.Start();
 					_updateSystems[i].Update();
@@ -401,14 +334,11 @@ namespace Zentitas.VisualDebugging
 			}
 		}
 
-		public override void FixedUpdate()
-		{
+		public override void FixedUpdate() {
 			_fixedUpdateDuration = 0;
-			for (var i = 0; i < _fixedUpdateSystems.Count; i++)
-			{
+			for (var i = 0; i < _fixedUpdateSystems.Count; i++) {
 				var systemInfo = _fixedUpdateSystemInfos[i];
-				if (systemInfo.isActive)
-				{
+				if (systemInfo.isActive) {
 					_stopwatch.Reset();
 					_stopwatch.Start();
 					_fixedUpdateSystems[i].FixedUpdate();
@@ -420,14 +350,11 @@ namespace Zentitas.VisualDebugging
 			}
 		}
 
-		public override void LateUpdate()
-		{
+		public override void LateUpdate() {
 			_lateUpdateDuration = 0;
-			for (var i = 0; i < _lateUpdateSystems.Count; i++)
-			{
+			for (var i = 0; i < _lateUpdateSystems.Count; i++) {
 				var systemInfo = _lateUpdateSystemInfos[i];
-				if (systemInfo.isActive)
-				{
+				if (systemInfo.isActive) {
 					_stopwatch.Reset();
 					_stopwatch.Start();
 					_lateUpdateSystems[i].LateUpdate();
@@ -439,14 +366,11 @@ namespace Zentitas.VisualDebugging
 			}
 		}
 
-		public override void Execute()
-		{
+		public override void Execute() {
 			_reactiveDuration = 0;
-			for (var i = 0; i < _reactiveSystems.Count; i++)
-			{
+			for (var i = 0; i < _reactiveSystems.Count; i++) {
 				var systemInfo = _reactiveSystemInfos[i];
-				if (systemInfo.isActive)
-				{
+				if (systemInfo.isActive) {
 					_stopwatch.Reset();
 					_stopwatch.Start();
 					_reactiveSystems[i].Execute();
@@ -458,14 +382,11 @@ namespace Zentitas.VisualDebugging
 			}
 		}
 
-		public override void Cleanup()
-		{
+		public override void Cleanup() {
 			_cleanupDuration = 0;
-			for (var i = 0; i < _cleanupSystems.Count; i++)
-			{
+			for (var i = 0; i < _cleanupSystems.Count; i++) {
 				var systemInfo = _cleanupSystemInfos[i];
-				if (systemInfo.isActive)
-				{
+				if (systemInfo.isActive) {
 					_stopwatch.Reset();
 					_stopwatch.Start();
 					_cleanupSystems[i].Cleanup();
@@ -477,13 +398,10 @@ namespace Zentitas.VisualDebugging
 			}
 		}
 
-		public override void TearDown()
-		{
-			for (var i = 0; i < _tearDownSystems.Count; i++)
-			{
+		public override void TearDown() {
+			for (var i = 0; i < _tearDownSystems.Count; i++) {
 				var systemInfo = _tearDownSystemInfos[i];
-				if (systemInfo.isActive)
-				{
+				if (systemInfo.isActive) {
 					_stopwatch.Reset();
 					_stopwatch.Start();
 					_tearDownSystems[i].TearDown();

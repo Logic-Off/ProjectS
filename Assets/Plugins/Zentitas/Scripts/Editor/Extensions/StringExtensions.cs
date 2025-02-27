@@ -1,8 +1,7 @@
 ﻿/*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -37,33 +36,22 @@ namespace Zentitas.Editor {
 		public const char BACKTICK_CHAR = '`';
 		public const char LEFT_CHEVRON_CHAR = '<';
 
-		public static string UppercaseFirst(this string str) {
-			return string.IsNullOrEmpty(str) ? str : char.ToUpper(str[0]) + str.Substring(1);
-		}
+		public static string UppercaseFirst(this string str) => string.IsNullOrEmpty(str) ? str : char.ToUpper(str[0]) + str.Substring(1);
 
-		public static string LowercaseFirst(this string str) {
-			return string.IsNullOrEmpty(str) ? str : char.ToLower(str[0]) + str.Substring(1);
-		}
+		public static string LowercaseFirst(this string str) => string.IsNullOrEmpty(str) ? str : char.ToLower(str[0]) + str.Substring(1);
 
-		public static string ToUnixLineEndings(this string str) {
-			return str.Replace("\r\n", "\n").Replace("\r", "\n");
-		}
+		public static string ToUnixLineEndings(this string str) => str.Replace("\r\n", "\n").Replace("\r", "\n");
 
-		public static string ToWindowsLineEndings(this string str) {
-			return str.Replace("\n", "\r\n");
-		}
+		public static string ToWindowsLineEndings(this string str) => str.Replace("\n", "\r\n");
 
-		public static string ToUnixPath(this string str) {
-			return str.Replace("\\", "/");
-		}
+		public static string ToUnixPath(this string str) => str.Replace("\\", "/");
 
 		public static string ToSpacedCamelCase(this string text) {
 			var stringBuilder = new StringBuilder(text.Length * 2);
 			stringBuilder.Append(char.ToUpper(text[0]));
 			for (var index = 1; index < text.Length; ++index) {
-				if (char.IsUpper(text[index]) && text[index - 1] != ' ') {
+				if (char.IsUpper(text[index]) && text[index - 1] != ' ')
 					stringBuilder.Append(' ');
-				}
 
 				stringBuilder.Append(text[index]);
 			}
@@ -76,9 +64,8 @@ namespace Zentitas.Editor {
 			path = path.CreateUri();
 			if (path.StartsWith(currentDirectory)) {
 				path = path.Replace(currentDirectory, string.Empty);
-				if (path.StartsWith("/")) {
+				if (path.StartsWith("/"))
 					path = path.Substring(1);
-				}
 			}
 
 			return path;
@@ -94,18 +81,14 @@ namespace Zentitas.Editor {
 		/// </summary>
 		/// <param name="value"></param>
 		/// <returns></returns>
-		public static bool IsNullOrEmpty(this string value) {
-			return string.IsNullOrEmpty(value);
-		}
+		public static bool IsNullOrEmpty(this string value) => string.IsNullOrEmpty(value);
 
 		/// <summary>
 		/// Returns true if <paramref name="value"/> is a valid filename, otherwise false.
 		/// </summary>
 		/// <param name="value"></param>
 		/// <returns></returns>
-		public static bool IsValidFileName(this string value) {
-			return value.IndexOfAny(Path.GetInvalidFileNameChars()) < 0;
-		}
+		public static bool IsValidFileName(this string value) => value.IndexOfAny(Path.GetInvalidFileNameChars()) < 0;
 
 		/// <summary>
 		/// Returns the short name of the type (type name without namespace
@@ -113,9 +96,8 @@ namespace Zentitas.Editor {
 		public static string GetTypeName(this string fullTypeName) {
 			var shortTypeName = fullTypeName.Split('.').Last();
 
-			if (shortTypeName.Contains(LEFT_CHEVRON_CHAR)) {
+			if (shortTypeName.Contains(LEFT_CHEVRON_CHAR))
 				shortTypeName = shortTypeName.Remove(LEFT_CHEVRON_CHAR);
-			}
 
 			return shortTypeName;
 		}

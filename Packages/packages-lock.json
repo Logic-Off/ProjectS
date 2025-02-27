@@ -1,15 +1,5 @@
 {
   "dependencies": {
-    "com.jeffcampbellmakesgames.genesis": {
-      "version": "https://github.com/jeffcampbellmakesgames/genesis.git#release/stable",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {
-        "com.unity.settings-manager": "1.0.3",
-        "com.unity.sharp-zip-lib": "1.2.2-preview.1"
-      },
-      "hash": "63103d2350b2668405c2b3ba2e09e9ee0f5a743c"
-    },
     "com.logicoff.utopia": {
       "version": "file:com.logicoff.utopia",
       "depth": 0,
@@ -195,13 +185,6 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-    "com.unity.settings-manager": {
-      "version": "2.0.1",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
     "com.unity.shadergraph": {
       "version": "17.0.3",
       "depth": 1,
@@ -210,13 +193,6 @@
         "com.unity.render-pipelines.core": "17.0.3",
         "com.unity.searcher": "4.9.2"
       }
-    },
-    "com.unity.sharp-zip-lib": {
-      "version": "1.3.8",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
     },
     "com.unity.test-framework": {
       "version": "1.4.5",

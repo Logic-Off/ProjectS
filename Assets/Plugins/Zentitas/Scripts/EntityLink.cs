@@ -1,8 +1,7 @@
 /*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -35,40 +34,33 @@ namespace Zentitas {
 		private IEntity _entity;
 
 		public void Link(IEntity entity) {
-			if (_entity != null) {
+			if (_entity != null)
 				throw new Exception("EntityLink is already linked to " + _entity + "!");
-			}
 
 			_entity = entity;
 			_entity.Retain(this);
 		}
 
 		public void Unlink() {
-			if (_entity == null) {
+			if (_entity == null)
 				throw new Exception("EntityLink is already unlinked!");
-			}
 
 			_entity.Release(this);
 			_entity = null;
 		}
 
 		private void OnDestroy() {
-			if (!_applicationIsQuitting && _entity != null) {
+			if (!_applicationIsQuitting && _entity != null)
 				Debug.LogWarning(
 					"EntityLink got destroyed but is still linked to " +
 					_entity +
 					"!\n" +
 					"Please call gameObject.Unlink() before it is destroyed."
 				);
-			}
 		}
 
-		private void OnApplicationQuit() {
-			_applicationIsQuitting = true;
-		}
+		private void OnApplicationQuit() => _applicationIsQuitting = true;
 
-		public override string ToString() {
-			return "EntityLink(" + gameObject.name + ")";
-		}
+		public override string ToString() => "EntityLink(" + gameObject.name + ")";
 	}
 }

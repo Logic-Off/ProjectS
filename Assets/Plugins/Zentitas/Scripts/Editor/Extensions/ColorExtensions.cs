@@ -1,8 +1,7 @@
 ﻿/*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -35,14 +34,12 @@ namespace Zentitas.Editor {
 		/// <summary>
 		/// Returns the hex value of this color.
 		/// </summary>
-		public static string ToHexWithAlpha(this Color c) {
-			return string.Format(
-				HEX_COLOR_RGBA_FORMAT,
-				(int) (c.r * 255f),
-				(int) (c.g * 255f),
-				(int) (c.b * 255f),
-				(int) (c.a * 255f)
-			);
-		}
+		public static string ToHexWithAlpha(this Color c) => string.Format(
+			HEX_COLOR_RGBA_FORMAT,
+			(int) (c.r * 255f),
+			(int) (c.g * 255f),
+			(int) (c.b * 255f),
+			(int) (c.a * 255f)
+		);
 	}
 }

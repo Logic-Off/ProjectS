@@ -1,7 +1,8 @@
 ﻿/*
+
 MIT License
 
-Copyright (c) 2025 Andrey Abramkin
+Copyright (c) Jeff Campbell
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -28,16 +29,50 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-namespace Zentitas.Editor {
+namespace Zentitas.VisualDebugging.Editor {
+	/// <summary>
+	/// Helper methods for <see cref="EditorGUILayout"/>.
+	/// </summary>
 	public static class EditorGUILayoutTools {
+		public static bool MiniButton(string c) {
+			return MiniButton(c, EditorStyles.miniButton);
+		}
+
+		private static bool MiniButton(string c, GUIStyle style) {
+			GUILayoutOption[] guiLayoutOptionArray1;
+			if (c.Length != 1) {
+				guiLayoutOptionArray1 = new GUILayoutOption[0];
+			} else {
+				guiLayoutOptionArray1 = new GUILayoutOption[1] {
+					GUILayout.Width(19f)
+				};
+			}
+
+			var guiLayoutOptionArray2 = guiLayoutOptionArray1;
+			var num = GUILayout.Button(c, style, guiLayoutOptionArray2) ? 1 : 0;
+			if (num == 0) {
+				return num != 0;
+			}
+
+			GUI.FocusControl(null);
+			return num != 0;
+		}
+
+		public static bool DrawSectionHeaderToggle(string header, bool value) => GUILayout.Toggle(value, header, ZentitasStyles.Header);
+
+		public static void BeginSectionContent() => EditorGUILayout.BeginVertical(ZentitasStyles.Content);
+
+		public static void EndSectionContent() => EditorGUILayout.EndVertical();
+
 		private const int DEFAULT_FOLDOUT_MARGIN = 11;
 
 		public static Texture2D LoadTexture(string label) {
 			var assets = AssetDatabase.FindAssets(label);
 			if (assets.Length != 0) {
 				var str = assets[0];
-				if (str != null)
+				if (str != null) {
 					return AssetDatabase.LoadAssetAtPath<Texture2D>(AssetDatabase.GUIDToAssetPath(str));
+				}
 			}
 
 			return null;
@@ -49,8 +84,9 @@ namespace Zentitas.Editor {
 				label,
 				GUILayout.Width(146f)
 			);
-			if (buttonText.Length > 24)
+			if (buttonText.Length > 24) {
 				buttonText = "..." + buttonText.Substring(buttonText.Length - 24);
+			}
 
 			var num = GUILayout.Button(buttonText, EditorStyles.objectField) ? 1 : 0;
 			EditorGUILayout.EndHorizontal();
@@ -62,41 +98,29 @@ namespace Zentitas.Editor {
 			string buttonText,
 			string defaultPath
 		) {
-			if (!ObjectFieldButton(label, buttonText))
+			if (!ObjectFieldButton(label, buttonText)) {
 				return null;
+			}
 
 			var path = defaultPath ?? "Assets/";
-			if (!Directory.Exists(path))
+			if (!Directory.Exists(path)) {
 				path = "Assets/";
+			}
 
 			return EditorUtility.OpenFolderPanel(label, path, string.Empty)
 				.Replace(Directory.GetCurrentDirectory() + "/", string.Empty);
 		}
 
-		public static bool MiniButton(string c) => MiniButton(c, EditorStyles.miniButton);
+		public static bool MiniButtonLeft(string c) {
+			return MiniButton(c, EditorStyles.miniButtonLeft);
+		}
 
-		public static bool MiniButtonLeft(string c) => MiniButton(c, EditorStyles.miniButtonLeft);
+		public static bool MiniButtonMid(string c) {
+			return MiniButton(c, EditorStyles.miniButtonMid);
+		}
 
-		public static bool MiniButtonMid(string c) => MiniButton(c, EditorStyles.miniButtonMid);
-
-		public static bool MiniButtonRight(string c) => MiniButton(c, EditorStyles.miniButtonRight);
-
-		private static bool MiniButton(string c, GUIStyle style) {
-			GUILayoutOption[] guiLayoutOptionArray1;
-			if (c.Length != 1)
-				guiLayoutOptionArray1 = new GUILayoutOption[0];
-			else
-				guiLayoutOptionArray1 = new GUILayoutOption[1] {
-					GUILayout.Width(19f)
-				};
-
-			var guiLayoutOptionArray2 = guiLayoutOptionArray1;
-			var num = GUILayout.Button(c, style, guiLayoutOptionArray2) ? 1 : 0;
-			if (num == 0)
-				return num != 0;
-
-			GUI.FocusControl(null);
-			return num != 0;
+		public static bool MiniButtonRight(string c) {
+			return MiniButton(c, EditorStyles.miniButtonRight);
 		}
 
 		public static bool Foldout(bool foldout, string content, GUIStyle style, int leftMargin = 11) {
@@ -111,8 +135,9 @@ namespace Zentitas.Editor {
 			var changed = GUI.changed;
 			GUILayout.BeginHorizontal();
 			searchString = GUILayout.TextField(searchString, GUI.skin.FindStyle("ToolbarSearchTextField"));
-			if (GUILayout.Button(string.Empty, GUI.skin.FindStyle("ToolbarSearchCancelButton")))
+			if (GUILayout.Button(string.Empty, GUI.skin.FindStyle("ToolbarSearchCancelButton"))) {
 				searchString = string.Empty;
+			}
 
 			GUILayout.EndHorizontal();
 			GUI.changed = changed;
@@ -129,16 +154,13 @@ namespace Zentitas.Editor {
 			return strArray.Length == 0 || strArray.Any(str.Contains);
 		}
 
-		public static bool DrawSectionHeaderToggle(string header, bool value) => GUILayout.Toggle(
-			value,
-			header,
-			ZentitasStyles.SectionHeader,
-			Array.Empty<GUILayoutOption>()
-		);
+		public static Rect BeginVerticalBox() {
+			return EditorGUILayout.BeginVertical(GUI.skin.box);
+		}
 
-		public static Rect BeginVerticalBox() => EditorGUILayout.BeginVertical(GUI.skin.box);
-
-		public static void EndVerticalBox() => EditorGUILayout.EndVertical();
+		public static void EndVerticalBox() {
+			EditorGUILayout.EndVertical();
+		}
 
 		public static Texture2D CreateSimpleUITexture2D(Color color) {
 			const int TEX_DIMENSIONS = 2;
@@ -146,9 +168,11 @@ namespace Zentitas.Editor {
 				wrapMode = TextureWrapMode.Repeat
 			};
 
-			for (var x = 0; x < TEX_DIMENSIONS; x++)
-			for (var y = 0; y < TEX_DIMENSIONS; y++)
-				tex.SetPixel(x, y, color);
+			for (var x = 0; x < TEX_DIMENSIONS; x++) {
+				for (var y = 0; y < TEX_DIMENSIONS; y++) {
+					tex.SetPixel(x, y, color);
+				}
+			}
 
 			tex.Apply();
 

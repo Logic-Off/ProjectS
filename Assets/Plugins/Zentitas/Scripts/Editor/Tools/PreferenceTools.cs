@@ -1,8 +1,7 @@
 ﻿/*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -38,9 +37,8 @@ namespace Zentitas.Editor {
 		/// <param name="defaultValue"></param>
 		/// <returns></returns>
 		public static int GetIntPref(string key, int defaultValue) {
-			if (!EditorPrefs.HasKey(key)) {
+			if (!EditorPrefs.HasKey(key))
 				EditorPrefs.SetInt(key, defaultValue);
-			}
 
 			return EditorPrefs.GetInt(key);
 		}
@@ -52,9 +50,8 @@ namespace Zentitas.Editor {
 		/// <param name="defaultValue"></param>
 		/// <returns></returns>
 		public static float GetFloatPref(string key, float defaultValue) {
-			if (!EditorPrefs.HasKey(key)) {
+			if (!EditorPrefs.HasKey(key))
 				EditorPrefs.SetFloat(key, defaultValue);
-			}
 
 			return EditorPrefs.GetFloat(key);
 		}
@@ -66,9 +63,8 @@ namespace Zentitas.Editor {
 		/// <param name="defaultValue"></param>
 		/// <returns></returns>
 		public static string GetStringPref(string key, string defaultValue) {
-			if (!EditorPrefs.HasKey(key)) {
+			if (!EditorPrefs.HasKey(key))
 				EditorPrefs.SetString(key, defaultValue);
-			}
 
 			return EditorPrefs.GetString(key);
 		}
@@ -80,9 +76,8 @@ namespace Zentitas.Editor {
 		/// <param name="defaultValue"></param>
 		/// <returns></returns>
 		public static bool GetBoolPref(string key, bool defaultValue) {
-			if (!EditorPrefs.HasKey(key)) {
+			if (!EditorPrefs.HasKey(key))
 				EditorPrefs.SetBool(key, defaultValue);
-			}
 
 			return EditorPrefs.GetBool(key);
 		}
@@ -94,9 +89,8 @@ namespace Zentitas.Editor {
 		/// <param name="defaultValue"></param>
 		/// <returns></returns>
 		public static Color GetColorPref(string key, Color defaultValue) {
-			if (!EditorPrefs.HasKey(key)) {
+			if (!EditorPrefs.HasKey(key))
 				EditorPrefs.SetString(key, defaultValue.ToHexWithAlpha());
-			}
 
 			return ColorTools.FromHex(EditorPrefs.GetString(key));
 		}

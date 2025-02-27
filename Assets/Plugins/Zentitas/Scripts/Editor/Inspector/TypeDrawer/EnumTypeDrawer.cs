@@ -1,8 +1,7 @@
 /*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -26,23 +25,15 @@ THE SOFTWARE.
 using System;
 using UnityEditor;
 
-namespace Zentitas.Editor
-{
-	public class EnumTypeDrawer : ITypeDrawer
-	{
-		public bool HandlesType(Type type)
-		{
-			return type.IsEnum;
-		}
+namespace Zentitas.Editor {
+	public class EnumTypeDrawer : ITypeDrawer {
+		public bool HandlesType(Type type) => type.IsEnum;
 
-		public object DrawAndGetNewValue(Type memberType, string memberName, object value, object target)
-		{
+		public object DrawAndGetNewValue(Type memberType, string memberName, object value, object target) {
 			if (memberType.IsDefined(typeof(FlagsAttribute), false))
-			{
-				return EditorGUILayout.EnumFlagsField(memberName, (Enum)value);
-			}
+				return EditorGUILayout.EnumFlagsField(memberName, (Enum) value);
 
-			return EditorGUILayout.EnumPopup(memberName, (Enum)value);
+			return EditorGUILayout.EnumPopup(memberName, (Enum) value);
 		}
 	}
 }

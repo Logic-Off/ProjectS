@@ -1,8 +1,7 @@
 /*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -26,11 +25,9 @@ THE SOFTWARE.
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Zentitas
-{
+namespace Zentitas {
 	[ExecuteInEditMode]
-	public class EntityBehaviour : MonoBehaviour
-	{
+	public class EntityBehaviour : MonoBehaviour {
 		public IContext Context => _context;
 
 		public IEntity Entity => _entity;
@@ -41,8 +38,7 @@ namespace Zentitas
 		private IEntity _entity;
 		private Stack<EntityBehaviour> _entityBehaviourPool;
 
-		public void Init(IContext context, IEntity entity, Stack<EntityBehaviour> entityBehaviourPool)
-		{
+		public void Init(IContext context, IEntity entity, Stack<EntityBehaviour> entityBehaviourPool) {
 			_context = context;
 			_entity = entity;
 			_entityBehaviourPool = entityBehaviourPool;
@@ -52,8 +48,7 @@ namespace Zentitas
 			Update();
 		}
 
-		private void OnEntityReleased(IEntity e)
-		{
+		private void OnEntityReleased(IEntity e) {
 			_entity.OnEntityReleased -= OnEntityReleased;
 			gameObject.SetActive(false);
 			gameObject.hideFlags = HideFlags.HideInHierarchy;
@@ -62,21 +57,15 @@ namespace Zentitas
 			name = string.Empty;
 		}
 
-		private void Update()
-		{
+		private void Update() {
 			// TODO Remove or refactor this as Name is expensive
 			if (_entity != null && _cachedName != _entity.ToString())
-			{
 				name = _cachedName = _entity.ToString();
-			}
 		}
 
-		private void OnDestroy()
-		{
+		private void OnDestroy() {
 			if (_entity != null)
-			{
 				_entity.OnEntityReleased -= OnEntityReleased;
-			}
 		}
 	}
 }

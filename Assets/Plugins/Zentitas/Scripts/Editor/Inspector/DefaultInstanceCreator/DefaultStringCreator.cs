@@ -1,8 +1,7 @@
 /*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -27,12 +26,8 @@ using System;
 
 namespace Zentitas.Editor {
 	public class DefaultStringCreator : IDefaultInstanceCreator {
-		public bool HandlesType(Type type) {
-			return type == typeof(string);
-		}
+		public bool HandlesType(Type type) => type == typeof(string);
 
-		public object CreateDefault(Type type) {
-			return string.Empty;
-		}
+		public object CreateDefault(Type type) => string.Empty;
 	}
 }

@@ -1,8 +1,7 @@
 /*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -26,63 +25,43 @@ THE SOFTWARE.
 using System;
 using System.Collections;
 using System.Linq;
-using JCMG.Genesis.Editor;
 using UnityEditor;
 
-namespace Zentitas.Editor
-{
-	public class ListTypeDrawer : ITypeDrawer
-	{
-		private static Func<IList> DrawEditActions(IList list, Type elementType, int index)
-		{
+namespace Zentitas.Editor {
+	public class ListTypeDrawer : ITypeDrawer {
+		private static Func<IList> DrawEditActions(IList list, Type elementType, int index) {
 			if (EditorGUILayoutTools.MiniButtonLeft("↑"))
-			{
 				if (index > 0)
-				{
-					return () =>
-					{
+					return () => {
 						var otherIndex = index - 1;
 						var other = list[otherIndex];
 						list[otherIndex] = list[index];
 						list[index] = other;
 						return list;
 					};
-				}
-			}
 
 			if (EditorGUILayoutTools.MiniButtonMid("↓"))
-			{
 				if (index < list.Count - 1)
-				{
-					return () =>
-					{
+					return () => {
 						var otherIndex = index + 1;
 						var other = list[otherIndex];
 						list[otherIndex] = list[index];
 						list[index] = other;
 						return list;
 					};
-				}
-			}
 
 			if (EditorGUILayoutTools.MiniButtonMid("+"))
-			{
-				if (EntityDrawer.CreateDefault(elementType, out var defaultValue))
-				{
+				if (EntityDrawer.CreateDefault(elementType, out var defaultValue)) {
 					var insertAt = index + 1;
-					return () =>
-					{
+					return () => {
 						list.Insert(insertAt, defaultValue);
 						return list;
 					};
 				}
-			}
 
-			if (EditorGUILayoutTools.MiniButtonRight("-"))
-			{
+			if (EditorGUILayoutTools.MiniButtonRight("-")) {
 				var removeAt = index;
-				return () =>
-				{
+				return () => {
 					list.RemoveAt(removeAt);
 					return list;
 				};
@@ -91,47 +70,33 @@ namespace Zentitas.Editor
 			return null;
 		}
 
-		private IList DrawAddElement(IList list, string memberName, Type elementType)
-		{
+		private IList DrawAddElement(IList list, string memberName, Type elementType) {
 			EditorGUILayout.BeginHorizontal();
 			{
 				EditorGUILayout.LabelField(memberName, "empty");
 				if (EditorGUILayoutTools.MiniButton("add " + elementType.ToCompilableString().ShortTypeName()))
-				{
 					if (EntityDrawer.CreateDefault(elementType, out var defaultValue))
-					{
 						list.Add(defaultValue);
-					}
-				}
 			}
 			EditorGUILayout.EndHorizontal();
 
 			return list;
 		}
 
-		public bool HandlesType(Type type)
-		{
-			return type.GetInterfaces().Contains(typeof(IList));
-		}
+		public bool HandlesType(Type type) => type.GetInterfaces().Contains(typeof(IList));
 
-		public object DrawAndGetNewValue(Type memberType, string memberName, object value, object target)
-		{
-			var list = (IList)value;
+		public object DrawAndGetNewValue(Type memberType, string memberName, object value, object target) {
+			var list = (IList) value;
 			var elementType = memberType.GetGenericArguments()[0];
 			if (list.Count == 0)
-			{
 				list = DrawAddElement(list, memberName, elementType);
-			}
 			else
-			{
 				EditorGUILayout.LabelField(memberName);
-			}
 
 			var indent = EditorGUI.indentLevel;
 			EditorGUI.indentLevel = indent + 1;
 			Func<IList> editAction = null;
-			for (var i = 0; i < list.Count; i++)
-			{
+			for (var i = 0; i < list.Count; i++) {
 				var localIndex = i;
 				EditorGUILayout.BeginHorizontal();
 				{
@@ -140,21 +105,18 @@ namespace Zentitas.Editor
 						memberName + "[" + localIndex + "]",
 						list[localIndex],
 						target,
-						(newComponent, newValue) => list[localIndex] = newValue);
+						(newComponent, newValue) => list[localIndex] = newValue
+					);
 
 					var action = DrawEditActions(list, elementType, localIndex);
 					if (action != null)
-					{
 						editAction = action;
-					}
 				}
 				EditorGUILayout.EndHorizontal();
 			}
 
 			if (editAction != null)
-			{
 				list = editAction();
-			}
 
 			EditorGUI.indentLevel = indent;
 

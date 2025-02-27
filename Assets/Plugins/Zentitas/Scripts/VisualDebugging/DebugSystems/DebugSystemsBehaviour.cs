@@ -1,8 +1,7 @@
 /*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -25,17 +24,12 @@ THE SOFTWARE.
 
 using UnityEngine;
 
-namespace Zentitas.VisualDebugging
-{
-	public class DebugSystemsBehaviour : MonoBehaviour
-	{
+namespace Zentitas.VisualDebugging {
+	public class DebugSystemsBehaviour : MonoBehaviour {
 		public DebugSystems Systems => _systems;
 
 		private DebugSystems _systems;
 
-		public void Init(DebugSystems systems)
-		{
-			_systems = systems;
-		}
+		public void Init(DebugSystems systems) => _systems = systems;
 	}
 }

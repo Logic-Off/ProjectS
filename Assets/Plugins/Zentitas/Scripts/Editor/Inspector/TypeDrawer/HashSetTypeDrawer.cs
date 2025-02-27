@@ -1,8 +1,7 @@
 /*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -26,53 +25,36 @@ THE SOFTWARE.
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using JCMG.Genesis.Editor;
 using UnityEditor;
 
-namespace Zentitas.Editor
-{
-	public class HashSetTypeDrawer : ITypeDrawer
-	{
-		public bool HandlesType(Type type)
-		{
-			return type.IsGenericType && type.GetGenericTypeDefinition() == typeof(HashSet<>);
-		}
+namespace Zentitas.Editor {
+	public class HashSetTypeDrawer : ITypeDrawer {
+		public bool HandlesType(Type type) => type.IsGenericType && type.GetGenericTypeDefinition() == typeof(HashSet<>);
 
-		public object DrawAndGetNewValue(Type memberType, string memberName, object value, object target)
-		{
+		public object DrawAndGetNewValue(Type memberType, string memberName, object value, object target) {
 			var elementType = memberType.GetGenericArguments()[0];
 			var itemsToRemove = new ArrayList();
 			var itemsToAdd = new ArrayList();
-			var isEmpty = !((IEnumerable)value).GetEnumerator().MoveNext();
+			var isEmpty = !((IEnumerable) value).GetEnumerator().MoveNext();
 
 			EditorGUILayout.BeginHorizontal();
 			{
 				if (isEmpty)
-				{
 					EditorGUILayout.LabelField(memberName, "empty");
-				}
 				else
-				{
 					EditorGUILayout.LabelField(memberName);
-				}
 
 				if (EditorGUILayoutTools.MiniButton("new " + elementType.ToCompilableString().ShortTypeName()))
-				{
 					if (EntityDrawer.CreateDefault(elementType, out var defaultValue))
-					{
 						itemsToAdd.Add(defaultValue);
-					}
-				}
 			}
 			EditorGUILayout.EndHorizontal();
 
-			if (!isEmpty)
-			{
+			if (!isEmpty) {
 				EditorGUILayout.Space();
 				var indent = EditorGUI.indentLevel;
 				EditorGUI.indentLevel = indent + 1;
-				foreach (var item in (IEnumerable)value)
-				{
+				foreach (var item in (IEnumerable) value) {
 					EditorGUILayout.BeginHorizontal();
 					{
 						EntityDrawer.DrawObjectMember(
@@ -80,16 +62,14 @@ namespace Zentitas.Editor
 							string.Empty,
 							item,
 							target,
-							(newComponent, newValue) =>
-							{
+							(newComponent, newValue) => {
 								itemsToRemove.Add(item);
 								itemsToAdd.Add(newValue);
-							});
+							}
+						);
 
 						if (EditorGUILayoutTools.MiniButton("-"))
-						{
 							itemsToRemove.Add(item);
-						}
 					}
 					EditorGUILayout.EndHorizontal();
 				}
@@ -98,26 +78,22 @@ namespace Zentitas.Editor
 			}
 
 			foreach (var item in itemsToRemove)
-			{
 				memberType.GetMethod("Remove")
 					.Invoke(
 						value,
-						new[]
-						{
+						new[] {
 							item
-						});
-			}
+						}
+					);
 
 			foreach (var item in itemsToAdd)
-			{
 				memberType.GetMethod("Add")
 					.Invoke(
 						value,
-						new[]
-						{
+						new[] {
 							item
-						});
-			}
+						}
+					);
 
 			return value;
 		}

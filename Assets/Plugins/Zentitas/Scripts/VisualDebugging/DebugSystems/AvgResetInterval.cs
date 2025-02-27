@@ -1,8 +1,7 @@
 /*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,10 +22,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-namespace Zentitas.VisualDebugging
-{
-	public enum AvgResetInterval
-	{
+namespace Zentitas.VisualDebugging {
+	public enum AvgResetInterval {
 		Always = 1,
 		VeryFast = 30,
 		Fast = 60,

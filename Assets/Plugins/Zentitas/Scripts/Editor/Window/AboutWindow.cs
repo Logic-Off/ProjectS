@@ -1,8 +1,7 @@
 ﻿/*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -86,9 +85,8 @@ namespace Zentitas.Editor {
 
 			// Share message and portrait
 			using (new EditorGUILayout.HorizontalScope()) {
-				if (_portraitImage != null) {
+				if (_portraitImage != null)
 					GUILayout.Label(_portraitImage, GUILayout.Width(96f), GUILayout.Height(96f));
-				}
 
 				EditorGUILayout.SelectableLabel(SHARE_MESSAGE, EditorStyles.textArea, GUILayout.Height(96f));
 			}
@@ -100,9 +98,8 @@ namespace Zentitas.Editor {
 			using (new EditorGUILayout.HorizontalScope()) {
 				EditorGUILayout.LabelField(TWITTER_LABEL, EditorStyles.boldLabel, GUILayout.Width(75f));
 				GUI.contentColor = Color.cyan;
-				if (GUILayout.Button(TWITTER_URL, GUI.skin.label)) {
+				if (GUILayout.Button(TWITTER_URL, GUI.skin.label))
 					Application.OpenURL(TWITTER_URL);
-				}
 
 				GUI.contentColor = originalColor;
 			}
@@ -111,9 +108,8 @@ namespace Zentitas.Editor {
 			using (new EditorGUILayout.HorizontalScope()) {
 				EditorGUILayout.LabelField(GITHUB_LABEL, EditorStyles.boldLabel, GUILayout.Width(75f));
 				GUI.contentColor = Color.cyan;
-				if (GUILayout.Button(GITHUB_URL, GUI.skin.label)) {
+				if (GUILayout.Button(GITHUB_URL, GUI.skin.label))
 					Application.OpenURL(GITHUB_URL);
-				}
 
 				GUI.contentColor = originalColor;
 			}
@@ -122,16 +118,13 @@ namespace Zentitas.Editor {
 			using (new EditorGUILayout.HorizontalScope()) {
 				EditorGUILayout.LabelField(KOFI_LABEL, EditorStyles.boldLabel, GUILayout.Width(75f));
 				GUI.contentColor = Color.cyan;
-				if (GUILayout.Button(KOFI_URL, GUI.skin.label)) {
+				if (GUILayout.Button(KOFI_URL, GUI.skin.label))
 					Application.OpenURL(KOFI_URL);
-				}
 
 				GUI.contentColor = originalColor;
 			}
 		}
 
-		private void DrawSeparator() {
-			GUILayout.Box(string.Empty, GUILayout.ExpandWidth(true), GUILayout.Height(1));
-		}
+		private void DrawSeparator() => GUILayout.Box(string.Empty, GUILayout.ExpandWidth(true), GUILayout.Height(1));
 	}
 }

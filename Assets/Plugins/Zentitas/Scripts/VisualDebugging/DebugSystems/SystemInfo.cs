@@ -1,8 +1,7 @@
 /*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -25,11 +24,9 @@ THE SOFTWARE.
 
 using System;
 
-namespace Zentitas.VisualDebugging
-{
+namespace Zentitas.VisualDebugging {
 	[Flags]
-	public enum SystemInterfaceFlags
-	{
+	public enum SystemInterfaceFlags {
 		None = 0,
 		InitializeSystem = 1 << 1,
 		FixedUpdateSystem = 1 << 6,
@@ -40,8 +37,7 @@ namespace Zentitas.VisualDebugging
 		TearDownSystem = 1 << 4
 	}
 
-	public class SystemInfo
-	{
+	public class SystemInfo {
 		public ISystem System { get; }
 
 		public string SystemName { get; }
@@ -185,8 +181,7 @@ namespace Zentitas.VisualDebugging
 
 		private readonly SystemInterfaceFlags _interfaceFlags;
 
-		public SystemInfo(ISystem system)
-		{
+		public SystemInfo(ISystem system) {
 			System = system;
 			_interfaceFlags = GetInterfaceFlags(system);
 
@@ -197,81 +192,56 @@ namespace Zentitas.VisualDebugging
 			isActive = true;
 		}
 
-		public void AddFixedUpdateDuration(double duration)
-		{
+		public void AddFixedUpdateDuration(double duration) {
 			if (duration < _minFixedUpdateDuration || Math.Abs(_minFixedUpdateDuration) < 0.001)
-			{
 				_minFixedUpdateDuration = duration;
-			}
 
 			if (duration > _maxFixedUpdateDuration)
-			{
 				_maxFixedUpdateDuration = duration;
-			}
 
 			_accumulatedFixedUpdateDuration += duration;
 			_fixedUpdateDurationsCount += 1;
 		}
 
-		public void AddUpdateDuration(double duration)
-		{
+		public void AddUpdateDuration(double duration) {
 			if (duration < _minUpdateDuration || Math.Abs(_minUpdateDuration) < 0.001)
-			{
 				_minUpdateDuration = duration;
-			}
 
 			if (duration > _maxUpdateDuration)
-			{
 				_maxUpdateDuration = duration;
-			}
 
 			_accumulatedUpdateDuration += duration;
 			_updateDurationsCount += 1;
 		}
 
-		public void AddLateUpdateDuration(double duration)
-		{
+		public void AddLateUpdateDuration(double duration) {
 			if (duration < _minLateUpdateDuration || Math.Abs(_minLateUpdateDuration) < 0.001)
-			{
 				_minLateUpdateDuration = duration;
-			}
 
 			if (duration > _maxLateUpdateDuration)
-			{
 				_maxLateUpdateDuration = duration;
-			}
 
 			_accumulatedLateUpdateDuration += duration;
 			_lateUpdateDurationsCount += 1;
 		}
 
-		public void AddReactiveDuration(double duration)
-		{
+		public void AddReactiveDuration(double duration) {
 			if (duration < _minReactiveDuration || Math.Abs(_minReactiveDuration) < 0.001)
-			{
 				_minReactiveDuration = duration;
-			}
 
 			if (duration > _maxReactiveDuration)
-			{
 				_maxReactiveDuration = duration;
-			}
 
 			_accumulatedReactiveDuration += duration;
 			_reactiveDurationsCount += 1;
 		}
 
-		public void AddCleanupDuration(double cleanupDuration)
-		{
+		public void AddCleanupDuration(double cleanupDuration) {
 			if (cleanupDuration < _minCleanupDuration || Math.Abs(_minCleanupDuration) < 0.001)
-			{
 				_minCleanupDuration = cleanupDuration;
-			}
 
 			if (cleanupDuration > _maxCleanupDuration)
-			{
 				_maxCleanupDuration = cleanupDuration;
-			}
 
 			_accumulatedCleanupDuration += cleanupDuration;
 			_cleanupDurationsCount += 1;
@@ -280,8 +250,7 @@ namespace Zentitas.VisualDebugging
 		/// <summary>
 		/// Resets the duration times and counts for all relevant render frame system metrics.
 		/// </summary>
-		public void ResetFrameDurations()
-		{
+		public void ResetFrameDurations() {
 			// Fixed Update
 			_accumulatedFixedUpdateDuration = 0;
 			_fixedUpdateDurationsCount = 0;
@@ -303,43 +272,28 @@ namespace Zentitas.VisualDebugging
 			_cleanupDurationsCount = 0;
 		}
 
-		private static SystemInterfaceFlags GetInterfaceFlags(ISystem system)
-		{
+		private static SystemInterfaceFlags GetInterfaceFlags(ISystem system) {
 			var flags = SystemInterfaceFlags.None;
 			if (system is IInitializeSystem)
-			{
 				flags |= SystemInterfaceFlags.InitializeSystem;
-			}
 
 			if (system is IFixedUpdateSystem)
-			{
 				flags |= SystemInterfaceFlags.FixedUpdateSystem;
-			}
 
 			if (system is IUpdateSystem)
-			{
 				flags |= SystemInterfaceFlags.UpdateSystem;
-			}
 
 			if (system is ILateUpdateSystem)
-			{
 				flags |= SystemInterfaceFlags.LateUpdateSystem;
-			}
 
 			if (system is IReactiveSystem)
-			{
 				flags |= SystemInterfaceFlags.ReactiveSystem;
-			}
 
 			if (system is ICleanupSystem)
-			{
 				flags |= SystemInterfaceFlags.CleanupSystem;
-			}
 
 			if (system is ITearDownSystem)
-			{
 				flags |= SystemInterfaceFlags.TearDownSystem;
-			}
 
 			return flags;
 		}

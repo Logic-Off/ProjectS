@@ -1,8 +1,7 @@
 /*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -28,42 +27,30 @@ using Zentitas.Editor;
 using UnityEditor;
 using UnityEngine;
 
-namespace Zentitas.VisualDebugging.Editor
-{
+namespace Zentitas.VisualDebugging.Editor {
 	[CustomEditor(typeof(EntityLink))]
-	internal sealed class EntityLinkInspector : UnityEditor.Editor
-	{
-		public override void OnInspectorGUI()
-		{
-			var link = (EntityLink)target;
+	internal sealed class EntityLinkInspector : UnityEditor.Editor {
+		public override void OnInspectorGUI() {
+			var link = (EntityLink) target;
 
 			if (link.Entity != null)
-			{
 				if (GUILayout.Button("Unlink"))
-				{
 					link.Unlink();
-				}
-			}
 
-			if (link.Entity != null)
-			{
+			if (link.Entity != null) {
 				EditorGUILayout.Space();
 
 				EditorGUILayout.LabelField(link.Entity.ToString());
 
 				if (GUILayout.Button("Show entity"))
-				{
 					Selection.activeGameObject = FindObjectsOfType<EntityBehaviour>()
 						.Single(e => e.Entity == link.Entity)
 						.gameObject;
-				}
 
 				EditorGUILayout.Space();
 
 				EntityDrawer.DrawEntity(link.Entity);
-			}
-			else
-			{
+			} else {
 				EditorGUILayout.LabelField("Not linked to an entity");
 			}
 		}

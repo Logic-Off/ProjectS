@@ -1,8 +1,7 @@
 ﻿/*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -26,20 +25,15 @@ THE SOFTWARE.
 using Zentitas.Editor;
 using UnityEngine;
 
-namespace Zentitas.VisualDebugging.Editor
-{
+namespace Zentitas.VisualDebugging.Editor {
 	/// <summary>
 	/// Editor styles for Visual Debugging
 	/// </summary>
-	internal static class VisualDebugStyles
-	{
-		public static GUIStyle SectionContent
-		{
-			get
-			{
-				if (_sectionContent == null)
-				{
-					_sectionContent = new GUIStyle(ZentitasStyles.GROUP_BOX_STYLE);
+	internal static class VisualDebugStyles {
+		public static GUIStyle SectionContent {
+			get {
+				if (_sectionContent == null) {
+					_sectionContent = new GUIStyle(Zentitas.Editor.ZentitasStyles.GROUP_BOX_STYLE);
 					_sectionContent.padding = new RectOffset(0, 0, 0, 0);
 					_sectionContent.margin = new RectOffset(0, 0, 0, 0);
 					_sectionContent.contentOffset = Vector2.zero;

@@ -1,8 +1,7 @@
 /*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -25,30 +24,19 @@ THE SOFTWARE.
 
 using UnityEngine;
 
-namespace Zentitas
-{
-	public static class EntityLinkExtension
-	{
-		public static EntityLink GetEntityLink(this GameObject gameObject)
-		{
-			return gameObject.GetComponent<EntityLink>();
-		}
+namespace Zentitas {
+	public static class EntityLinkExtension {
+		public static EntityLink GetEntityLink(this GameObject gameObject) => gameObject.GetComponent<EntityLink>();
 
-		public static EntityLink Link(this GameObject gameObject, IEntity entity)
-		{
+		public static EntityLink Link(this GameObject gameObject, IEntity entity) {
 			var link = gameObject.GetEntityLink();
 			if (link == null)
-			{
 				link = gameObject.AddComponent<EntityLink>();
-			}
 
 			link.Link(entity);
 			return link;
 		}
 
-		public static void Unlink(this GameObject gameObject)
-		{
-			gameObject.GetEntityLink().Unlink();
-		}
+		public static void Unlink(this GameObject gameObject) => gameObject.GetEntityLink().Unlink();
 	}
 }

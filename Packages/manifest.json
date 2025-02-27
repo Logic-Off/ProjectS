@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "com.jeffcampbellmakesgames.genesis": "https://github.com/jeffcampbellmakesgames/genesis.git#release/stable",
     "com.unity.addressables": "2.2.2",
     "com.unity.ai.navigation": "2.0.5",
     "com.unity.collab-proxy": "2.6.0",

@@ -1,8 +1,7 @@
 ﻿/*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -45,12 +44,10 @@ namespace Zentitas.Editor {
 
 			private static readonly char[] TRIM_END_CHARS;
 
-			static DoCreateScriptAsset() {
-				TRIM_END_CHARS = new[] {
-					'/',
-					'.'
-				};
-			}
+			static DoCreateScriptAsset() => TRIM_END_CHARS = new[] {
+				'/',
+				'.'
+			};
 
 			public override void Action(int instanceID, string pathName, string resourceFile) {
 				var text = File.ReadAllText(resourceFile);

@@ -1,8 +1,7 @@
 /*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -26,65 +25,45 @@ THE SOFTWARE.
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using JCMG.Genesis.Editor;
 using UnityEditor;
 
-namespace Zentitas.Editor
-{
-	public class DictionaryTypeDrawer : ITypeDrawer
-	{
-		private static Dictionary<Type, string> _keySearchTexts = new Dictionary<Type, string>();
+namespace Zentitas.Editor {
+	public class DictionaryTypeDrawer : ITypeDrawer {
+		private static Dictionary<Type, string> _keySearchTexts = new();
 
-		public bool HandlesType(Type type)
-		{
-			return type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Dictionary<,>);
-		}
+		public bool HandlesType(Type type) => type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Dictionary<,>);
 
-		public object DrawAndGetNewValue(Type memberType, string memberName, object value, object target)
-		{
-			var dictionary = (IDictionary)value;
+		public object DrawAndGetNewValue(Type memberType, string memberName, object value, object target) {
+			var dictionary = (IDictionary) value;
 			var keyType = memberType.GetGenericArguments()[0];
 			var valueType = memberType.GetGenericArguments()[1];
 			var targetType = target.GetType();
 			if (!_keySearchTexts.ContainsKey(targetType))
-			{
 				_keySearchTexts.Add(targetType, string.Empty);
-			}
 
 			EditorGUILayout.BeginHorizontal();
 			{
-				if (dictionary.Count == 0)
-				{
+				if (dictionary.Count == 0) {
 					EditorGUILayout.LabelField(memberName, "empty");
 					_keySearchTexts[targetType] = string.Empty;
-				}
-				else
-				{
+				} else {
 					EditorGUILayout.LabelField(memberName);
 				}
 
 				var keyTypeName = keyType.ToCompilableString().ShortTypeName();
 				var valueTypeName = valueType.ToCompilableString().ShortTypeName();
 				if (EditorGUILayoutTools.MiniButton("new <" + keyTypeName + ", " + valueTypeName + ">"))
-				{
 					if (EntityDrawer.CreateDefault(keyType, out var defaultKey))
-					{
 						if (EntityDrawer.CreateDefault(valueType, out var defaultValue))
-						{
 							dictionary[defaultKey] = defaultValue;
-						}
-					}
-				}
 			}
 			EditorGUILayout.EndHorizontal();
 
-			if (dictionary.Count > 0)
-			{
+			if (dictionary.Count > 0) {
 				var indent = EditorGUI.indentLevel;
 				EditorGUI.indentLevel = indent + 1;
 
-				if (dictionary.Count > 5)
-				{
+				if (dictionary.Count > 5) {
 					EditorGUILayout.Space();
 					_keySearchTexts[targetType] = EditorGUILayoutTools.SearchTextField(_keySearchTexts[targetType]);
 				}
@@ -92,32 +71,29 @@ namespace Zentitas.Editor
 				EditorGUILayout.Space();
 
 				var keys = new ArrayList(dictionary.Keys);
-				for (var i = 0; i < keys.Count; i++)
-				{
+				for (var i = 0; i < keys.Count; i++) {
 					var key = keys[i];
-					if (EditorGUILayoutTools.MatchesSearchString(key.ToString().ToLower(), _keySearchTexts[targetType].ToLower()))
-					{
+					if (EditorGUILayoutTools.MatchesSearchString(key.ToString().ToLower(), _keySearchTexts[targetType].ToLower())) {
 						EntityDrawer.DrawObjectMember(
 							keyType,
 							"key",
 							key,
 							target,
-							(newComponent, newValue) =>
-							{
+							(newComponent, newValue) => {
 								var tmpValue = dictionary[key];
 								dictionary.Remove(key);
 								if (newValue != null)
-								{
 									dictionary[newValue] = tmpValue;
-								}
-							});
+							}
+						);
 
 						EntityDrawer.DrawObjectMember(
 							valueType,
 							"value",
 							dictionary[key],
 							target,
-							(newComponent, newValue) => dictionary[key] = newValue);
+							(newComponent, newValue) => dictionary[key] = newValue
+						);
 
 						EditorGUILayout.Space();
 					}

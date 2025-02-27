@@ -1,8 +1,7 @@
 /*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -25,20 +24,14 @@ THE SOFTWARE.
 
 using UnityEngine;
 
-namespace Zentitas.VisualDebugging
-{
-	public static class ContextObserverExtension
-	{
-		public static ContextObserverBehaviour FindContextObserver(this IContext context)
-		{
+namespace Zentitas.VisualDebugging {
+	public static class ContextObserverExtension {
+		public static ContextObserverBehaviour FindContextObserver(this IContext context) {
 			var observers = Object.FindObjectsOfType<ContextObserverBehaviour>();
-			for (var i = 0; i < observers.Length; i++)
-			{
+			for (var i = 0; i < observers.Length; i++) {
 				var observer = observers[i];
 				if (observer.ContextObserver.Context == context)
-				{
 					return observer;
-				}
 			}
 
 			return null;

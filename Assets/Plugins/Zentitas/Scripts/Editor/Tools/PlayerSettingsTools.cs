@@ -1,8 +1,7 @@
 ﻿/*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -64,9 +63,7 @@ namespace Zentitas.Editor {
 		/// </summary>
 		/// <param name="rawScriptingSymbols"></param>
 		/// <returns></returns>
-		public static ICollection<string> SplitScriptingSymbols(string rawScriptingSymbols) {
-			return rawScriptingSymbols.Split(SCRIPTING_SYMBOL_DELIMITER).ToList();
-		}
+		public static ICollection<string> SplitScriptingSymbols(string rawScriptingSymbols) => rawScriptingSymbols.Split(SCRIPTING_SYMBOL_DELIMITER).ToList();
 
 		/// <summary>
 		/// Returns true if <paramref name="symbol"/> is defined, otherwise false.
@@ -83,21 +80,19 @@ namespace Zentitas.Editor {
 		/// </summary>
 		/// <param name="symbol"></param>
 		public static void AddScriptingSymbol(string symbol) {
-			if (IsScriptingSymbolDefined(symbol)) {
+			if (IsScriptingSymbolDefined(symbol))
 				return;
-			}
 
 			var currentBuildGroup = EditorUserBuildSettings.selectedBuildTargetGroup;
 			var scriptingSymbolStr = PlayerSettings.GetScriptingDefineSymbolsForGroup(currentBuildGroup);
 
 			// Add the new symbol to the list of symbols, always ensuring there is a semi-colon separating all symbols
-			if (string.IsNullOrEmpty(scriptingSymbolStr)) {
+			if (string.IsNullOrEmpty(scriptingSymbolStr))
 				scriptingSymbolStr = string.Format("{0}", symbol);
-			} else if (scriptingSymbolStr[scriptingSymbolStr.Length - 1] == SCRIPTING_SYMBOL_DELIMITER) {
+			else if (scriptingSymbolStr[scriptingSymbolStr.Length - 1] == SCRIPTING_SYMBOL_DELIMITER)
 				scriptingSymbolStr += string.Format("{0}", symbol);
-			} else {
+			else
 				scriptingSymbolStr += string.Format(";{0}", symbol);
-			}
 
 			PlayerSettings.SetScriptingDefineSymbolsForGroup(currentBuildGroup, scriptingSymbolStr);
 		}
@@ -107,9 +102,8 @@ namespace Zentitas.Editor {
 		/// </summary>
 		/// <param name="symbol"></param>
 		public static void RemoveScriptingSymbol(string symbol) {
-			if (!IsScriptingSymbolDefined(symbol)) {
+			if (!IsScriptingSymbolDefined(symbol))
 				return;
-			}
 
 			var scriptingSymbols = GetCurrentScriptingSymbols();
 			scriptingSymbols.Remove(symbol);

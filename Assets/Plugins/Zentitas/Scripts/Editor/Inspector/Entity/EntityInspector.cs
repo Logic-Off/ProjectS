@@ -1,8 +1,7 @@
 /*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -26,32 +25,24 @@ THE SOFTWARE.
 using System.Linq;
 using UnityEditor;
 
-namespace Zentitas.Editor
-{
+namespace Zentitas.Editor {
 	[CustomEditor(typeof(EntityBehaviour))]
 	[CanEditMultipleObjects]
-	public class EntityInspector : UnityEditor.Editor
-	{
-		public override void OnInspectorGUI()
-		{
-			if (targets.Length == 1)
-			{
-				var entityBehaviour = (EntityBehaviour)target;
+	public class EntityInspector : UnityEditor.Editor {
+		public override void OnInspectorGUI() {
+			if (targets.Length == 1) {
+				var entityBehaviour = (EntityBehaviour) target;
 				EntityDrawer.DrawEntity(entityBehaviour.Entity);
-			}
-			else
-			{
+			} else {
 				var entities = targets
-					.Select(t => ((EntityBehaviour)t).Entity)
+					.Select(t => ((EntityBehaviour) t).Entity)
 					.ToArray();
 
 				EntityDrawer.DrawMultipleEntities(entities);
 			}
 
 			if (target != null)
-			{
 				EditorUtility.SetDirty(target);
-			}
 		}
 	}
 }

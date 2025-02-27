@@ -1,8 +1,7 @@
 /*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -27,10 +26,8 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 
-namespace Zentitas.VisualDebugging
-{
-	public class ContextObserver
-	{
+namespace Zentitas.VisualDebugging {
+	public class ContextObserver {
 		public IContext Context => _context;
 
 		public IGroup[] Groups => _groups.ToArray();
@@ -38,14 +35,13 @@ namespace Zentitas.VisualDebugging
 		public GameObject GameObject => _gameObject;
 
 		private readonly IContext _context;
-		private readonly Stack<EntityBehaviour> _entityBehaviourPool = new Stack<EntityBehaviour>();
+		private readonly Stack<EntityBehaviour> _entityBehaviourPool = new();
 		private readonly GameObject _gameObject;
 		private readonly List<IGroup> _groups;
 
-		private StringBuilder _toStringBuilder = new StringBuilder();
+		private StringBuilder _toStringBuilder = new();
 
-		public ContextObserver(IContext context)
-		{
+		public ContextObserver(IContext context) {
 			_context = context;
 			_groups = new List<IGroup>();
 			_gameObject = new GameObject();
@@ -55,14 +51,12 @@ namespace Zentitas.VisualDebugging
 			_context.OnGroupCreated += OnGroupCreated;
 		}
 
-		public void Deactivate()
-		{
+		public void Deactivate() {
 			_context.OnEntityCreated -= OnEntityCreated;
 			_context.OnGroupCreated -= OnGroupCreated;
 		}
 
-		private void OnEntityCreated(IContext context, IEntity entity)
-		{
+		private void OnEntityCreated(IContext context, IEntity entity) {
 			var entityBehaviour = _entityBehaviourPool.Count > 0
 				? _entityBehaviourPool.Pop()
 				: new GameObject().AddComponent<EntityBehaviour>();
@@ -71,13 +65,9 @@ namespace Zentitas.VisualDebugging
 			entityBehaviour.transform.SetParent(_gameObject.transform, false);
 		}
 
-		private void OnGroupCreated(IContext context, IGroup group)
-		{
-			_groups.Add(group);
-		}
+		private void OnGroupCreated(IContext context, IGroup group) => _groups.Add(group);
 
-		public override string ToString()
-		{
+		public override string ToString() {
 			_toStringBuilder.Length = 0;
 			_toStringBuilder
 				.Append(_context.ContextInfo.name)
@@ -88,11 +78,9 @@ namespace Zentitas.VisualDebugging
 				.Append(" reusable, ");
 
 			if (_context.RetainedEntitiesCount != 0)
-			{
 				_toStringBuilder
 					.Append(_context.RetainedEntitiesCount)
 					.Append(" retained, ");
-			}
 
 			_toStringBuilder
 				.Append(_groups.Count)

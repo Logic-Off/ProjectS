@@ -1,8 +1,7 @@
 /*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,18 +23,14 @@ THE SOFTWARE.
 */
 
 using System.Linq;
-using JCMG.Genesis.Editor;
 using UnityEditor;
 using UnityEngine;
 
-namespace Zentitas.VisualDebugging.Editor
-{
+namespace Zentitas.VisualDebugging.Editor {
 	[CustomEditor(typeof(ContextObserverBehaviour))]
-	internal sealed class ContextObserverInspector : UnityEditor.Editor
-	{
-		public override void OnInspectorGUI()
-		{
-			var contextObserver = ((ContextObserverBehaviour)target).ContextObserver;
+	internal sealed class ContextObserverInspector : UnityEditor.Editor {
+		public override void OnInspectorGUI() {
+			var contextObserver = ((ContextObserverBehaviour) target).ContextObserver;
 
 			EditorGUILayoutTools.BeginSectionContent();
 			{
@@ -44,21 +39,20 @@ namespace Zentitas.VisualDebugging.Editor
 				EditorGUILayout.LabelField("Reusable entities", contextObserver.Context.ReusableEntitiesCount.ToString());
 
 				var retainedEntitiesCount = contextObserver.Context.RetainedEntitiesCount;
-				if (retainedEntitiesCount != 0)
-				{
+				if (retainedEntitiesCount != 0) {
 					var c = GUI.color;
 					GUI.color = Color.red;
 					EditorGUILayout.LabelField("Retained entities", retainedEntitiesCount.ToString());
 					GUI.color = c;
 					EditorGUILayout.HelpBox(
 						"WARNING: There are retained entities.\nDid you call entity.Retain(owner) and forgot to call entity.Release(owner)?",
-						MessageType.Warning);
+						MessageType.Warning
+					);
 				}
 
 				EditorGUILayout.BeginHorizontal();
 				{
-					if (GUILayout.Button("Create Entity"))
-					{
+					if (GUILayout.Button("Create Entity")) {
 						var entity = contextObserver.Context.CreateEntity();
 						var entityBehaviour = FindObjectsOfType<EntityBehaviour>()
 							.Single(eb => eb.Entity == entity);
@@ -69,9 +63,7 @@ namespace Zentitas.VisualDebugging.Editor
 					var bgColor = GUI.backgroundColor;
 					GUI.backgroundColor = Color.red;
 					if (GUILayout.Button("Destroy All Entities"))
-					{
 						contextObserver.Context.DestroyAllEntities();
-					}
 
 					GUI.backgroundColor = bgColor;
 				}
@@ -80,13 +72,11 @@ namespace Zentitas.VisualDebugging.Editor
 			EditorGUILayoutTools.EndSectionContent();
 
 			var groups = contextObserver.Groups;
-			if (groups.Length != 0)
-			{
+			if (groups.Length != 0) {
 				EditorGUILayoutTools.BeginSectionContent();
 				{
 					EditorGUILayout.LabelField("Groups (" + groups.Length + ")", EditorStyles.boldLabel);
-					foreach (var group in groups.OrderByDescending(g => g.Count))
-					{
+					foreach (var group in groups.OrderByDescending(g => g.Count)) {
 						EditorGUILayout.BeginHorizontal();
 						{
 							EditorGUILayout.LabelField(group.ToString());

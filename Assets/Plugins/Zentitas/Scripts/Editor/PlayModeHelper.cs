@@ -1,8 +1,7 @@
 ﻿/*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -44,18 +43,16 @@ namespace Zentitas.Editor {
 
 		private const string REFACTOR_MODE_MSG_WARNING = "[Zentitas] " + REFACTOR_MODE_MSG;
 
-		static PlayModeHelper() {
-			EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
-		}
+		static PlayModeHelper() => EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
 
 		private static void OnPlayModeStateChanged(PlayModeStateChange playModeState) {
 			if (RefactorModeTools.IsRefactorModeEnabled() &&
 			    playModeState == PlayModeStateChange.ExitingEditMode) {
 				var disableRefactorMode = EditorUtility.DisplayDialog(
-					title: REFACTOR_MODE_TITLE,
-					message: REFACTOR_MODE_MSG,
-					ok: REFACTOR_MODE_OK_TEXT,
-					cancel: REFACTOR_MODE_CANCEL_TEXT
+					REFACTOR_MODE_TITLE,
+					REFACTOR_MODE_MSG,
+					REFACTOR_MODE_OK_TEXT,
+					REFACTOR_MODE_CANCEL_TEXT
 				);
 
 				if (disableRefactorMode) {

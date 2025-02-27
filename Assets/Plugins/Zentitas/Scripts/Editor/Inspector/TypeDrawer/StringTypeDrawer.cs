@@ -1,8 +1,7 @@
 /*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -26,18 +25,10 @@ THE SOFTWARE.
 using System;
 using UnityEditor;
 
-namespace Zentitas.Editor
-{
-	public class StringTypeDrawer : ITypeDrawer
-	{
-		public bool HandlesType(Type type)
-		{
-			return type == typeof(string);
-		}
+namespace Zentitas.Editor {
+	public class StringTypeDrawer : ITypeDrawer {
+		public bool HandlesType(Type type) => type == typeof(string);
 
-		public object DrawAndGetNewValue(Type memberType, string memberName, object value, object target)
-		{
-			return EditorGUILayout.DelayedTextField(memberName, (string)value);
-		}
+		public object DrawAndGetNewValue(Type memberType, string memberName, object value, object target) => EditorGUILayout.DelayedTextField(memberName, (string) value);
 	}
 }

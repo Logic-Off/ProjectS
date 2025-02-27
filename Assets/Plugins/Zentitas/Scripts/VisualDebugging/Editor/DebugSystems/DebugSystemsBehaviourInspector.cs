@@ -1,8 +1,7 @@
 /*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -31,13 +30,10 @@ using System.Text;
 using UnityEditor;
 using UnityEngine;
 
-namespace Zentitas.VisualDebugging.Editor
-{
+namespace Zentitas.VisualDebugging.Editor {
 	[CustomEditor(typeof(DebugSystemsBehaviour))]
-	internal sealed class DebugSystemsBehaviourInspector : UnityEditor.Editor
-	{
-		private enum SortMethod
-		{
+	internal sealed class DebugSystemsBehaviourInspector : UnityEditor.Editor {
+		private enum SortMethod {
 			Name,
 			NameDescending,
 			ExecutionTime,
@@ -129,33 +125,25 @@ namespace Zentitas.VisualDebugging.Editor
 		private const string PERFORMANCE_DESCRIPTION = "All performance statistics are meausured in milliseconds (ms).";
 
 		private const string SYSTEMS_DESCRIPTION = "These are all systems running as a part of this Feature. Toggles " +
-												   "are available to selectively filter which systems are running.";
+		                                           "are available to selectively filter which systems are running.";
 
-		static DebugSystemsBehaviourInspector()
-		{
-			LEGEND_LABEL_OPTIONS = new[]
-			{
+		static DebugSystemsBehaviourInspector() {
+			LEGEND_LABEL_OPTIONS = new[] {
 				GUILayout.Width(BOX_HEIGHT_WIDTH),
-				GUILayout.Height(BOX_HEIGHT_WIDTH),
+				GUILayout.Height(BOX_HEIGHT_WIDTH)
 			};
 			STRING_BUILDER = new StringBuilder(200);
 		}
 
-		private void OnEnable()
-		{
+		private void OnEnable() {
 			if (_leftLabelGUILayoutOptions == null)
-			{
-				_leftLabelGUILayoutOptions = new []
-				{
+				_leftLabelGUILayoutOptions = new[] {
 					GUILayout.Width(150f)
 				};
-			}
 		}
 
-		public override void OnInspectorGUI()
-		{
-			if (_systemsMonitor == null)
-			{
+		public override void OnInspectorGUI() {
+			if (_systemsMonitor == null) {
 				_systemsMonitor = new Graph(SYSTEM_MONITOR_DATA_LENGTH);
 
 				_fixedUpdateSystemMonitorData = new Queue<float>(new float[SYSTEM_MONITOR_DATA_LENGTH]);
@@ -163,7 +151,7 @@ namespace Zentitas.VisualDebugging.Editor
 				_lateUpdateSystemMonitorData = new Queue<float>(new float[SYSTEM_MONITOR_DATA_LENGTH]);
 			}
 
-			var debugSystemsBehaviour = (DebugSystemsBehaviour)target;
+			var debugSystemsBehaviour = (DebugSystemsBehaviour) target;
 			var systems = debugSystemsBehaviour.Systems;
 
 			EditorGUILayout.HelpBox(PERFORMANCE_DESCRIPTION, MessageType.Info);
@@ -182,13 +170,10 @@ namespace Zentitas.VisualDebugging.Editor
 			EditorUtility.SetDirty(target);
 		}
 
-		private static void DrawSystemsOverview(DebugSystems systems)
-		{
+		private static void DrawSystemsOverview(DebugSystems systems) {
 			_showDetails = EditorGUILayoutTools.DrawSectionHeaderToggle(DETAILS_TITLE, _showDetails);
 			if (_showDetails)
-			{
-				using (new EditorGUILayout.VerticalScope(ZentitasStyles.SectionContent))
-				{
+				using (new EditorGUILayout.VerticalScope(Zentitas.Editor.ZentitasStyles.SectionContent)) {
 					EditorGUILayout.LabelField(INITIALIZE_SYSTEMS_COUNT_LABEL, systems.TotalInitializeSystemsCount.ToString());
 					EditorGUILayout.LabelField(FIXED_UPDATE_SYSTEMS_COUNT_LABEL, systems.TotalFixedUpdateSystemsCount.ToString());
 					EditorGUILayout.LabelField(UPDATE_SYSTEMS_COUNT_LABEL, systems.TotalUpdateSystemsCount.ToString());
@@ -198,19 +183,14 @@ namespace Zentitas.VisualDebugging.Editor
 					EditorGUILayout.LabelField(TEARDOWN_SYSTEMS_COUNT_LABEL, systems.TotalTearDownSystemsCount.ToString());
 					EditorGUILayout.LabelField(TOTAL_SYSTEMS_COUNT_LABEL, systems.TotalSystemsCount.ToString());
 				}
-			}
 		}
 
-		private void DrawSystemsMonitor(DebugSystems systems)
-		{
+		private void DrawSystemsMonitor(DebugSystems systems) {
 			_showSystemsMonitor = EditorGUILayoutTools.DrawSectionHeaderToggle(PERFORMANCE_TITLE, _showSystemsMonitor);
 			if (_showSystemsMonitor)
-			{
-				using (new EditorGUILayout.VerticalScope(VisualDebugStyles.SectionContent))
-				{
+				using (new EditorGUILayout.VerticalScope(VisualDebugStyles.SectionContent)) {
 					// Draw Average Performance Stats
-					using (new EditorGUILayout.VerticalScope())
-					{
+					using (new EditorGUILayout.VerticalScope()) {
 						EditorGUILayout.LabelField(AVERAGE_PERFORMANCE_TITLE, EditorStyles.boldLabel);
 
 						DrawDurationLabel(FIXED_UPDATE_DURATION_LABEL, systems.AverageFixedUpdateDuration);
@@ -221,10 +201,8 @@ namespace Zentitas.VisualDebugging.Editor
 					}
 
 					// Draw Legend
-					using (var legendScope = new EditorGUILayout.VerticalScope())
-					{
-						using (new EditorGUILayout.HorizontalScope())
-						{
+					using (var legendScope = new EditorGUILayout.VerticalScope()) {
+						using (new EditorGUILayout.HorizontalScope()) {
 							GUILayout.FlexibleSpace();
 							EditorGUILayout.LabelField(GRAPH_LEGEND, EditorStyles.boldLabel, GUILayout.Width(60f));
 							GUILayout.FlexibleSpace();
@@ -232,8 +210,7 @@ namespace Zentitas.VisualDebugging.Editor
 
 						GUILayout.Space(5);
 
-						using (new EditorGUILayout.HorizontalScope())
-						{
+						using (new EditorGUILayout.HorizontalScope()) {
 							DrawLegendLabel(FIXED_UPDATE_LEGEND, VisualDebuggingPreferences.FixedUpdateColor);
 							GUILayout.FlexibleSpace();
 
@@ -248,35 +225,29 @@ namespace Zentitas.VisualDebugging.Editor
 
 					// Update Graph
 					if (!EditorApplication.isPaused)
-					{
 						AddSystemDurations(systems);
-					}
 
 					// Draw Graph
 					const float GRAPH_HEIGHT = 100f;
 					_systemsMonitor.Draw(
-						new[]
-						{
+						new[] {
 							_fixedUpdateSystemMonitorData.ToArray(),
 							_updateSystemMonitorData.ToArray(),
 							_lateUpdateSystemMonitorData.ToArray()
 						},
 						Screen.width,
 						GRAPH_HEIGHT,
-						new[]
-						{
+						new[] {
 							VisualDebuggingPreferences.FixedUpdateColor,
 							VisualDebuggingPreferences.UpdateColor,
 							VisualDebuggingPreferences.LateUpdateColor
-						});
+						}
+					);
 				}
-			}
 		}
 
-		private void DrawLegendLabel(string label, Color color)
-		{
-			using (new EditorGUILayout.HorizontalScope(GUILayout.ExpandWidth(false)))
-			{
+		private void DrawLegendLabel(string label, Color color) {
+			using (new EditorGUILayout.HorizontalScope(GUILayout.ExpandWidth(false))) {
 				var newGUIContent = new GUIContent(label);
 				var size = EditorStyles.label.CalcSize(newGUIContent);
 				EditorGUILayout.LabelField(newGUIContent, GUILayout.Width(size.x));
@@ -286,68 +257,65 @@ namespace Zentitas.VisualDebugging.Editor
 					BOX_HEIGHT_WIDTH,
 					BOX_HEIGHT_WIDTH,
 					BOX_HEIGHT_WIDTH,
-					LEGEND_LABEL_OPTIONS);
+					LEGEND_LABEL_OPTIONS
+				);
 
 				EditorGUILayoutTools.DrawRectWithBorder(
 					fixedUpdateLegendRect,
 					2f,
 					color,
-					Color.black);
+					Color.black
+				);
 
 				GUILayout.FlexibleSpace();
 			}
 		}
 
-		private void DrawDurationLabel(string label, double duration)
-		{
-			using (new EditorGUILayout.HorizontalScope(GUILayout.ExpandWidth(false)))
-			{
+		private void DrawDurationLabel(string label, double duration) {
+			using (new EditorGUILayout.HorizontalScope(GUILayout.ExpandWidth(false))) {
 				var size = EditorStyles.label.CalcSize(new GUIContent(label));
 				EditorGUILayout.LabelField(label, _leftLabelGUILayoutOptions);
 
 				EditorGUILayout.LabelField(
 					string.Format(DURATION_TIME_FORMAT, duration),
 					//VisualDebugStyles.RightAlignGUIStyle,
-					GUILayout.MaxWidth(60f));
+					GUILayout.MaxWidth(60f)
+				);
 			}
 		}
 
-		private void DrawSystemList(DebugSystems systems)
-		{
+		private void DrawSystemList(DebugSystems systems) {
 			_showSystemsList = EditorGUILayoutTools.DrawSectionHeaderToggle(SYSTEMS_TITLE, _showSystemsList);
 			if (_showSystemsList)
-			{
-				using (new EditorGUILayout.VerticalScope(ZentitasStyles.SectionContent))
-				{
+				using (new EditorGUILayout.VerticalScope(Zentitas.Editor.ZentitasStyles.SectionContent)) {
 					EditorGUILayout.HelpBox(SYSTEMS_DESCRIPTION, MessageType.Info);
 
-					using (new EditorGUILayout.HorizontalScope())
-					{
-						DebugSystems.avgResetInterval = (AvgResetInterval)EditorGUILayout.EnumPopup(
+					using (new EditorGUILayout.HorizontalScope()) {
+						DebugSystems.avgResetInterval = (AvgResetInterval) EditorGUILayout.EnumPopup(
 							RESET_AVERAGE_DURATION_LABEL,
-							DebugSystems.avgResetInterval);
+							DebugSystems.avgResetInterval
+						);
 
 						if (GUILayout.Button(RESET_AVERAGE_NOW_LABEL, EditorStyles.miniButton, GUILayout.Width(150f)))
-						{
 							systems.ResetDurations();
-						}
 					}
 
 					_threshold = EditorGUILayout.Slider(
 						THRESHOLD_SLIDER_LABEL,
 						_threshold,
 						0f,
-						33f);
+						33f
+					);
 
 					_hideEmptySystems = EditorGUILayout.Toggle(HIDE_EMPTY_SYSTEMS_LABEL, _hideEmptySystems);
 					EditorGUILayout.Space();
 
-					using (new EditorGUILayout.HorizontalScope())
-					{
-						_systemSortMethod = (SortMethod)EditorGUILayout.EnumPopup(
+					using (new EditorGUILayout.HorizontalScope()) {
+						_systemSortMethod = (SortMethod) EditorGUILayout.EnumPopup(
 							_systemSortMethod,
 							EditorStyles.popup,
-							GUILayout.Width(150));
+							GUILayout.Width(150)
+						);
 						_systemNameSearchString = EditorGUILayoutTools.SearchTextField(_systemNameSearchString);
 					}
 
@@ -361,34 +329,27 @@ namespace Zentitas.VisualDebugging.Editor
 					DrawSystemSection(CLEANUP_SYSTEMS_TITLE, ref _showCleanupSystems, systems, SystemInterfaceFlags.CleanupSystem);
 					DrawSystemSection(TEARDOWN_SYSTEMS_TITLE, ref _showTearDownSystems, systems, SystemInterfaceFlags.TearDownSystem);
 				}
-			}
 		}
 
-		private void DrawSystemSection(string header,
-									   ref bool showSystems,
-									   DebugSystems systems,
-									   SystemInterfaceFlags systemInterfaceFlags)
-		{
+		private void DrawSystemSection(
+			string header,
+			ref bool showSystems,
+			DebugSystems systems,
+			SystemInterfaceFlags systemInterfaceFlags
+		) {
 			showSystems = EditorGUILayoutTools.DrawSectionHeaderToggle(header, showSystems);
 			if (showSystems && ShouldShowSystems(systems, systemInterfaceFlags))
-			{
-				using (new EditorGUILayout.VerticalScope(ZentitasStyles.SectionContent))
-				{
+				using (new EditorGUILayout.VerticalScope(Zentitas.Editor.ZentitasStyles.SectionContent)) {
 					var systemsDrawn = DrawSystemInfos(systems, systemInterfaceFlags);
 					if (systemsDrawn == 0)
-					{
 						EditorGUILayout.LabelField(string.Empty);
-					}
 				}
-			}
 		}
 
-		private int DrawSystemInfos(DebugSystems systems, SystemInterfaceFlags type)
-		{
+		private int DrawSystemInfos(DebugSystems systems, SystemInterfaceFlags type) {
 			IEnumerable<SystemInfo> systemInfos = null;
 
-			switch (type)
-			{
+			switch (type) {
 				case SystemInterfaceFlags.InitializeSystem:
 					systemInfos = systems.InitializeSystemInfos
 						.Where(systemInfo => systemInfo.InitializationDuration >= _threshold);
@@ -424,65 +385,45 @@ namespace Zentitas.VisualDebugging.Editor
 			systemInfos = GetSortedSystemInfos(systemInfos, _systemSortMethod);
 
 			var systemsDrawn = 0;
-			foreach (var systemInfo in systemInfos)
-			{
+			foreach (var systemInfo in systemInfos) {
 				if (systemInfo.System is DebugSystems debugSystems)
-				{
 					if (!ShouldShowSystems(debugSystems, type))
-					{
 						continue;
-					}
-				}
 
-				if (EditorGUILayoutTools.MatchesSearchString(systemInfo.SystemName.ToLower(), _systemNameSearchString.ToLower()))
-				{
-					using (new EditorGUILayout.HorizontalScope())
-					{
+				if (EditorGUILayoutTools.MatchesSearchString(systemInfo.SystemName.ToLower(), _systemNameSearchString.ToLower())) {
+					using (new EditorGUILayout.HorizontalScope()) {
 						var indent = EditorGUI.indentLevel;
 						EditorGUI.indentLevel = 0;
 
 						var wasActive = systemInfo.isActive;
 						var areParentsActive = systemInfo.AreAllParentsActive;
 						if (areParentsActive)
-						{
 							systemInfo.isActive = EditorGUILayout.Toggle(systemInfo.isActive, GUILayout.Width(20));
-						}
 						else
-						{
-							using (new EditorGUI.DisabledScope(true))
-							{
+							using (new EditorGUI.DisabledScope(true)) {
 								EditorGUILayout.Toggle(false, GUILayout.Width(20));
 							}
-						}
 
 						EditorGUI.indentLevel = indent;
 
 						if (systemInfo.isActive != wasActive)
-						{
-							if (systemInfo.System is IReactiveSystem reactiveSystem)
-							{
+							if (systemInfo.System is IReactiveSystem reactiveSystem) {
 								if (systemInfo.isActive)
-								{
 									reactiveSystem.Activate();
-								}
 								else
-								{
 									reactiveSystem.Deactivate();
-								}
 							}
-						}
 
-						using (new EditorGUI.DisabledScope(!systemInfo.isActive || !areParentsActive))
-						{
+						using (new EditorGUI.DisabledScope(!systemInfo.isActive || !areParentsActive)) {
 							var guiStyle = GetSystemStyle(systemInfo, type);
 
-							switch (type)
-							{
+							switch (type) {
 								case SystemInterfaceFlags.InitializeSystem:
 									DrawSimpleSystemInfoPerformance(
 										systemInfo.SystemName,
 										systemInfo.InitializationDuration,
-										guiStyle);
+										guiStyle
+									);
 									break;
 								case SystemInterfaceFlags.FixedUpdateSystem:
 									DrawDetailedSystemInfoPerformance(
@@ -490,7 +431,8 @@ namespace Zentitas.VisualDebugging.Editor
 										systemInfo.AverageFixedUpdateDuration,
 										systemInfo.MinFixedUpdateDuration,
 										systemInfo.MaxFixedUpdateDuration,
-										guiStyle);
+										guiStyle
+									);
 									break;
 								case SystemInterfaceFlags.UpdateSystem:
 									DrawDetailedSystemInfoPerformance(
@@ -498,7 +440,8 @@ namespace Zentitas.VisualDebugging.Editor
 										systemInfo.AverageUpdateDuration,
 										systemInfo.MinUpdateDuration,
 										systemInfo.MaxUpdateDuration,
-										guiStyle);
+										guiStyle
+									);
 									break;
 								case SystemInterfaceFlags.LateUpdateSystem:
 									DrawDetailedSystemInfoPerformance(
@@ -506,7 +449,8 @@ namespace Zentitas.VisualDebugging.Editor
 										systemInfo.AverageLateUpdateDuration,
 										systemInfo.MinLateUpdateDuration,
 										systemInfo.MaxLateUpdateDuration,
-										guiStyle);
+										guiStyle
+									);
 									break;
 								case SystemInterfaceFlags.ReactiveSystem:
 									DrawDetailedSystemInfoPerformance(
@@ -514,7 +458,8 @@ namespace Zentitas.VisualDebugging.Editor
 										systemInfo.AverageReactiveDuration,
 										systemInfo.MinReactiveDuration,
 										systemInfo.MaxReactiveDuration,
-										guiStyle);
+										guiStyle
+									);
 									break;
 								case SystemInterfaceFlags.CleanupSystem:
 									DrawDetailedSystemInfoPerformance(
@@ -522,13 +467,15 @@ namespace Zentitas.VisualDebugging.Editor
 										systemInfo.AverageCleanupDuration,
 										systemInfo.MinCleanupDuration,
 										systemInfo.MaxCleanupDuration,
-										guiStyle);
+										guiStyle
+									);
 									break;
 								case SystemInterfaceFlags.TearDownSystem:
 									DrawSimpleSystemInfoPerformance(
 										systemInfo.SystemName,
 										systemInfo.TeardownDuration,
-										guiStyle);
+										guiStyle
+									);
 									break;
 								default:
 									throw new ArgumentOutOfRangeException(nameof(type), type, null);
@@ -539,8 +486,7 @@ namespace Zentitas.VisualDebugging.Editor
 					systemsDrawn += 1;
 				}
 
-				if (systemInfo.System is DebugSystems debugSystem)
-				{
+				if (systemInfo.System is DebugSystems debugSystem) {
 					var indent = EditorGUI.indentLevel;
 					EditorGUI.indentLevel += 1;
 					systemsDrawn += DrawSystemInfos(debugSystem, type);
@@ -554,10 +500,9 @@ namespace Zentitas.VisualDebugging.Editor
 		private void DrawSimpleSystemInfoPerformance(
 			string systemName,
 			double duration,
-			GUIStyle style)
-		{
-			using (new EditorGUILayout.HorizontalScope())
-			{
+			GUIStyle style
+		) {
+			using (new EditorGUILayout.HorizontalScope()) {
 				EditorGUILayout.LabelField(systemName, style);
 				EditorGUILayout.LabelField(string.Format(DURATION_TIME_FORMAT, duration), style);
 				GUILayout.FlexibleSpace();
@@ -569,8 +514,8 @@ namespace Zentitas.VisualDebugging.Editor
 			double averageDuration,
 			double minDuration,
 			double maxDuration,
-			GUIStyle style)
-		{
+			GUIStyle style
+		) {
 			const string AVERAGE_FORMAT = "Avg {0:00.000}";
 			const string MIN_FORMAT = "▼ {0:00.000}";
 			const string MAX_FORMAT = "▲ {0:00.000}";
@@ -580,16 +525,13 @@ namespace Zentitas.VisualDebugging.Editor
 			STRING_BUILDER.Append(string.Format(MIN_FORMAT, minDuration).PadRight(12));
 			STRING_BUILDER.Append(string.Format(MAX_FORMAT, maxDuration));
 
-			using (new EditorGUILayout.HorizontalScope())
-			{
+			using (new EditorGUILayout.HorizontalScope()) {
 				EditorGUILayout.LabelField(systemName, STRING_BUILDER.ToString(), style);
 			}
 		}
 
-		private static IEnumerable<SystemInfo> GetSortedSystemInfos(IEnumerable<SystemInfo> systemInfos, SortMethod sortMethod)
-		{
-			switch (sortMethod)
-			{
+		private static IEnumerable<SystemInfo> GetSortedSystemInfos(IEnumerable<SystemInfo> systemInfos, SortMethod sortMethod) {
+			switch (sortMethod) {
 				case SortMethod.Name:
 					return systemInfos.OrderBy(systemInfo => systemInfo.SystemName);
 				case SortMethod.NameDescending:
@@ -603,15 +545,11 @@ namespace Zentitas.VisualDebugging.Editor
 			}
 		}
 
-		private static bool ShouldShowSystems(DebugSystems systems, SystemInterfaceFlags type)
-		{
+		private static bool ShouldShowSystems(DebugSystems systems, SystemInterfaceFlags type) {
 			if (!_hideEmptySystems)
-			{
 				return true;
-			}
 
-			switch (type)
-			{
+			switch (type) {
 				case SystemInterfaceFlags.InitializeSystem:
 					return systems.TotalInitializeSystemsCount > 0;
 				case SystemInterfaceFlags.FixedUpdateSystem:
@@ -631,78 +569,59 @@ namespace Zentitas.VisualDebugging.Editor
 			}
 		}
 
-		private GUIStyle GetSystemStyle(SystemInfo systemInfo, SystemInterfaceFlags systemFlag)
-		{
+		private GUIStyle GetSystemStyle(SystemInfo systemInfo, SystemInterfaceFlags systemFlag) {
 			var style = new GUIStyle(GUI.skin.label);
 			var color = systemInfo.IsReactiveSystems && EditorGUIUtility.isProSkin
 				? Color.white
 				: style.normal.textColor;
 
 			if (systemFlag == SystemInterfaceFlags.FixedUpdateSystem &&
-				systemInfo.AverageFixedUpdateDuration >= VisualDebuggingPreferences.SystemWarningThreshold)
-			{
+			    systemInfo.AverageFixedUpdateDuration >= VisualDebuggingPreferences.SystemWarningThreshold)
 				color = Color.red;
-			}
 
 			if (systemFlag == SystemInterfaceFlags.UpdateSystem &&
-				systemInfo.AverageUpdateDuration >= VisualDebuggingPreferences.SystemWarningThreshold)
-			{
+			    systemInfo.AverageUpdateDuration >= VisualDebuggingPreferences.SystemWarningThreshold)
 				color = Color.red;
-			}
 
 			if (systemFlag == SystemInterfaceFlags.LateUpdateSystem &&
-				systemInfo.AverageLateUpdateDuration >= VisualDebuggingPreferences.SystemWarningThreshold)
-			{
+			    systemInfo.AverageLateUpdateDuration >= VisualDebuggingPreferences.SystemWarningThreshold)
 				color = Color.red;
-			}
 
 			if (systemFlag == SystemInterfaceFlags.ReactiveSystem &&
-				systemInfo.AverageReactiveDuration >= VisualDebuggingPreferences.SystemWarningThreshold)
-			{
+			    systemInfo.AverageReactiveDuration >= VisualDebuggingPreferences.SystemWarningThreshold)
 				color = Color.red;
-			}
 
 			if (systemFlag == SystemInterfaceFlags.CleanupSystem &&
-				systemInfo.AverageCleanupDuration >= VisualDebuggingPreferences.SystemWarningThreshold)
-			{
+			    systemInfo.AverageCleanupDuration >= VisualDebuggingPreferences.SystemWarningThreshold)
 				color = Color.red;
-			}
 
 			style.normal.textColor = color;
 
 			return style;
 		}
 
-		private void AddSystemDurations(DebugSystems systems)
-		{
+		private void AddSystemDurations(DebugSystems systems) {
 			// OnInspectorGUI is called twice per frame - only add duration once
-			if (Time.renderedFrameCount != _lastRenderedFrameCount)
-			{
+			if (Time.renderedFrameCount != _lastRenderedFrameCount) {
 				_lastRenderedFrameCount = Time.renderedFrameCount;
 
 				// Execute System
 				if (_updateSystemMonitorData.Count >= SYSTEM_MONITOR_DATA_LENGTH)
-				{
 					_updateSystemMonitorData.Dequeue();
-				}
 
-				_updateSystemMonitorData.Enqueue((float)systems.UpdateDuration);
+				_updateSystemMonitorData.Enqueue((float) systems.UpdateDuration);
 
 				// Fixed Update System
 				if (_fixedUpdateSystemMonitorData.Count >= SYSTEM_MONITOR_DATA_LENGTH)
-				{
 					_fixedUpdateSystemMonitorData.Dequeue();
-				}
 
-				_fixedUpdateSystemMonitorData.Enqueue((float)systems.FixedUpdateDuration);
+				_fixedUpdateSystemMonitorData.Enqueue((float) systems.FixedUpdateDuration);
 
 				// Late Update System
 				if (_lateUpdateSystemMonitorData.Count >= SYSTEM_MONITOR_DATA_LENGTH)
-				{
 					_lateUpdateSystemMonitorData.Dequeue();
-				}
 
-				_lateUpdateSystemMonitorData.Enqueue((float)systems.LateUpdateDuration + +(float)systems.CleanupDuration);
+				_lateUpdateSystemMonitorData.Enqueue((float) systems.LateUpdateDuration + +(float) systems.CleanupDuration);
 			}
 		}
 	}

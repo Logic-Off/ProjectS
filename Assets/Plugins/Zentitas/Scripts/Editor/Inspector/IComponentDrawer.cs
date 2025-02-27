@@ -1,8 +1,7 @@
 ﻿/*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -25,10 +24,8 @@ THE SOFTWARE.
 
 using System;
 
-namespace Zentitas.Editor
-{
-	public interface IComponentDrawer
-	{
+namespace Zentitas.Editor {
+	public interface IComponentDrawer {
 		bool HandlesType(Type type);
 
 		IComponent DrawComponent(IComponent component);

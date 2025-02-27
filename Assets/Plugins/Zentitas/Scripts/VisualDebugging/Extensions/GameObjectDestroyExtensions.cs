@@ -1,8 +1,7 @@
 /*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -25,20 +24,13 @@ THE SOFTWARE.
 
 using UnityEngine;
 
-namespace Zentitas.VisualDebugging
-{
-	internal static class GameObjectDestroyExtensions
-	{
-		public static void DestroyGameObject(this GameObject gameObject)
-		{
+namespace Zentitas.VisualDebugging {
+	internal static class GameObjectDestroyExtensions {
+		public static void DestroyGameObject(this GameObject gameObject) {
 			if (Application.isPlaying)
-			{
 				Object.Destroy(gameObject);
-			}
 			else
-			{
 				Object.DestroyImmediate(gameObject);
-			}
 		}
 	}
 }

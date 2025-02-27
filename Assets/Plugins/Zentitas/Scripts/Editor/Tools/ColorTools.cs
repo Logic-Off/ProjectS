@@ -1,8 +1,7 @@
 ﻿/*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -41,9 +40,8 @@ namespace Zentitas.Editor {
 			var b = byte.Parse(hexValue.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
 			var a = 0f;
 
-			if (hexValue.Length == 8) {
+			if (hexValue.Length == 8)
 				a = byte.Parse(hexValue.Substring(6, 2), System.Globalization.NumberStyles.HexNumber);
-			}
 
 			return new Color(
 				r / 255f,

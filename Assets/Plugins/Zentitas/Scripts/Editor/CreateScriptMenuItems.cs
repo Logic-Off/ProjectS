@@ -1,8 +1,7 @@
 ﻿/*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -43,38 +42,24 @@ namespace Zentitas.Editor {
 		private const string MENU_ITEM_PREFIX = "Assets/Create/Zentitas/";
 
 		[MenuItem(MENU_ITEM_PREFIX + "Component")]
-		private static void CreateEntitasComponent() {
-			ScriptTools.CreateScriptAsset(SCRIPT_TEMPLATE_FOLDER_GUID, COMPONENT_FILE_NAME);
-		}
+		private static void CreateEntitasComponent() => ScriptTools.CreateScriptAsset(SCRIPT_TEMPLATE_FOLDER_GUID, COMPONENT_FILE_NAME);
 
 		[MenuItem(MENU_ITEM_PREFIX + "InitializeSystem")]
-		private static void CreateEntitasInitializeSystem() {
-			ScriptTools.CreateScriptAsset(SCRIPT_TEMPLATE_FOLDER_GUID, INITIALIZE_SYSTEM_FILE_NAME);
-		}
+		private static void CreateEntitasInitializeSystem() => ScriptTools.CreateScriptAsset(SCRIPT_TEMPLATE_FOLDER_GUID, INITIALIZE_SYSTEM_FILE_NAME);
 
 		[MenuItem(MENU_ITEM_PREFIX + "FixedUpdateSystem")]
-		private static void CreateEntitasFixedUpdateSystem() {
-			ScriptTools.CreateScriptAsset(SCRIPT_TEMPLATE_FOLDER_GUID, FIXED_UPDATE_SYSTEM_FILE_NAME);
-		}
+		private static void CreateEntitasFixedUpdateSystem() => ScriptTools.CreateScriptAsset(SCRIPT_TEMPLATE_FOLDER_GUID, FIXED_UPDATE_SYSTEM_FILE_NAME);
 
 		[MenuItem(MENU_ITEM_PREFIX + "UpdateSystem")]
-		private static void CreateEntitasUpdateSystem() {
-			ScriptTools.CreateScriptAsset(SCRIPT_TEMPLATE_FOLDER_GUID, UPDATE_SYSTEM_FILE_NAME);
-		}
+		private static void CreateEntitasUpdateSystem() => ScriptTools.CreateScriptAsset(SCRIPT_TEMPLATE_FOLDER_GUID, UPDATE_SYSTEM_FILE_NAME);
 
 		[MenuItem(MENU_ITEM_PREFIX + "LateUpdateSystem")]
-		private static void CreateEntitasLateUpdateSystem() {
-			ScriptTools.CreateScriptAsset(SCRIPT_TEMPLATE_FOLDER_GUID, LATE_UPDATE_SYSTEM_FILE_NAME);
-		}
+		private static void CreateEntitasLateUpdateSystem() => ScriptTools.CreateScriptAsset(SCRIPT_TEMPLATE_FOLDER_GUID, LATE_UPDATE_SYSTEM_FILE_NAME);
 
 		[MenuItem(MENU_ITEM_PREFIX + "ReactiveSystem")]
-		private static void CreateEntitasReactiveSystem() {
-			ScriptTools.CreateScriptAsset(SCRIPT_TEMPLATE_FOLDER_GUID, REACTIVE_SYSTEM_FILE_NAME);
-		}
+		private static void CreateEntitasReactiveSystem() => ScriptTools.CreateScriptAsset(SCRIPT_TEMPLATE_FOLDER_GUID, REACTIVE_SYSTEM_FILE_NAME);
 
 		[MenuItem(MENU_ITEM_PREFIX + "CleanupSystem")]
-		private static void CreateEntitasCleanupSystem() {
-			ScriptTools.CreateScriptAsset(SCRIPT_TEMPLATE_FOLDER_GUID, CLEANUP_SYSTEM_FILE_NAME);
-		}
+		private static void CreateEntitasCleanupSystem() => ScriptTools.CreateScriptAsset(SCRIPT_TEMPLATE_FOLDER_GUID, CLEANUP_SYSTEM_FILE_NAME);
 	}
 }

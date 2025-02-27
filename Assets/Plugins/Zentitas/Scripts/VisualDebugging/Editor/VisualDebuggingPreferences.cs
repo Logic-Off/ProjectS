@@ -1,8 +1,7 @@
 ﻿/*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -27,30 +26,23 @@ using Zentitas.Editor;
 using UnityEditor;
 using UnityEngine;
 
-namespace Zentitas.VisualDebugging.Editor
-{
+namespace Zentitas.VisualDebugging.Editor {
 	/// <summary>
 	/// User preferences for visual debugging
 	/// </summary>
-	public static class VisualDebuggingPreferences
-	{
+	public static class VisualDebuggingPreferences {
 		/// <summary>
 		/// The threshold of time in milliseconds that system performance must meet or exceed to warrant appearing as
 		/// a warning.
 		/// </summary>
-		public static int SystemWarningThreshold
-		{
-			get
-			{
+		public static int SystemWarningThreshold {
+			get {
 				if (!_systemWarningThreshold.HasValue)
-				{
 					_systemWarningThreshold = PreferenceTools.GetIntPref(SYSTEM_WARNING_THRESHOLD_PREF_KEY, DEFAULT_VALUE);
-				}
 
 				return Mathf.Max(0, _systemWarningThreshold.Value);
 			}
-			set
-			{
+			set {
 				_systemWarningThreshold = Mathf.Max(0, value);
 				EditorPrefs.SetInt(SYSTEM_WARNING_THRESHOLD_PREF_KEY, _systemWarningThreshold.Value);
 			}
@@ -59,19 +51,14 @@ namespace Zentitas.VisualDebugging.Editor
 		/// <summary>
 		/// The color shown for visual debug editor UX for <see cref="IFixedUpdateSystem"/>.
 		/// </summary>
-		public static Color FixedUpdateColor
-		{
-			get
-			{
+		public static Color FixedUpdateColor {
+			get {
 				if (!_fixedUpdateColor.HasValue)
-				{
 					_fixedUpdateColor = PreferenceTools.GetColorPref(FIXED_UPDATE_COLOR_PREF_KEY, DEFAULT_FIXED_UPDATE_COLOR);
-				}
 
 				return _fixedUpdateColor.Value;
 			}
-			set
-			{
+			set {
 				_fixedUpdateColor = value;
 				EditorPrefs.SetString(FIXED_UPDATE_COLOR_PREF_KEY, value.ToHexWithAlpha());
 			}
@@ -80,19 +67,14 @@ namespace Zentitas.VisualDebugging.Editor
 		/// <summary>
 		/// The color shown for visual debug editor UX for <see cref="IUpdateSystem"/>.
 		/// </summary>
-		public static Color UpdateColor
-		{
-			get
-			{
+		public static Color UpdateColor {
+			get {
 				if (!_updateColor.HasValue)
-				{
 					_updateColor = PreferenceTools.GetColorPref(UPDATE_COLOR_PREF_KEY, DEFAULT_UPDATE_COLOR);
-				}
 
 				return _updateColor.Value;
 			}
-			set
-			{
+			set {
 				_updateColor = value;
 				EditorPrefs.SetString(UPDATE_COLOR_PREF_KEY, value.ToHexWithAlpha());
 			}
@@ -101,19 +83,14 @@ namespace Zentitas.VisualDebugging.Editor
 		/// <summary>
 		/// The color shown for visual debug editor UX for <see cref="IUpdateSystem"/>.
 		/// </summary>
-		public static Color LateUpdateColor
-		{
-			get
-			{
+		public static Color LateUpdateColor {
+			get {
 				if (!_lateUpdateColor.HasValue)
-				{
 					_lateUpdateColor = PreferenceTools.GetColorPref(LATE_UPDATE_COLOR_PREF_KEY, DEFAULT_LATE_UPDATE_COLOR);
-				}
 
 				return _lateUpdateColor.Value;
 			}
-			set
-			{
+			set {
 				_lateUpdateColor = value;
 				EditorPrefs.SetString(LATE_UPDATE_COLOR_PREF_KEY, value.ToHexWithAlpha());
 			}
@@ -122,19 +99,14 @@ namespace Zentitas.VisualDebugging.Editor
 		/// <summary>
 		/// The color shown for visual debug editor UX for <see cref="IReactiveSystem"/>.
 		/// </summary>
-		public static Color ReactiveColor
-		{
-			get
-			{
+		public static Color ReactiveColor {
+			get {
 				if (!_reactiveColor.HasValue)
-				{
 					_reactiveColor = PreferenceTools.GetColorPref(REACTIVE_COLOR_PREF_KEY, DEFAULT_REACTIVE_COLOR);
-				}
 
 				return _reactiveColor.Value;
 			}
-			set
-			{
+			set {
 				_reactiveColor = value;
 				EditorPrefs.SetString(REACTIVE_COLOR_PREF_KEY, value.ToHexWithAlpha());
 			}
@@ -143,19 +115,14 @@ namespace Zentitas.VisualDebugging.Editor
 		/// <summary>
 		/// The color shown for visual debug editor UX for average.
 		/// </summary>
-		public static Color AverageColor
-		{
-			get
-			{
+		public static Color AverageColor {
+			get {
 				if (!_averageColor.HasValue)
-				{
 					_averageColor = PreferenceTools.GetColorPref(AVERAGE_COLOR_PREF_KEY, DEFAULT_AVERAGE_COLOR);
-				}
 
 				return _averageColor.Value;
 			}
-			set
-			{
+			set {
 				_lateUpdateColor = value;
 				EditorPrefs.SetString(AVERAGE_COLOR_PREF_KEY, value.ToHexWithAlpha());
 			}
@@ -171,7 +138,7 @@ namespace Zentitas.VisualDebugging.Editor
 
 		// Defaults
 		private const int DEFAULT_VALUE = 5;
-		private static readonly Color DEFAULT_UPDATE_COLOR = new Color(0.407f, 0f, 1f); // Purple
+		private static readonly Color DEFAULT_UPDATE_COLOR = new(0.407f, 0f, 1f); // Purple
 		private static readonly Color DEFAULT_FIXED_UPDATE_COLOR = Color.cyan;
 		private static readonly Color DEFAULT_LATE_UPDATE_COLOR = Color.green;
 		private static readonly Color DEFAULT_REACTIVE_COLOR = Color.white;

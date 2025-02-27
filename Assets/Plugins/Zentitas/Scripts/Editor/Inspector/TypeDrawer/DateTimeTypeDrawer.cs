@@ -1,8 +1,7 @@
 /*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -26,18 +25,12 @@ THE SOFTWARE.
 using System;
 using UnityEditor;
 
-namespace Zentitas.Editor
-{
-	public class DateTimeTypeDrawer : ITypeDrawer
-	{
-		public bool HandlesType(Type type)
-		{
-			return type == typeof(DateTime);
-		}
+namespace Zentitas.Editor {
+	public class DateTimeTypeDrawer : ITypeDrawer {
+		public bool HandlesType(Type type) => type == typeof(DateTime);
 
 		// Note: This is a very basic implementation. The ToString() method conversion will cut off milliseconds.
-		public object DrawAndGetNewValue(Type memberType, string memberName, object value, object target)
-		{
+		public object DrawAndGetNewValue(Type memberType, string memberName, object value, object target) {
 			var dateString = value.ToString();
 			var newDateString = EditorGUILayout.TextField(memberName, dateString);
 

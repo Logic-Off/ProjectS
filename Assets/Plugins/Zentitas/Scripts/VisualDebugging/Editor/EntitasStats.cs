@@ -1,8 +1,7 @@
 ﻿/*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -30,25 +29,22 @@ using Genesis.Shared;
 using UnityEditor;
 using UnityEngine;
 
-namespace Zentitas.VisualDebugging.Editor
-{
-	internal static class EntitasStats
-	{
+namespace Zentitas.VisualDebugging.Editor {
+	internal static class EntitasStats {
 		[MenuItem("Tools/JCMG/Zentitas/Show Stats", false, 200)]
-		public static void ShowStats()
-		{
+		public static void ShowStats() {
 			var stats = string.Join(
 				"\n",
 				GetStats()
 					.Select(kv => kv.Key + ": " + kv.Value)
-					.ToArray());
+					.ToArray()
+			);
 
 			Debug.Log(stats);
 			EditorUtility.DisplayDialog("Zentitas Stats", stats, "Close");
 		}
 
-		public static Dictionary<string, int> GetStats()
-		{
+		public static Dictionary<string, int> GetStats() {
 			var types = ReflectionTools.GetAvailableAssemblies().SelectMany(x => x.GetTypes());
 
 			var components = types
@@ -61,78 +57,57 @@ namespace Zentitas.VisualDebugging.Editor
 
 			var contexts = GetContexts(components);
 
-			var stats = new Dictionary<string, int>
-			{
+			var stats = new Dictionary<string, int> {
 				{
 					"Total Components", components.Length
-				},
-				{
+				}, {
 					"Systems", systems.Length
 				}
 			};
 
 			foreach (var context in contexts)
-			{
 				stats.Add("Components in " + context.Key, context.Value);
-			}
 
 			return stats;
 		}
 
-		private static Dictionary<string, int> GetContexts(Type[] components)
-		{
-			return components.Aggregate(
-				new Dictionary<string, int>(),
-				(contexts, type) =>
-				{
-					var contextNames = GetContextNamesOrDefault(type);
-					foreach (var contextName in contextNames)
-					{
-						if (!contexts.ContainsKey(contextName))
-						{
-							contexts.Add(contextName, 0);
-						}
+		private static Dictionary<string, int> GetContexts(Type[] components) => components.Aggregate(
+			new Dictionary<string, int>(),
+			(contexts, type) => {
+				var contextNames = GetContextNamesOrDefault(type);
+				foreach (var contextName in contextNames) {
+					if (!contexts.ContainsKey(contextName))
+						contexts.Add(contextName, 0);
 
-						contexts[contextName] += 1;
-					}
+					contexts[contextName] += 1;
+				}
 
-					return contexts;
-				});
-		}
+				return contexts;
+			}
+		);
 
+		private static string[] GetContextNames(Type type) => Attribute
+			.GetCustomAttributes(type)
+			.OfType<ContextAttribute>()
+			.Select(attr => attr.contextName)
+			.ToArray();
 
-		private static string[] GetContextNames(Type type)
-		{
-			return Attribute
-				.GetCustomAttributes(type)
-				.OfType<ContextAttribute>()
-				.Select(attr => attr.contextName)
-				.ToArray();
-		}
-
-		private static string[] GetContextNamesOrDefault(Type type)
-		{
+		private static string[] GetContextNamesOrDefault(Type type) {
 			var contextNames = GetContextNames(type);
 			if (contextNames.Length == 0)
-			{
-				contextNames = new[]
-				{
+				contextNames = new[] {
 					"Default"
 				};
-			}
 
 			return contextNames;
 		}
 
-		private static bool IsSystem(Type type)
-		{
-			return type.ImplementsInterface<ISystem>() &&
-				   type != typeof(ReactiveSystem<>) &&
-				   type != typeof(MultiReactiveSystem<,>) &&
-				   type != typeof(Systems) &&
-				   type != typeof(DebugSystems) &&
-				   type != typeof(JobSystem<>) &&
-				   type.FullName != "Feature";
-		}
+		private static bool IsSystem(Type type) => type.ImplementsInterface<ISystem>() &&
+		                                           type != typeof(ReactiveSystem<>) &&
+		                                           type != typeof(MultiReactiveSystem<,>) &&
+		                                           type != typeof(Systems) &&
+		                                           type != typeof(DebugSystems) &&
+		                                           type != typeof(JobSystem<>) &&
+		                                           type.FullName != "Feature";
 	}
 }

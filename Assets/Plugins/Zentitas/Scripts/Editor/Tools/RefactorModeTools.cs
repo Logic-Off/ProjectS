@@ -1,8 +1,7 @@
 ﻿/*
-
 MIT License
 
-Copyright (c) 2020 Jeff Campbell
+Copyright (c) 2025 Andrey Abramkin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -51,9 +50,8 @@ namespace Zentitas.Editor {
 		/// <see cref="PlayerSettings"/> if not already present.
 		/// </summary>
 		public static void EnableRefactorMode() {
-			if (EditorApplication.isCompiling) {
+			if (EditorApplication.isCompiling)
 				return;
-			}
 
 			PlayerSettingsTools.AddScriptingSymbol(SCRIPTING_SYMBOL);
 
@@ -65,9 +63,8 @@ namespace Zentitas.Editor {
 		/// <see cref="PlayerSettings"/> if present.
 		/// </summary>
 		internal static void DisableRefactorMode() {
-			if (EditorApplication.isCompiling) {
+			if (EditorApplication.isCompiling)
 				return;
-			}
 
 			PlayerSettingsTools.RemoveScriptingSymbol(SCRIPTING_SYMBOL);
 
