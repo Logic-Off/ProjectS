@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using JCMG.EntitasRedux;
+using Zentitas;
 
 namespace Ecs.Common {
 	[Game, Structure]

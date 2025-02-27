@@ -1,4 +1,4 @@
-﻿using JCMG.EntitasRedux;
+﻿using Zentitas;
 using UnityEngine;
 
 namespace Ecs.Common {

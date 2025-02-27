@@ -1,5 +1,5 @@
 ﻿using Ecs.Common;
-using JCMG.EntitasRedux;
+using Zentitas;
 
 namespace Ecs.Game {
 }

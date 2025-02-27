@@ -1,5 +1,5 @@
 ﻿using Common;
-using JCMG.EntitasRedux;
+using Zentitas;
 using UnityEngine.ResourceManagement.ResourceProviders;
 
 namespace Ecs.Shared {
@@ -16,10 +16,11 @@ namespace Ecs.Shared {
 		public LocationId Value;
 	}
 
-	[Shared]
+	[Shared, DontDrawComponent]
 	public sealed class LocationDataComponent : IComponent {
 		public SceneInstance Scene;
 		public SceneInstance Manager;
+		public override string ToString() => $"";
 	}
 
 	[Shared]

@@ -1,4 +1,4 @@
-using JCMG.EntitasRedux;
+using Zentitas;
 
 public abstract class AGlobalContext<T> where T : IContext {
 	public T Context { get; }

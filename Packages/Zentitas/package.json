@@ -1,0 +1,8 @@
+﻿{
+  "name": "com.logicoff.zentitas",
+  "version": "1.0.0",
+  "displayName": "Zentitas",
+  "description": "Zentitas",
+  "unity": "2022.3",
+  "dependencies": { }
+}

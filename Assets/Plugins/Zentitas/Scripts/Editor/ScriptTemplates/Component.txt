@@ -1,0 +1,9 @@
+﻿using Zentitas;
+
+namespace #NAMESPACE#
+{
+	public class #SCRIPTNAME# : IComponent
+	{
+
+	}
+}

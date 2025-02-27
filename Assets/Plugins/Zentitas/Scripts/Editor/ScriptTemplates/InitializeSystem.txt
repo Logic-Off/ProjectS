@@ -1,0 +1,15 @@
+﻿using Zentitas;
+
+namespace #NAMESPACE#
+{
+	public class #SCRIPTNAME# : IInitializeSystem
+	{
+		/// <summary>
+		/// Performs any required initialization logic.
+		/// </summary>
+		public void Initialize()
+		{
+
+		}
+	}
+}

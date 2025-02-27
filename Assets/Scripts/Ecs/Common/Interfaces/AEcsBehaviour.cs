@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using JCMG.EntitasRedux;
+using Zentitas;
 
 namespace Ecs.Common {
 	public abstract class AEcsBehaviour<T, V> : MonoBehaviour where T : class, IEntity where V : AEcsChildBehaviour<T> {

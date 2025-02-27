@@ -16,6 +16,12 @@
       "source": "embedded",
       "dependencies": {}
     },
+    "com.logicoff.zentitas": {
+      "version": "file:Zentitas",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.unity.addressables": {
       "version": "2.2.2",
       "depth": 0,

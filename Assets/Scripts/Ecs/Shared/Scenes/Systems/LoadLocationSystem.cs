@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using JCMG.EntitasRedux;
+using Zentitas;
 using Utopia;
 
 namespace Ecs.Shared {
