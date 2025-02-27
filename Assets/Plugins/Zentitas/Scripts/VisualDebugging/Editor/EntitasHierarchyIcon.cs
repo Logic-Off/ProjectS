@@ -22,7 +22,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-using Zentitas.Editor;
 using UnityEditor;
 using UnityEngine;
 
@@ -32,7 +31,7 @@ namespace Zentitas.VisualDebugging.Editor {
 		private static Texture2D ContextHierarchyIcon {
 			get {
 				if (_contextHierarchyIcon == null)
-					_contextHierarchyIcon = EditorGUILayoutTools.LoadTexture("l:EntitasContextHierarchyIcon");
+					_contextHierarchyIcon = Zentitas.Editor.EditorGUILayoutTools.LoadTexture("l:EntitasContextHierarchyIcon");
 
 				return _contextHierarchyIcon;
 			}
@@ -41,7 +40,7 @@ namespace Zentitas.VisualDebugging.Editor {
 		private static Texture2D ContextErrorHierarchyIcon {
 			get {
 				if (_contextErrorHierarchyIcon == null)
-					_contextErrorHierarchyIcon = EditorGUILayoutTools.LoadTexture("l:EntitasContextErrorHierarchyIcon");
+					_contextErrorHierarchyIcon = Zentitas.Editor.EditorGUILayoutTools.LoadTexture("l:EntitasContextErrorHierarchyIcon");
 
 				return _contextErrorHierarchyIcon;
 			}
@@ -50,7 +49,7 @@ namespace Zentitas.VisualDebugging.Editor {
 		private static Texture2D EntityHierarchyIcon {
 			get {
 				if (_entityHierarchyIcon == null)
-					_entityHierarchyIcon = EditorGUILayoutTools.LoadTexture("l:EntitasEntityHierarchyIcon");
+					_entityHierarchyIcon = Zentitas.Editor.EditorGUILayoutTools.LoadTexture("l:EntitasEntityHierarchyIcon");
 
 				return _entityHierarchyIcon;
 			}
@@ -59,7 +58,7 @@ namespace Zentitas.VisualDebugging.Editor {
 		private static Texture2D EntityErrorHierarchyIcon {
 			get {
 				if (_entityErrorHierarchyIcon == null)
-					_entityErrorHierarchyIcon = EditorGUILayoutTools.LoadTexture("l:EntitasEntityErrorHierarchyIcon");
+					_entityErrorHierarchyIcon = Zentitas.Editor.EditorGUILayoutTools.LoadTexture("l:EntitasEntityErrorHierarchyIcon");
 
 				return _entityErrorHierarchyIcon;
 			}
@@ -68,7 +67,7 @@ namespace Zentitas.VisualDebugging.Editor {
 		private static Texture2D EntityLinkHierarchyIcon {
 			get {
 				if (_entityLinkHierarchyIcon == null)
-					_entityLinkHierarchyIcon = EditorGUILayoutTools.LoadTexture("l:EntitasEntityLinkHierarchyIcon");
+					_entityLinkHierarchyIcon = Zentitas.Editor.EditorGUILayoutTools.LoadTexture("l:EntitasEntityLinkHierarchyIcon");
 
 				return _entityLinkHierarchyIcon;
 			}
@@ -77,7 +76,7 @@ namespace Zentitas.VisualDebugging.Editor {
 		private static Texture2D EntityLinkWarnHierarchyIcon {
 			get {
 				if (_entityLinkWarnHierarchyIcon == null)
-					_entityLinkWarnHierarchyIcon = EditorGUILayoutTools.LoadTexture("l:EntitasEntityLinkWarnHierarchyIcon");
+					_entityLinkWarnHierarchyIcon = Zentitas.Editor.EditorGUILayoutTools.LoadTexture("l:EntitasEntityLinkWarnHierarchyIcon");
 
 				return _entityLinkWarnHierarchyIcon;
 			}
@@ -86,7 +85,7 @@ namespace Zentitas.VisualDebugging.Editor {
 		private static Texture2D SystemsHierarchyIcon {
 			get {
 				if (_systemsHierarchyIcon == null)
-					_systemsHierarchyIcon = EditorGUILayoutTools.LoadTexture("l:EntitasSystemsHierarchyIcon");
+					_systemsHierarchyIcon = Zentitas.Editor.EditorGUILayoutTools.LoadTexture("l:EntitasSystemsHierarchyIcon");
 
 				return _systemsHierarchyIcon;
 			}
@@ -95,7 +94,7 @@ namespace Zentitas.VisualDebugging.Editor {
 		private static Texture2D SystemsWarnHierarchyIcon {
 			get {
 				if (_systemsWarnHierarchyIcon == null)
-					_systemsWarnHierarchyIcon = EditorGUILayoutTools.LoadTexture("l:EntitasSystemsWarnHierarchyIcon");
+					_systemsWarnHierarchyIcon = Zentitas.Editor.EditorGUILayoutTools.LoadTexture("l:EntitasSystemsWarnHierarchyIcon");
 
 				return _systemsWarnHierarchyIcon;
 			}

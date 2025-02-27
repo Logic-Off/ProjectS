@@ -31,7 +31,7 @@ using UnityEngine;
 
 namespace Zentitas.VisualDebugging.Editor {
 	internal static class EntitasStats {
-		[MenuItem("Tools/JCMG/Zentitas/Show Stats", false, 200)]
+		[MenuItem("Tools/Zentitas/Show Stats", false, 200)]
 		public static void ShowStats() {
 			var stats = string.Join(
 				"\n",

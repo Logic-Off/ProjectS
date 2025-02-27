@@ -26,31 +26,28 @@ using UnityEngine;
 
 namespace Zentitas.Editor {
 	public static class ZentitasStyles {
-		public const string GROUP_BOX_STYLE = "GroupBox";
+		public const string GroupBox = "GroupBox";
+		private static GUIStyle _header;
+		private static GUIStyle _content;
 
-		public static GUIStyle SectionHeader {
+		public static GUIStyle Header {
 			get {
-				if (_SECTION_HEADER == null) {
-					_SECTION_HEADER = new GUIStyle("OL Title");
-					_SECTION_HEADER.fontStyle = FontStyle.Bold;
-				}
+				if (_header == null)
+					_header = new GUIStyle("OL Title");
 
-				return _SECTION_HEADER;
+				return _header;
 			}
 		}
 
-		public static GUIStyle SectionContent {
+		public static GUIStyle Content {
 			get {
-				if (_SECTION_CONTENT == null) {
-					_SECTION_CONTENT = new GUIStyle("OL Box");
-					_SECTION_CONTENT.stretchHeight = false;
+				if (_content == null) {
+					_content = new GUIStyle("OL Box");
+					_content.stretchHeight = false;
 				}
 
-				return _SECTION_CONTENT;
+				return _content;
 			}
 		}
-
-		private static GUIStyle _SECTION_HEADER;
-		private static GUIStyle _SECTION_CONTENT;
 	}
 }

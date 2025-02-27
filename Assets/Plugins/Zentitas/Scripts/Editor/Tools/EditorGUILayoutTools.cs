@@ -132,7 +132,7 @@ namespace Zentitas.Editor {
 		public static bool DrawSectionHeaderToggle(string header, bool value) => GUILayout.Toggle(
 			value,
 			header,
-			ZentitasStyles.SectionHeader,
+			ZentitasStyles.Header,
 			Array.Empty<GUILayoutOption>()
 		);
 

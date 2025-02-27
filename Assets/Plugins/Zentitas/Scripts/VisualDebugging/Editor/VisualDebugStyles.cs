@@ -33,7 +33,7 @@ namespace Zentitas.VisualDebugging.Editor {
 		public static GUIStyle SectionContent {
 			get {
 				if (_sectionContent == null) {
-					_sectionContent = new GUIStyle(Zentitas.Editor.ZentitasStyles.GROUP_BOX_STYLE);
+					_sectionContent = new GUIStyle(Zentitas.Editor.ZentitasStyles.GroupBox);
 					_sectionContent.padding = new RectOffset(0, 0, 0, 0);
 					_sectionContent.margin = new RectOffset(0, 0, 0, 0);
 					_sectionContent.contentOffset = Vector2.zero;

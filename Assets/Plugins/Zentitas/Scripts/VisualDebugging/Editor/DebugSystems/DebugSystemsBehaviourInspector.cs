@@ -173,7 +173,7 @@ namespace Zentitas.VisualDebugging.Editor {
 		private static void DrawSystemsOverview(DebugSystems systems) {
 			_showDetails = EditorGUILayoutTools.DrawSectionHeaderToggle(DETAILS_TITLE, _showDetails);
 			if (_showDetails)
-				using (new EditorGUILayout.VerticalScope(Zentitas.Editor.ZentitasStyles.SectionContent)) {
+				using (new EditorGUILayout.VerticalScope(Zentitas.Editor.ZentitasStyles.Content)) {
 					EditorGUILayout.LabelField(INITIALIZE_SYSTEMS_COUNT_LABEL, systems.TotalInitializeSystemsCount.ToString());
 					EditorGUILayout.LabelField(FIXED_UPDATE_SYSTEMS_COUNT_LABEL, systems.TotalFixedUpdateSystemsCount.ToString());
 					EditorGUILayout.LabelField(UPDATE_SYSTEMS_COUNT_LABEL, systems.TotalUpdateSystemsCount.ToString());
@@ -260,7 +260,7 @@ namespace Zentitas.VisualDebugging.Editor {
 					LEGEND_LABEL_OPTIONS
 				);
 
-				EditorGUILayoutTools.DrawRectWithBorder(
+				Zentitas.Editor.EditorGUILayoutTools.DrawRectWithBorder(
 					fixedUpdateLegendRect,
 					2f,
 					color,
@@ -287,7 +287,7 @@ namespace Zentitas.VisualDebugging.Editor {
 		private void DrawSystemList(DebugSystems systems) {
 			_showSystemsList = EditorGUILayoutTools.DrawSectionHeaderToggle(SYSTEMS_TITLE, _showSystemsList);
 			if (_showSystemsList)
-				using (new EditorGUILayout.VerticalScope(Zentitas.Editor.ZentitasStyles.SectionContent)) {
+				using (new EditorGUILayout.VerticalScope(Zentitas.Editor.ZentitasStyles.Content)) {
 					EditorGUILayout.HelpBox(SYSTEMS_DESCRIPTION, MessageType.Info);
 
 					using (new EditorGUILayout.HorizontalScope()) {
@@ -316,7 +316,7 @@ namespace Zentitas.VisualDebugging.Editor {
 							EditorStyles.popup,
 							GUILayout.Width(150)
 						);
-						_systemNameSearchString = EditorGUILayoutTools.SearchTextField(_systemNameSearchString);
+						_systemNameSearchString = Zentitas.Editor.EditorGUILayoutTools.SearchTextField(_systemNameSearchString);
 					}
 
 					EditorGUILayout.Space();
@@ -339,7 +339,7 @@ namespace Zentitas.VisualDebugging.Editor {
 		) {
 			showSystems = EditorGUILayoutTools.DrawSectionHeaderToggle(header, showSystems);
 			if (showSystems && ShouldShowSystems(systems, systemInterfaceFlags))
-				using (new EditorGUILayout.VerticalScope(Zentitas.Editor.ZentitasStyles.SectionContent)) {
+				using (new EditorGUILayout.VerticalScope(Zentitas.Editor.ZentitasStyles.Content)) {
 					var systemsDrawn = DrawSystemInfos(systems, systemInterfaceFlags);
 					if (systemsDrawn == 0)
 						EditorGUILayout.LabelField(string.Empty);
@@ -390,7 +390,7 @@ namespace Zentitas.VisualDebugging.Editor {
 					if (!ShouldShowSystems(debugSystems, type))
 						continue;
 
-				if (EditorGUILayoutTools.MatchesSearchString(systemInfo.SystemName.ToLower(), _systemNameSearchString.ToLower())) {
+				if (Zentitas.Editor.EditorGUILayoutTools.MatchesSearchString(systemInfo.SystemName.ToLower(), _systemNameSearchString.ToLower())) {
 					using (new EditorGUILayout.HorizontalScope()) {
 						var indent = EditorGUI.indentLevel;
 						EditorGUI.indentLevel = 0;
