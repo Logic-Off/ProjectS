@@ -1,5 +1,5 @@
 ﻿namespace Utopia {
 	public class UtopiaSettings {
-		public string[] Contexts = {"Game", "Shared", "Structure", "Inventory"};
+		public string[] Contexts = {"Game", "Shared", "Structure", "Inventory", "Input"};
 	}
 }

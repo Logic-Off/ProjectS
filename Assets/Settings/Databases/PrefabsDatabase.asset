@@ -15,7 +15,14 @@ MonoBehaviour:
   All:
   - Name: Player
     AssetReference:
-      m_AssetGUID: 
+      m_AssetGUID: 441443a69899dc84bb0918fbf494e9a4
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - Name: Camera
+    AssetReference:
+      m_AssetGUID: 11769748ba306d54288d45d1d21ae565
       m_SubObjectName: 
       m_SubObjectGUID: 
       m_SubObjectType: 

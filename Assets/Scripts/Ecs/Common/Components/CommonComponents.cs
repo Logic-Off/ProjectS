@@ -36,4 +36,9 @@ namespace Ecs.Common {
 	public sealed class PrefabComponent : IComponent {
 		public string Value;
 	}
+
+	[Game, Structure]
+	public sealed class TransformComponent : IComponent {
+		public Transform Value;
+	}
 }
