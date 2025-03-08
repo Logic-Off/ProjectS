@@ -2,7 +2,7 @@
 using Zentitas;
 
 namespace Ecs.Common {
-	[Game, Structure]
+	[Game, Structure, Character]
 	public sealed class IdComponent : IComponent {
 		[PrimaryEntityIndex] public Id Value;
 	}

@@ -1,4 +1,5 @@
-﻿using Ecs.Common;
+﻿using Ecs.Character;
+using Ecs.Common;
 using UnityEngine;
 using Utopia;
 using Zenject;
@@ -7,7 +8,11 @@ namespace Ecs.Game {
 	[InstallerGenerator("Game")]
 	public class PlayerInitializeSystem : IInitializable {
 		private readonly GameContext _game;
-		public PlayerInitializeSystem(GameContext game) => _game = game;
+		private readonly CharacterFactory _characterFactory;
+		public PlayerInitializeSystem(GameContext game, CharacterFactory characterFactory) {
+			_game = game;
+			_characterFactory = characterFactory;
+		}
 
 		public void Initialize() {
 			var playerEntity = _game.CreateEntity();
@@ -16,6 +21,8 @@ namespace Ecs.Game {
 			playerEntity.AddPosition(Vector3.zero);
 			playerEntity.AddRotation(Quaternion.identity);
 			playerEntity.IsPlayer = true;
+
+			var player = _characterFactory.Create(playerEntity, "Player", 1);
 		}
 	}
 }

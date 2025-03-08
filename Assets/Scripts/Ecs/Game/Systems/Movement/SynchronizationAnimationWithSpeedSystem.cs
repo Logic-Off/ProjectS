@@ -11,7 +11,7 @@ namespace Ecs.Game {
 
 		public SynchronizationAnimationWithSpeedSystem(GameContext game, InputContext input) {
 			_input = input;
-			_group = game.GetGroup(GameMatcher.AllOf(GameMatcher.Animator).AnyOf(GameMatcher.NavmeshAgent, GameMatcher.Authoring));
+			_group = game.GetGroup(GameMatcher.AllOf(GameMatcher.Animator).AnyOf(GameMatcher.NavmeshAgent, GameMatcher.AuthoringAgent));
 		}
 
 		public void Update() {
@@ -37,8 +37,8 @@ namespace Ecs.Game {
 		}
 
 		private Vector3 GetVelocity(GameEntity agent) {
-			if (agent.HasAuthoring) {
-				var authoringAgent = agent.Authoring.Value;
+			if (agent.HasAuthoringAgent) {
+				var authoringAgent = agent.AuthoringAgent.Value;
 				var authoringVelocity = authoringAgent.HasEntityBody ? authoringAgent.EntityBody.Velocity : authoringAgent.DefaultBody.Velocity;
 				return new Vector3(authoringVelocity.x, 0, authoringVelocity.z);
 			}

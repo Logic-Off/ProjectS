@@ -10,12 +10,15 @@ namespace Ecs.Game {
 	}
 
 	[Game]
-	public sealed class AuthoringComponent : IComponent {
+	public sealed class AuthoringAgentComponent : IComponent {
 		public AgentAuthoring Value;
 	}
 
-	[Game, Unique]
+	[Game, Character, Unique]
 	public sealed class PlayerComponent : IComponent { }
+
+	[Game, Character]
+	public sealed class NpcComponent : IComponent { }
 
 	[Game, Unique]
 	public sealed class CameraComponent : IComponent { }
