@@ -12,4 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64edd74f78a04f0a9698fb4730913c2b, type: 3}
   m_Name: AnimationsDatabase
   m_EditorClassIdentifier: 
-  All: []
+  All:
+  - Id: BaseAttack
+    AnimationName: BaseAttack
+    Time: 1
+    Events:
+    - Time: 0
+      _data:
+        EventName: 0
+        StringValue: 
+        BoolValue: 0
+        FloatValue: 0
+        IntValue: 0
+    _clip: {fileID: 0}

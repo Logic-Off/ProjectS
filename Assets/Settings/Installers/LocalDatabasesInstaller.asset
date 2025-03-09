@@ -15,3 +15,5 @@ MonoBehaviour:
   _prefabsDatabase: {fileID: 11400000, guid: 7dbecfde48baa284eb9edd44a7a6843c, type: 2}
   _characterDatabaseAsset: {fileID: 11400000, guid: 8003bc67ba6c1a543bb491f72ef405b2, type: 2}
   _collisionDatabaseAsset: {fileID: 11400000, guid: 6625c7926c148cc40b28089b2d841340, type: 2}
+  _abilitiesDatabaseAsset: {fileID: 11400000, guid: b1faa8cb7e7f1814ca8ce4cfedf93894, type: 2}
+  _animationsDatabaseAsset: {fileID: 11400000, guid: e1f7d2a5d471ffe409dccc8fcd6c454e, type: 2}
