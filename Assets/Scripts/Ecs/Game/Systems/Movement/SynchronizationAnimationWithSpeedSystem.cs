@@ -3,7 +3,7 @@ using Utopia;
 using Zentitas;
 
 namespace Ecs.Game {
-	[InstallerGenerator("Game")]
+	[InstallerGenerator(InstallerId.Game)]
 	public class SynchronizationAnimationWithSpeedSystem : IUpdateSystem {
 		private static readonly int Speed = Animator.StringToHash("Speed");
 		private readonly IGroup<GameEntity> _group;
@@ -11,7 +11,7 @@ namespace Ecs.Game {
 
 		public SynchronizationAnimationWithSpeedSystem(GameContext game, InputContext input) {
 			_input = input;
-			_group = game.GetGroup(GameMatcher.AllOf(GameMatcher.Animator).AnyOf(GameMatcher.NavmeshAgent, GameMatcher.AuthoringAgent));
+			_group = game.GetGroup(GameMatcher.AllOf(GameMatcher.Animator).AnyOf(GameMatcher.NavmeshAgent, GameMatcher.AuthoringAgent).NoneOf(GameMatcher.Dead));
 		}
 
 		public void Update() {

@@ -6,7 +6,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 using Utopia;
 
 namespace Ecs.Game {
-	[InstallerGenerator("Game")]
+	[InstallerGenerator(InstallerId.Game)]
 	public sealed class PrefabFactory {
 		private Dictionary<Id, AsyncOperationHandle> _handles = new();
 		private readonly IPrefabsDatabase _prefabsDatabase;
@@ -27,8 +27,16 @@ namespace Ecs.Game {
 			var behaviour = result.GetComponent<GameBehaviour>();
 			if (behaviour != null)
 				behaviour.Link(entity);
+
+			if (entity.HasCollider)
+				entity.AddInstanceId(entity.Collider.Value.GetInstanceID());
+			else
+				entity.AddInstanceId(result.GetInstanceID());
+			
+			if (entity.HasLayerMask)
+				result.layer = entity.LayerMask.MaskIndex;
 		}
-		
+
 		public void OnDestroy(Id id) {
 			if (_handles.ContainsKey(id)) {
 				Addressables.ReleaseInstance(_handles[id]);

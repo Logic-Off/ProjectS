@@ -4,7 +4,7 @@ using Utopia;
 using Zenject;
 
 namespace Ecs.Game {
-	[InstallerGenerator("Game")]
+	[InstallerGenerator(InstallerId.Game)]
 	public class CameraInitializeSystem : IInitializable {
 		private readonly GameContext _game;
 		public CameraInitializeSystem(GameContext game) => _game = game;

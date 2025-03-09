@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using Ecs.Ability;
+using Ecs.Game;
 
 namespace Ecs.Character {
 	[Serializable]
@@ -9,5 +11,6 @@ namespace Ecs.Character {
 		public List<ETeam> HostileTeams;
 		public List<CharacterParametersData> Levels;
 		public string BaseAnimationState;
+		public List<AbilityId> Abilities;
 	}
 }

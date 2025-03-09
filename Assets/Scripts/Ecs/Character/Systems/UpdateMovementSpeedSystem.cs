@@ -3,7 +3,7 @@ using Utopia;
 using Zentitas;
 
 namespace Ecs.Character {
-	[InstallerGenerator("Game")]
+	[InstallerGenerator(InstallerId.Game)]
 	public sealed class UpdateMovementSpeedSystem : ReactiveSystem<CharacterEntity> {
 		private readonly GameContext _game;
 

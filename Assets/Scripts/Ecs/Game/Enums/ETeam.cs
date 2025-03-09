@@ -1,4 +1,4 @@
-namespace Ecs.Character {
+namespace Ecs.Game {
 	public enum ETeam {
 		Player,
 		Mutant,

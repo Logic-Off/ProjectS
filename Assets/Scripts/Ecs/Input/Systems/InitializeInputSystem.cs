@@ -3,7 +3,7 @@ using Utopia;
 using Zenject;
 
 namespace Ecs.Input {
-	[InstallerGenerator("Game")]
+	[InstallerGenerator(InstallerId.Game)]
 	public class InitializeInputSystem : IInitializable {
 		private readonly InputContext _input;
 

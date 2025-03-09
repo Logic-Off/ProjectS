@@ -4,15 +4,6 @@ using UnityEngine.AI;
 using Zentitas;
 
 namespace Ecs.Game {
-	[Game]
-	public sealed class NavmeshAgentComponent : IComponent {
-		public NavMeshAgent Value;
-	}
-
-	[Game]
-	public sealed class AuthoringAgentComponent : IComponent {
-		public AgentAuthoring Value;
-	}
 
 	[Game, Character, Unique]
 	public sealed class PlayerComponent : IComponent { }

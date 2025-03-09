@@ -4,13 +4,11 @@ using Utopia;
 using Zenject;
 
 namespace Ecs.Input {
-	[InstallerGenerator("Game")]
+	[InstallerGenerator(InstallerId.Game)]
 	public class PlayerInputSystem : IInitializable {
 		private readonly InputContext _input;
 
-		public PlayerInputSystem(InputContext input) {
-			_input = input;
-		}
+		public PlayerInputSystem(InputContext input) => _input = input;
 
 		public void Initialize() {
 			var actions = InputSystem.actions;

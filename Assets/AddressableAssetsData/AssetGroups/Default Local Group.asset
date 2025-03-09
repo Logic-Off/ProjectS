@@ -25,6 +25,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1b39c65612408514f835a8aa2bef98b0
+    m_Address: Assets/Prefabs/Characters/Zombie.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1c96866db0c96024a98d2ee387f0eb36
     m_Address: Assets/Prefabs/ProjectContext.prefab
     m_ReadOnly: 0

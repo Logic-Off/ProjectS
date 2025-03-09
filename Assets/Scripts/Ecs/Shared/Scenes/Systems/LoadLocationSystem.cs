@@ -4,7 +4,7 @@ using Zentitas;
 using Utopia;
 
 namespace Ecs.Shared {
-	[InstallerGenerator("Project")]
+	[InstallerGenerator(InstallerId.Project)]
 	public class LoadLocationSystem : ReactiveSystem<SharedEntity> {
 		private readonly SharedContext _shared;
 		private readonly ILoadSceneController _controller;

@@ -89,7 +89,7 @@ namespace Zentitas.VisualDebugging.Editor {
 		private static string[] GetContextNames(Type type) => Attribute
 			.GetCustomAttributes(type)
 			.OfType<ContextAttribute>()
-			.Select(attr => attr.contextName)
+			.Select(attr => attr.ContextName)
 			.ToArray();
 
 		private static string[] GetContextNamesOrDefault(Type type) {

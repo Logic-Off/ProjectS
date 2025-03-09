@@ -3,7 +3,7 @@ using Utopia;
 using Zenject;
 
 namespace Ecs {
-	[InstallerGenerator("Project", 500_000, EInstallType.NonLazy)]
+	[InstallerGenerator(InstallerId.Project, 500_000, EInstallType.NonLazy)]
 	public class StartSceneLoader : IInitializable {
 		private readonly SharedContext _shared;
 		

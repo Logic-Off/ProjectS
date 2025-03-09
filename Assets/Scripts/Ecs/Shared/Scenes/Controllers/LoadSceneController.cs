@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 using Utopia;
 
 namespace Ecs.Shared {
-	[InstallerGenerator("Project")]
+	[InstallerGenerator(InstallerId.Project)]
 	public class LoadSceneController : ILoadSceneController {
 		private readonly IScenesDatabase _scenesDatabase;
 		private readonly SharedContext _shared;

@@ -2,9 +2,14 @@
 using Zentitas;
 
 namespace Ecs.Common {
-	[Game, Structure, Character]
+	[Game, Structure, Character, Ability, Command, AnimationEvent]
 	public sealed class IdComponent : IComponent {
 		[PrimaryEntityIndex] public Id Value;
+	}
+
+	[Game]
+	public sealed class InstanceIdComponent : IComponent {
+		[PrimaryEntityIndex] public int Value;
 	}
 
 	[Game, Structure]
@@ -41,4 +46,17 @@ namespace Ecs.Common {
 	public sealed class TransformComponent : IComponent {
 		public Transform Value;
 	}
+
+	[Game]
+	public sealed class ColliderComponent : IComponent {
+		public Collider Value;
+	}
+
+	[Ability, Command, AnimationEvent]
+	public sealed class OwnerComponent : IComponent {
+		[EntityIndex] public Id Value;
+	}
+
+	[Command, AnimationEvent]
+	public sealed class DestroyedComponent : IComponent { }
 }

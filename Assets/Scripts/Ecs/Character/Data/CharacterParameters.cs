@@ -7,5 +7,9 @@ namespace Ecs.Character {
 		public Parameter Attack;
 		public Parameter CastSpeed;
 		public Parameter MovementSpeed;
+		public Parameter Observation;
+		public Parameter Stealth;
+		public Parameter VisionRange;
+		public Parameter VisionAngle;
 	}
 }

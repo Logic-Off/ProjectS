@@ -4,7 +4,7 @@ using Utopia;
 namespace Ecs.Shared {
 	public interface IScenesDatabase : IDatabase<LocationId, SceneData> { }
 
-	[InstallerGenerator("Project")]
+	[InstallerGenerator(InstallerId.Project)]
 	public sealed class ScenesDatabase : ADatabase<LocationId, SceneData>, IScenesDatabase {
 		public ScenesDatabase(ScenesDatabaseAsset database) {
 			foreach (var data in database.Scenes)

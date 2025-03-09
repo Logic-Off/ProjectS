@@ -27,3 +27,10 @@ MonoBehaviour:
       m_SubObjectGUID: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
+  - Name: Zombie
+    AssetReference:
+      m_AssetGUID: 1b39c65612408514f835a8aa2bef98b0
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0

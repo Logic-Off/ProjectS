@@ -3,7 +3,7 @@ using Utopia;
 using Zentitas;
 
 namespace Ecs.Game {
-	[InstallerGenerator("Game")]
+	[InstallerGenerator(InstallerId.Game)]
 	public sealed class CreatePrefabSystem : ReactiveSystem<GameEntity> {
 		private readonly PrefabFactory _prefabFactory;
 		public CreatePrefabSystem(GameContext game, PrefabFactory prefabFactory) : base(game) => _prefabFactory = prefabFactory;

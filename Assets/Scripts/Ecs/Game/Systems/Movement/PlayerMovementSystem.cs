@@ -3,7 +3,7 @@ using Utopia;
 using Zentitas;
 
 namespace Ecs.Game {
-	[InstallerGenerator("Game")]
+	[InstallerGenerator(InstallerId.Game)]
 	public class PlayerMovementSystem : IUpdateSystem {
 		private readonly GameContext _game;
 		private readonly InputContext _input;
@@ -18,7 +18,7 @@ namespace Ecs.Game {
 				return;
 			
 			var player = _game.PlayerEntity;
-			if (!player.HasNavmeshAgent)
+			if (!player.HasNavmeshAgent || player.IsDead)
 				return;
 			
 			var inputMovement = _input.PlayerInputEntity.Movement.Value;

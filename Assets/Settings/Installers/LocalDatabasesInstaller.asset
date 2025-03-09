@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4978d7d3c5d74f12b616275d79bd233f, type: 3}
   m_Name: LocalDatabasesInstaller
   m_EditorClassIdentifier: 
+  _prefabsDatabase: {fileID: 11400000, guid: 7dbecfde48baa284eb9edd44a7a6843c, type: 2}
   _characterDatabaseAsset: {fileID: 11400000, guid: 8003bc67ba6c1a543bb491f72ef405b2, type: 2}
+  _collisionDatabaseAsset: {fileID: 11400000, guid: 6625c7926c148cc40b28089b2d841340, type: 2}

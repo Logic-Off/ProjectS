@@ -5,7 +5,7 @@ using Utopia;
 using Zenject;
 
 namespace Ecs.Game {
-	[InstallerGenerator("Game")]
+	[InstallerGenerator(InstallerId.Game)]
 	public class PlayerInitializeSystem : IInitializable {
 		private readonly GameContext _game;
 		private readonly CharacterFactory _characterFactory;

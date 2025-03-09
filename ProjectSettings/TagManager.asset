@@ -11,6 +11,9 @@ TagManager:
   - 
   - Water
   - UI
+  - Player
+  - Mutant
+  - Human
   - 
   - 
   - 
@@ -29,9 +32,6 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - Enemy
   - MovingPlatform
   - VisualEffect
   - Overlay

@@ -3,7 +3,7 @@
 namespace Ecs.Common {
 	public interface IPrefabsDatabase : IDatabase<string, PrefabData> { }
 
-	[InstallerGenerator("Game")]
+	[InstallerGenerator(InstallerId.Game)]
 	public sealed class PrefabsDatabase : ADatabase<string, PrefabData>, IPrefabsDatabase {
 		public PrefabsDatabase(PrefabsDatabaseAsset database) {
 			foreach (var data in database.All)
