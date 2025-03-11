@@ -22,19 +22,21 @@ namespace Ecs.Game {
 		public void OnSceneLoaded() {
 			var list = ListPool<StructureEntity>.Get();
 			list.AddRange(_structure.GetEntitiesWithSpawnPoint(ESpawnPointType.Npc));
-			var point = list.Random();
-			var agentEntity = _game.CreateEntity();
-			agentEntity.AddId(IdGenerator.GetNext());
-			agentEntity.AddPrefab("Zombie");
-			agentEntity.AddPosition(point.Position.Value);
-			agentEntity.AddRotation(point.Rotation.Value);
-			agentEntity.IsNpc = true;
-			if (point.HasWaypoints) {
-				agentEntity.AddWaypoints(point.Waypoints.Values);
-				agentEntity.AddWaypointIndex(0);
-			}
+			for (int i = 0; i < 30; i++) {
+				var point = list.Random();
+				var agentEntity = _game.CreateEntity();
+				agentEntity.AddId(IdGenerator.GetNext());
+				agentEntity.AddPrefab("Zombie");
+				agentEntity.AddPosition(point.Position.Value);
+				agentEntity.AddRotation(point.Rotation.Value);
+				agentEntity.IsNpc = true;
+				if (point.HasWaypoints) {
+					agentEntity.AddWaypoints(point.Waypoints.Values);
+					agentEntity.AddWaypointIndex(0);
+				}
 
-			_characterFactory.Create(agentEntity, "Zombie", 1);
+				_characterFactory.Create(agentEntity, "Zombie", 1);
+			}
 		}
 	}
 }
