@@ -21,6 +21,8 @@ namespace Ecs.Game {
 			if (!_game.IsPlayer)
 				return;
 			var player = _game.PlayerEntity;
+			if (!player.HasTransform)
+				return;
 
 			Gizmos.color = Color.yellow;
 			var origin = player.Position.Value;

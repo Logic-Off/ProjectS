@@ -1,26 +1,35 @@
-﻿using Ecs.Character;
+﻿using Common;
+using Ecs.Character;
 using Ecs.Common;
-using UnityEngine;
+using Ecs.Structures;
 using Utopia;
-using Zenject;
+using Zentitas;
 
 namespace Ecs.Game {
 	[InstallerGenerator(InstallerId.Game)]
-	public class PlayerInitializeSystem : IInitializable {
+	public class PlayerInitializeSystem : IOnSceneLoadedListener {
 		private readonly GameContext _game;
 		private readonly CharacterFactory _characterFactory;
-		public PlayerInitializeSystem(GameContext game, CharacterFactory characterFactory) {
+		private readonly StructureContext _structure;
+
+		public PlayerInitializeSystem(GameContext game, CharacterFactory characterFactory, StructureContext structure) {
 			_game = game;
 			_characterFactory = characterFactory;
+			_structure = structure;
 		}
 
-		public void Initialize() {
+		public void OnSceneLoaded() {
+			var list = ListPool<StructureEntity>.Get();
+			list.AddRange(_structure.GetEntitiesWithSpawnPoint(ESpawnPointType.Player));
+			var point = list.Random();
 			var playerEntity = _game.CreateEntity();
 			playerEntity.AddId(IdGenerator.GetNext());
 			playerEntity.AddPrefab("Player");
-			playerEntity.AddPosition(Vector3.zero);
-			playerEntity.AddRotation(Quaternion.identity);
+			playerEntity.AddPosition(point.Position.Value);
+			playerEntity.AddRotation(point.Rotation.Value);
 			playerEntity.IsPlayer = true;
+
+			list.ReturnToPool();
 
 			var player = _characterFactory.Create(playerEntity, "Player", 1);
 		}

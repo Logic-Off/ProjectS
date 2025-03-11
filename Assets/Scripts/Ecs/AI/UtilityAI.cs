@@ -4,15 +4,18 @@ using Utopia;
 namespace Ecs.AI {
 	[InstallerGenerator(InstallerId.Game)]
 	public class UtilityAI {
-		private readonly List<IAction> _actions;
-		public UtilityAI(List<IAction> actions) => _actions = actions;
+		private readonly Dictionary<EAiAction, IAction> _actions = new();
+
+		public UtilityAI(List<IAction> actions) {
+			foreach (var action in actions)
+				_actions.Add(action.Name, action);
+		}
 
 		public void ChooseBestAction(GameEntity entity) {
 			IAction bestAction = null;
 			var highestScore = -1f;
 
-			D.Error("[UtilityAI]", _actions.Count);
-			foreach (var action in _actions) {
+			foreach (var action in _actions.Values) {
 				var score = action.GetScore(entity);
 				if (score <= highestScore)
 					continue;
@@ -20,7 +23,16 @@ namespace Ecs.AI {
 				bestAction = action;
 			}
 
-			bestAction?.Execute(entity);
+			if (bestAction == null)
+				return;
+
+			if (entity.PreviousAiAction.Value != bestAction.Name) {
+				_actions[entity.PreviousAiAction.Value].Exit(entity);
+				bestAction.Enter(entity);
+				entity.ReplacePreviousAiAction(bestAction.Name);
+			}
+
+			bestAction.Execute(entity);
 		}
 	}
 }

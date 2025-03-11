@@ -25,3 +25,15 @@ MonoBehaviour:
         FloatValue: 0
         IntValue: 0
     _clip: {fileID: 0}
+  - Id: ZombieAttack
+    AnimationName: zombie_atk01
+    Time: 2.1333334
+    Events:
+    - Time: 0
+      _data:
+        EventName: 0
+        StringValue: 
+        BoolValue: 0
+        FloatValue: 0
+        IntValue: 0
+    _clip: {fileID: 5027086419541575805, guid: 28d73902c1ad4ccb9489d330b30b26cc, type: 3}

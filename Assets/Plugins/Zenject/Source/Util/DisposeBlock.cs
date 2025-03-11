@@ -28,7 +28,7 @@ namespace Zenject
                 {
                     that._disposables[i].Dispose();
                 }
-                ListPool<IDisposable>.Instance.Despawn(that._disposables);
+                ZenjectListPool<IDisposable>.Instance.Despawn(that._disposables);
                 that._disposables = null;
             }
 
@@ -40,7 +40,7 @@ namespace Zenject
                     var pair = that._objectPoolPairs[i];
                     pair.Pool.Despawn(pair.Object);
                 }
-                ListPool<SpawnedObjectPoolPair>.Instance.Despawn(that._objectPoolPairs);
+                ZenjectListPool<SpawnedObjectPoolPair>.Instance.Despawn(that._objectPoolPairs);
                 that._objectPoolPairs = null;
             }
         }
@@ -49,7 +49,7 @@ namespace Zenject
         {
             if (_disposables == null)
             {
-                _disposables = ListPool<IDisposable>.Instance.Spawn();
+                _disposables = ZenjectListPool<IDisposable>.Instance.Spawn();
             }
         }
 
@@ -93,7 +93,7 @@ namespace Zenject
 
                 if (_objectPoolPairs == null)
                 {
-                    _objectPoolPairs = ListPool<SpawnedObjectPoolPair>.Instance.Spawn();
+                    _objectPoolPairs = ZenjectListPool<SpawnedObjectPoolPair>.Instance.Spawn();
                 }
                 _objectPoolPairs.Add(pair);
             }
@@ -164,7 +164,7 @@ namespace Zenject
 
         public List<T> SpawnList<T>()
         {
-            return Spawn(ListPool<T>.Instance);
+            return Spawn(ZenjectListPool<T>.Instance);
         }
 
         public static DisposeBlock Spawn()

@@ -3,6 +3,7 @@ using Utopia;
 namespace Ecs.AI {
 	[InstallerGenerator(InstallerId.Game)]
 	public class FleeAction : IAction {
+		public EAiAction Name => EAiAction.Flee;
 		private const float FleeRange = 5f;
 		private const float HealthThreshold = 0.3f;
 
@@ -11,6 +12,10 @@ namespace Ecs.AI {
 		public FleeAction(CharacterContext character) {
 			_character = character;
 		}
+
+		public void Enter(GameEntity agent) { }
+
+		public void Exit(GameEntity agent) { }
 
 		public float GetScore(GameEntity entity) {
 			var character = _character.GetEntityWithId(entity.Id.Value);

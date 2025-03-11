@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Ecs.Ability;
+using Ecs.AI;
 using Ecs.Game;
 using Utopia;
 
@@ -37,20 +38,24 @@ namespace Ecs.Character {
 			entity.IsNpc = agent.IsNpc;
 
 			agent.IsFsm = true;
-			
+
 			agent.AddTeam(data.Team);
 			agent.AddHostileTeams(data.HostileTeams);
-			
+
 			agent.AddCurrentAnimationState(data.BaseAnimationState);
 			agent.AddPreviousAnimationState(data.BaseAnimationState);
-			
+
 			agent.AddHostileTargets(new List<TargetData>());
 			agent.AddAttackTargets(new List<TargetData>());
-			
+
 			agent.AddAbilities(new List<AbilityId>(data.Abilities));
 
 			var layerMaskData = _layerMaskDatabase.Get(agent.Team.Value);
 			agent.AddLayerMask(layerMaskData.Mask, layerMaskData.MaskIndex);
+
+			// Вынести в биндер
+			if (agent.IsNpc)
+				agent.AddPreviousAiAction(EAiAction.Idle);
 
 			return entity;
 		}

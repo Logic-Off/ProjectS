@@ -143,12 +143,12 @@ namespace Zenject.Internal
 
         public static List<T> SpawnList<T>()
         {
-            return ListPool<T>.Instance.Spawn();
+            return ZenjectListPool<T>.Instance.Spawn();
         }
 
         public static void DespawnList<T>(List<T> list)
         {
-            ListPool<T>.Instance.Despawn(list);
+            ZenjectListPool<T>.Instance.Despawn(list);
         }
 
         public static void DespawnArray<T>(T[] arr)

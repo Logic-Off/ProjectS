@@ -1,27 +1,38 @@
-﻿using Ecs.Character;
+﻿using Common;
+using Ecs.Character;
 using Ecs.Common;
-using UnityEngine;
+using Ecs.Structures;
 using Utopia;
 using Zenject;
+using Zentitas;
 
 namespace Ecs.Game {
 	[InstallerGenerator(InstallerId.Game)]
-	public class NpcInitializeSystem : IInitializable {
+	public class NpcInitializeSystem : IOnSceneLoadedListener {
 		private readonly GameContext _game;
 		private readonly CharacterFactory _characterFactory;
+		private readonly StructureContext _structure;
 
-		public NpcInitializeSystem(GameContext game, CharacterFactory characterFactory) {
+		public NpcInitializeSystem(GameContext game, CharacterFactory characterFactory, StructureContext structure) {
 			_game = game;
 			_characterFactory = characterFactory;
+			_structure = structure;
 		}
 
-		public void Initialize() {
+		public void OnSceneLoaded() {
+			var list = ListPool<StructureEntity>.Get();
+			list.AddRange(_structure.GetEntitiesWithSpawnPoint(ESpawnPointType.Npc));
+			var point = list.Random();
 			var agentEntity = _game.CreateEntity();
 			agentEntity.AddId(IdGenerator.GetNext());
 			agentEntity.AddPrefab("Zombie");
-			agentEntity.AddPosition(new Vector3(-10, 0, 0));
-			agentEntity.AddRotation(Quaternion.identity);
+			agentEntity.AddPosition(point.Position.Value);
+			agentEntity.AddRotation(point.Rotation.Value);
 			agentEntity.IsNpc = true;
+			if (point.HasWaypoints) {
+				agentEntity.AddWaypoints(point.Waypoints.Values);
+				agentEntity.AddWaypointIndex(0);
+			}
 
 			_characterFactory.Create(agentEntity, "Zombie", 1);
 		}

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Ecs.Ability;
+using Ecs.AI;
 using Ecs.Character;
 using Ecs.Common;
 using UnityEngine;
@@ -83,4 +84,9 @@ namespace Ecs.Game {
 
 	[Game]
 	public sealed class FsmComponent : IComponent { }
+
+	[Game]
+	public sealed class PreviousAiAction : IComponent {
+		public EAiAction Value;
+	}
 }

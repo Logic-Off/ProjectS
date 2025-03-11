@@ -29,6 +29,11 @@ namespace Ecs.Game {
 	}
 
 	[Game]
+	public sealed class WaypointIndexComponent : IComponent {
+		public int Value;
+	}
+
+	[Game]
 	public sealed class DestinationComponent : IComponent {
 		public Vector3 Value;
 	}

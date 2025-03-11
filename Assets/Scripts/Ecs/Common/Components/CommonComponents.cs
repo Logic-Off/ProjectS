@@ -7,7 +7,7 @@ namespace Ecs.Common {
 		[PrimaryEntityIndex] public Id Value;
 	}
 
-	[Game]
+	[Game, Structure]
 	public sealed class InstanceIdComponent : IComponent {
 		[PrimaryEntityIndex] public int Value;
 	}
@@ -47,7 +47,7 @@ namespace Ecs.Common {
 		public Transform Value;
 	}
 
-	[Game]
+	[Game, Structure]
 	public sealed class ColliderComponent : IComponent {
 		public Collider Value;
 	}
@@ -59,4 +59,6 @@ namespace Ecs.Common {
 
 	[Command, AnimationEvent]
 	public sealed class DestroyedComponent : IComponent { }
+	
+	
 }

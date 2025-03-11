@@ -38,4 +38,4 @@ MonoBehaviour:
       VisionAngle: 180
     BaseAnimationState: Default
     Abilities:
-    - _value: BaseAttack
+    - _value: ZombieAttack

@@ -1,0 +1,57 @@
+﻿using System.Collections.Generic;
+using Common.Save;
+using UnityEngine;
+using Utopia;
+using Zenject;
+
+namespace Ecs.Common {
+	[InstallerGenerator(InstallerId.Game, 75_000)]
+	public class InitializeSceneSystem : IInitializable {
+		private readonly List<IOnSceneLoadedListener> _sceneLoadedListeners;
+		private readonly List<IOnScenePostLoadedListener> _scenePostLoadedListeners;
+		private readonly List<IOnFirstLoadedListener> _firstLoadedListeners;
+		private readonly List<ILocationLoadProcessor> _locationLoadProcessors;
+
+		public InitializeSceneSystem(
+			List<IOnSceneLoadedListener> sceneLoadedListeners,
+			List<IOnFirstLoadedListener> firstLoadedListeners,
+			List<ILocationLoadProcessor> locationLoadProcessors,
+			List<IOnScenePostLoadedListener> scenePostLoadedListeners
+		) {
+			_sceneLoadedListeners = sceneLoadedListeners;
+			_firstLoadedListeners = firstLoadedListeners;
+			_locationLoadProcessors = locationLoadProcessors;
+			_scenePostLoadedListeners = scenePostLoadedListeners;
+		}
+
+		public void Initialize() {
+			OnSceneLoad();
+		}
+
+		private async Awaitable OnSceneLoad() {
+			await Awaiter.NextFrameAsync(10);
+			foreach (var listener in _sceneLoadedListeners)
+				listener.OnSceneLoaded();
+
+			await Awaiter.NextFrameAsync(3);
+
+			foreach (var listener in _scenePostLoadedListeners)
+				listener.OnScenePostLoaded();
+
+			await Awaiter.NextFrameAsync(3);
+
+			LocationSave save = null;
+			if (save == null) {
+				foreach (var listener in _firstLoadedListeners)
+					listener.OnFirstLoaded();
+				// Включить сохранение
+				return;
+			}
+
+			foreach (var loadProcessor in _locationLoadProcessors) {
+				loadProcessor.Load(save);
+			}
+			// Включить сохранение
+		}
+	}
+}

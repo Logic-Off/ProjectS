@@ -36,7 +36,7 @@ namespace Ecs.Command {
 		public float Value;
 	}
 
-	[Command]
+	[Command, Game]
 	public sealed class PauseComponent : IComponent {
 		public float BeginAt;
 		public float Duration;
