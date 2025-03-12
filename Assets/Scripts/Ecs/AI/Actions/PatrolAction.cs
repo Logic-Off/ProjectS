@@ -1,3 +1,4 @@
+using Common;
 using Ecs.Game;
 using UnityEngine;
 using Utopia;
@@ -16,7 +17,8 @@ namespace Ecs.AI {
 
 		public void Enter(GameEntity agent) {
 			var waypoints = agent.Waypoints.Values;
-			agent.ReplaceDestination(waypoints[agent.WaypointIndex.Value].Position);
+			var waypoint = waypoints[agent.WaypointIndex.Value];
+			agent.ReplaceDestination(waypoint.Position.RandomPositionInRadius(waypoint.Radius));
 			agent.IsDestinationReached = false;
 		}
 
@@ -43,7 +45,8 @@ namespace Ecs.AI {
 			else
 				agent.ReplaceWaypointIndex(index + 1);
 
-			agent.ReplaceDestination(waypoints[agent.WaypointIndex.Value].Position);
+			var waypoint = waypoints[agent.WaypointIndex.Value];
+			agent.ReplaceDestination(waypoint.Position.RandomPositionInRadius(waypoint.Radius));
 			agent.IsDestinationReached = false;
 		}
 

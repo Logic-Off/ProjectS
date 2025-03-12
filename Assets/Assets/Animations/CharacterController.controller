@@ -101,9 +101,9 @@ BlendTree:
     m_Threshold: 3.576456
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
-    m_CycleOffset: 0
+    m_CycleOffset: 0.5
     m_DirectBlendParameter: MovementSpeed
-    m_Mirror: 0
+    m_Mirror: 1
   m_BlendParameter: Speed
   m_BlendParameterY: Blend
   m_MinThreshold: 0

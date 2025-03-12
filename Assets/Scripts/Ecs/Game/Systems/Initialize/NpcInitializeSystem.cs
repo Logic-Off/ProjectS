@@ -3,7 +3,6 @@ using Ecs.Character;
 using Ecs.Common;
 using Ecs.Structures;
 using Utopia;
-using Zenject;
 using Zentitas;
 
 namespace Ecs.Game {
@@ -22,7 +21,7 @@ namespace Ecs.Game {
 		public void OnSceneLoaded() {
 			var list = ListPool<StructureEntity>.Get();
 			list.AddRange(_structure.GetEntitiesWithSpawnPoint(ESpawnPointType.Npc));
-			for (int i = 0; i < 30; i++) {
+			for (int i = 0; i < 1; i++) {
 				var point = list.Random();
 				var agentEntity = _game.CreateEntity();
 				agentEntity.AddId(IdGenerator.GetNext());

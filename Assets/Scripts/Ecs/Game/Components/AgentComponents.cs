@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using Ecs.Ability;
 using Ecs.AI;
-using Ecs.Character;
-using Ecs.Common;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using Utopia;
 using Zentitas;
 
@@ -15,8 +15,9 @@ namespace Ecs.Game {
 	}
 
 	[Game]
-	public sealed class HostileTeamsComponent : IComponent {
+	public sealed class HostileTeamsComponent : IComponent, IDisposable {
 		public List<ETeam> Values;
+		public void Dispose() => Values.Clear();
 	}
 
 	[Game]
@@ -78,8 +79,9 @@ namespace Ecs.Game {
 	}
 
 	[Game]
-	public sealed class AbilitiesComponent : IComponent {
+	public sealed class AbilitiesComponent : IComponent, IDisposable {
 		public List<AbilityId> Values;
+		public void Dispose() => Values.Clear();
 	}
 
 	[Game]
@@ -88,5 +90,29 @@ namespace Ecs.Game {
 	[Game]
 	public sealed class PreviousAiAction : IComponent {
 		public EAiAction Value;
+	}
+
+	[Game]
+	public sealed class ItemTransformPositions : IComponent, IDisposable {
+		public Dictionary<EItemPosition, Transform> Values;
+		public void Dispose() => Values.Clear();
+	}
+
+	[Game]
+	public sealed class CurrentItemsComponent : IComponent, IDisposable {
+		public Dictionary<EItemPosition, AsyncOperationHandle<GameObject>> Values;
+
+		public void Dispose() {
+			foreach (var (_, handle) in Values)
+				Addressables.ReleaseInstance(handle);
+			Values.Clear();
+		}
+	}
+
+	[Game]
+	public sealed class ChangeItemsComponent : IComponent, IDisposable {
+		public Dictionary<EItemPosition, string> Values;
+
+		public void Dispose() => Values.Clear();
 	}
 }

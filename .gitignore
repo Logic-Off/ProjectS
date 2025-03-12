@@ -5,6 +5,7 @@
 /[Bb]uilds/
 /[Ll]ogs/
 [Gg]enesis/
+/.utmp/
 
 !/[Ll]ibrary/com.unity.addressables/
 ![Ll]ibrary/AddressablesConfig.dat

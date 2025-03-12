@@ -2,6 +2,8 @@
 using Ecs.Ability;
 using Ecs.AI;
 using Ecs.Game;
+using UnityEngine;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using Utopia;
 
 namespace Ecs.Character {
@@ -52,6 +54,9 @@ namespace Ecs.Character {
 
 			var layerMaskData = _layerMaskDatabase.Get(agent.Team.Value);
 			agent.AddLayerMask(layerMaskData.Mask, layerMaskData.MaskIndex);
+
+			agent.AddChangeItems(new Dictionary<EItemPosition, string>());
+			agent.AddCurrentItems(new Dictionary<EItemPosition, AsyncOperationHandle<GameObject>>());
 
 			// Вынести в биндер
 			if (agent.IsNpc)

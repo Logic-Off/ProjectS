@@ -40,6 +40,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 676a10e338cb05a488f13e1df0fc5030
+    m_Address: Assets/Prefabs/Weapons/Spade.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8be15928a091a424aa12062441075a39
     m_Address: Assets/Scenes/Common/DefaultManager.unity
     m_ReadOnly: 0

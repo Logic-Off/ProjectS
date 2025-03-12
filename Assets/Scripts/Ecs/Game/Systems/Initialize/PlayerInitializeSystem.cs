@@ -32,6 +32,11 @@ namespace Ecs.Game {
 			list.ReturnToPool();
 
 			var player = _characterFactory.Create(playerEntity, "Player", 1);
+
+			var changeItems = playerEntity.ChangeItems.Values;
+			changeItems.Add(EItemPosition.LeftHand, "Spade");
+			changeItems.Add(EItemPosition.LeftHand, "Spade");
+			playerEntity.ReplaceChangeItems(changeItems);
 		}
 	}
 }

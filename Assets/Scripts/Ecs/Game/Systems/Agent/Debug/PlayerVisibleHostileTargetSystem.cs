@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Common;
 using UnityEngine;
 using Utopia;
@@ -37,8 +38,10 @@ namespace Ecs.Game {
 			Gizmos.DrawLine(origin, origin + leftEdge * character.VisionRange.Value);
 			Gizmos.DrawLine(origin, origin + rightEdge * character.VisionRange.Value);
 
+#if UNITY_EDITOR
 			Handles.color = Color.yellow;
 			Handles.DrawWireArc(origin, Vector3.up, -player.Transform.Value.right, character.VisionAngle.Value, character.VisionRange.Value);
+#endif
 		}
 	}
 }

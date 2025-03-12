@@ -34,3 +34,10 @@ MonoBehaviour:
       m_SubObjectGUID: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
+  - Name: Spade
+    AssetReference:
+      m_AssetGUID: 676a10e338cb05a488f13e1df0fc5030
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0

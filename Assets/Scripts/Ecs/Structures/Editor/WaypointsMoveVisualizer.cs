@@ -52,7 +52,7 @@ namespace Ecs.Structures {
 		private void OnDrawDiskAndLabel(int index) {
 			var waypoint = _waypoints[index];
 			Handles.color = Color.yellow;
-			Handles.DrawWireDisc(waypoint.Position, Vector3.up, 0.5f);
+			Handles.DrawWireDisc(waypoint.Position, Vector3.up, waypoint.Radius);
 			Handles.Label(
 				waypoint.Position,
 				$"Element {index.ToString()}\n{waypoint.Position}",
