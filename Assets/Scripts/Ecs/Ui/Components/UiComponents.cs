@@ -76,6 +76,11 @@ namespace Ecs.Ui {
 	}
 
 	[Ui, Event(InstallerId.Ui, EEventType.Added)]
+	public sealed class FloatComponent : IComponent {
+		public float Value;
+	}
+
+	[Ui, Event(InstallerId.Ui, EEventType.Added)]
 	public sealed class ColorComponent : IComponent {
 		public Color Value;
 	}

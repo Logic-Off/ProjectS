@@ -17,12 +17,8 @@ namespace Ecs.Animations.Commands {
 			if (owner == null || target == null)
 				return;
 
-			var modifier = new StatModifier() {
-				Type = EStatModifierType.Damage,
-				Value = -owner.Attack.Value
-			};
-
-			target.AddModifier(ECharacterStat.Health, modifier);
+			var modifier = new StatModifier(ECharacterStat.Health, EStatModifierType.Damage, -owner.Attack.Value);
+			target.AddModifier(modifier);
 		}
 	}
 }

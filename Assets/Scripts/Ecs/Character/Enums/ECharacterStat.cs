@@ -4,6 +4,16 @@ namespace Ecs.Character {
 		MovementSpeed,
 		Stealth,
 		MaxHealth,
-		VisionRange
+		VisionRange,
+		Hunger,
+		MaxHunger,
+		Thirst,
+		MaxThirst,
+		Psyche,
+		MaxPsyche,
+		Cold,
+		MaxCold,
+		Radiation,
+		MaxRadiation
 	}
 }

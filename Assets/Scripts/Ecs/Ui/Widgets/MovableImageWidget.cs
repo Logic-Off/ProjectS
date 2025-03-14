@@ -7,6 +7,11 @@ namespace Ecs.Ui {
 			return element;
 		}
 
+		public override void OnChangeSprite(UiEntity entity) {
+			_icon.gameObject.SetActive(entity.Sprite.Value != null);
+			base.OnChangeSprite(entity);
+		}
+
 		public void OnChangeVector2(UiEntity entity) => _rect.position = entity.Vector2.Value;
 	}
 }

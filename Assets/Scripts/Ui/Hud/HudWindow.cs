@@ -7,6 +7,7 @@ namespace Ui.Hud {
 
 		public override void AddPanelBuilders() {
 			AddBuilder<HudBuilder>();
+			AddBuilder<StatusBuilder>();
 			AddBuilder<MovementJoystickBuilder>();
 			AddBuilder<ActionButtonsBuilder>();
 		}

@@ -19,7 +19,7 @@ namespace Ecs.Character {
 	}
 
 	[Character]
-	public sealed class HealthModifierComponent : IComponent, IDisposable {
+	public sealed class StatModifierComponent : IComponent, IDisposable {
 		public List<StatModifier> Values;
 
 		public void Dispose() => Values.Clear();

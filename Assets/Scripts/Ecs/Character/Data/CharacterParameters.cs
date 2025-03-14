@@ -11,5 +11,12 @@ namespace Ecs.Character {
 		public Parameter Stealth;
 		public Parameter VisionRange;
 		public Parameter VisionAngle;
+
+		// Status
+		public Parameter Hunger;
+		public Parameter Thirst;
+		public Parameter Psyche;
+		public Parameter Cold;
+		public Parameter Radiation;
 	}
 }

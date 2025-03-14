@@ -18,3 +18,4 @@ MonoBehaviour:
   _abilitiesDatabaseAsset: {fileID: 11400000, guid: b1faa8cb7e7f1814ca8ce4cfedf93894, type: 2}
   _animationsDatabaseAsset: {fileID: 11400000, guid: e1f7d2a5d471ffe409dccc8fcd6c454e, type: 2}
   _itemsDatabaseAsset: {fileID: 11400000, guid: 5afc147acf34b2c43a15e494262806b7, type: 2}
+  _iconsDatabaseAsset: {fileID: 11400000, guid: 635fab4417052ce4096ef0f67c50990d, type: 2}

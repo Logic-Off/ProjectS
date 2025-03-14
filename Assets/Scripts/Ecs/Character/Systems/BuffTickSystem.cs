@@ -37,13 +37,7 @@ namespace Ecs.Character {
 			foreach (var effect in buff.Effects) {
 				switch (effect.Type) {
 					case ECharacterStat.Health:
-						entity.AddModifier(
-							ECharacterStat.Health,
-							new StatModifier() {
-								Type = effect.Parameter.Value > 0 ? EStatModifierType.Heal : EStatModifierType.Damage,
-								Value = effect.Parameter.Value
-							}
-						);
+						entity.AddModifier(new StatModifier(ECharacterStat.Health, effect.Parameter.Value > 0 ? EStatModifierType.Heal : EStatModifierType.Damage, effect.Parameter.Value));
 						break;
 					case ECharacterStat.Stealth:
 						break;

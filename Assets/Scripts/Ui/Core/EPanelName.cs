@@ -11,5 +11,6 @@
 		WorldCanvas,
 		TopHudButtons,
 		Arena,
+		Status
 	}
 }

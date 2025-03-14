@@ -13,7 +13,7 @@ namespace Ecs.Ui {
 			return element;
 		}
 
-		public void OnChangeSprite(UiEntity entity) => _icon.sprite = entity.Sprite.Value;
+		public virtual void OnChangeSprite(UiEntity entity) => _icon.sprite = entity.Sprite.Value;
 
 		protected override void OnValidate() {
 			base.OnValidate();

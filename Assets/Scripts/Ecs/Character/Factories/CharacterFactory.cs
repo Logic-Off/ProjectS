@@ -29,14 +29,14 @@ namespace Ecs.Character {
 
 		public CharacterEntity Create(GameEntity agent, string id, int level) {
 			var data = _characterDatabase.Get(id);
-			var parameters = data.Levels[level - 1].ToParameters; // Может стоит уровень добавить конечно, но считаем что всегда упорядоченно
 			var entity = _character.CreateEntity();
 
-			entity.AddId(agent.Id.Value);
+			var parameters = data.Levels[level - 1].ToParameters; // Может стоит уровень добавить конечно, но считаем что всегда упорядоченно
+
 			entity.AddParameters(parameters);
 			entity.AddHealth(parameters.Health.Value);
 			entity.AddMaxHealth(parameters.Health.Value);
-			entity.AddHealthModifier(new List<StatModifier>());
+			entity.AddStatModifier(new List<StatModifier>());
 			entity.AddAttack(parameters.Attack.Value);
 			entity.AddCastSpeed(parameters.CastSpeed.Value);
 			entity.AddMovementSpeed(parameters.MovementSpeed.Value);
@@ -44,6 +44,7 @@ namespace Ecs.Character {
 			entity.AddVisionAngle(parameters.VisionAngle.Value);
 			entity.AddStealth(parameters.Stealth.Value);
 			entity.AddObservation(parameters.Observation.Value);
+			entity.AddId(agent.Id.Value);
 			entity.IsPlayer = agent.IsPlayer;
 			entity.IsNpc = agent.IsNpc;
 
