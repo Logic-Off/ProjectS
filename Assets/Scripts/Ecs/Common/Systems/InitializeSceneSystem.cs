@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using Common.Save;
-using UnityEngine;
+using Cysharp.Threading.Tasks;
+using Ecs.Save;
 using Utopia;
 using Zenject;
 
@@ -24,21 +24,21 @@ namespace Ecs.Common {
 			_scenePostLoadedListeners = scenePostLoadedListeners;
 		}
 
-		public void Initialize() {
-			OnSceneLoad();
-		}
+		public void Initialize() => OnSceneLoad();
 
-		private async Awaitable OnSceneLoad() {
-			await Awaiter.NextFrameAsync(10);
-			foreach (var listener in _sceneLoadedListeners)
+		private async UniTaskVoid OnSceneLoad() {
+			await UniTask.DelayFrame(10);
+			for (var index = 0; index < _sceneLoadedListeners.Count; index++) {
+				var listener = _sceneLoadedListeners[index];
 				listener.OnSceneLoaded();
+			}
 
-			await Awaiter.NextFrameAsync(3);
+			await UniTask.DelayFrame(3);
 
 			foreach (var listener in _scenePostLoadedListeners)
 				listener.OnScenePostLoaded();
 
-			await Awaiter.NextFrameAsync(3);
+			await UniTask.DelayFrame(3);
 
 			LocationSave save = null;
 			if (save == null) {

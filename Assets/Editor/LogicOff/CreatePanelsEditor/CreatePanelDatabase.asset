@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a6633483e7e422da0746e24fbe4c47f, type: 3}
   m_Name: CreatePanelDatabase
   m_EditorClassIdentifier: 
-  Path: C:/GitHub/StayToSurvive/Assets/Scripts/Ui/
-  FolderName: Arena
-  PanelName: Arena
+  Path: R:/Github/Project S/Assets/Scripts/Ui/
+  FolderName: Hud
+  PanelName: ActionButtons

@@ -24,8 +24,9 @@ MonoBehaviour:
       VisionRange: 6
       VisionAngle: 180
     BaseAnimationState: Rifle
-    Abilities:
-    - _value: BaseAttack
+    BaseAbility:
+      _value: BaseAttack
+    Abilities: []
   - Name: Zombie
     Team: 1
     HostileTeams: 0000000002000000
@@ -37,5 +38,7 @@ MonoBehaviour:
       VisionRange: 6
       VisionAngle: 180
     BaseAnimationState: Default
+    BaseAbility:
+      _value: 
     Abilities:
     - _value: ZombieAttack

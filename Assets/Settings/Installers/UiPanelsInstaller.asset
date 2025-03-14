@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e23e069942cb45da8f1330e2ade12a12, type: 3}
+  m_Name: UiPanelsInstaller
+  m_EditorClassIdentifier: 
+  _draggableBuilder:
+    m_AssetGUID: a55a2202c6dcee74bb56a78db08b60f4
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  _actionButtonsBuilder:
+    m_AssetGUID: 3a0e8c20df8e072489f46c2f006a5b22
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  _hudBuilder:
+    m_AssetGUID: 3fb914e316bb93a4e86f38db98b2f797
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  _movementJoystickBuilder:
+    m_AssetGUID: 56218078b2db16f4a954eaba26c843b4
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  _playerInventoryBuilder:
+    m_AssetGUID: 0a1f41b070988b84fa1511995f490f7f
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0

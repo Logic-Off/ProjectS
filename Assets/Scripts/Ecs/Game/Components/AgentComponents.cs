@@ -84,6 +84,11 @@ namespace Ecs.Game {
 		public void Dispose() => Values.Clear();
 	}
 
+	[Game, Item]
+	public sealed class BaseAbilityComponent : IComponent {
+		public AbilityId Value;
+	}
+
 	[Game]
 	public sealed class FsmComponent : IComponent { }
 
@@ -115,4 +120,7 @@ namespace Ecs.Game {
 
 		public void Dispose() => Values.Clear();
 	}
+
+	[Game]
+	public sealed class StunComponent : IComponent { }
 }

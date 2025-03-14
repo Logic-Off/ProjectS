@@ -1,4 +1,4 @@
-using Common.Save;
+using Ecs.Save;
 
 namespace Ecs.Common {
 	public interface ILocationLoadProcessor {

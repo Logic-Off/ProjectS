@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 645eccfe70d24e83a1d6ed6da92320e7, type: 3}
+  m_Name: ItemsDatabase
+  m_EditorClassIdentifier: 
+  All:
+  - Id:
+      _value: Rifle_1
+    Type: 1
+    StackSize: 1
+  Weapons:
+  - Id:
+      _value: Rifle_1
+    BaseAbility:
+      _value: BaseAttack
+    _effects:
+    - Stat: 3
+      Count: 150
+      Multiplier: 0
+  Clothes: []
+  ContainerSettings: []
+  ItemFilters: []
+  ContainerItemFilters:
+  - ContainerType: 1
+    ItemTypes: 0100000002000000
+  - ContainerType: 11
+    ItemTypes: 01000000
+  - ContainerType: 8
+    ItemTypes: 
+  - ContainerType: 2
+    ItemTypes: 
+  - ContainerType: 3
+    ItemTypes: 
+  - ContainerType: 4
+    ItemTypes: 
+  - ContainerType: 5
+    ItemTypes: 
+  - ContainerType: 6
+    ItemTypes: 
+  - ContainerType: 7
+    ItemTypes: 
+  - ContainerType: 9
+    ItemTypes: 

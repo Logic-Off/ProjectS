@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Common;
 using Ecs.Ability;
 using Ecs.AI;
 using Ecs.Game;
@@ -12,11 +13,18 @@ namespace Ecs.Character {
 		private readonly CharacterContext _character;
 		private readonly ICharacterDatabase _characterDatabase;
 		private readonly ITeamLayerMaskDatabase _layerMaskDatabase;
+		private readonly List<IAgentBuilder> _builders;
 
-		public CharacterFactory(CharacterContext character, ICharacterDatabase characterDatabase, ITeamLayerMaskDatabase layerMaskDatabase) {
+		public CharacterFactory(
+			CharacterContext character,
+			ICharacterDatabase characterDatabase,
+			ITeamLayerMaskDatabase layerMaskDatabase,
+			List<IAgentBuilder> builders
+		) {
 			_character = character;
 			_characterDatabase = characterDatabase;
 			_layerMaskDatabase = layerMaskDatabase;
+			_builders = builders;
 		}
 
 		public CharacterEntity Create(GameEntity agent, string id, int level) {
@@ -39,6 +47,9 @@ namespace Ecs.Character {
 			entity.IsPlayer = agent.IsPlayer;
 			entity.IsNpc = agent.IsNpc;
 
+			entity.AddBuffs(new List<ABuff>());
+			entity.AddBuffModifier(new List<BuffModifier>());
+
 			agent.IsFsm = true;
 
 			agent.AddTeam(data.Team);
@@ -51,6 +62,10 @@ namespace Ecs.Character {
 			agent.AddAttackTargets(new List<TargetData>());
 
 			agent.AddAbilities(new List<AbilityId>(data.Abilities));
+			if (data.BaseAbility.ToString().IsNotNullOrEmpty()) {
+				agent.Abilities.Values.Add(data.BaseAbility); // Убрать
+				agent.AddBaseAbility(data.BaseAbility); // Убрать
+			}
 
 			var layerMaskData = _layerMaskDatabase.Get(agent.Team.Value);
 			agent.AddLayerMask(layerMaskData.Mask, layerMaskData.MaskIndex);
@@ -62,7 +77,15 @@ namespace Ecs.Character {
 			if (agent.IsNpc)
 				agent.AddPreviousAiAction(EAiAction.Idle);
 
+			OnBuild(agent);
+
 			return entity;
+		}
+
+		public void OnBuild(GameEntity agent) {
+			foreach (var builder in _builders)
+				if (builder.Accept(agent))
+					builder.Apply(agent);
 		}
 	}
 }

@@ -12,7 +12,6 @@ namespace Ecs.Shared {
 		public LoadLocationSystem(SharedGlobalContext shared, ILoadSceneController controller) : base(shared.Context) {
 			_shared = shared;
 			_controller = controller;
-			D.Error("[LoadLocationSystem]");
 		}
 
 		protected override ICollector<SharedEntity> GetTrigger(IContext<SharedEntity> context)

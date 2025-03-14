@@ -34,8 +34,7 @@ namespace Ecs.Game {
 			var player = _characterFactory.Create(playerEntity, "Player", 1);
 
 			var changeItems = playerEntity.ChangeItems.Values;
-			changeItems.Add(EItemPosition.LeftHand, "Spade");
-			changeItems.Add(EItemPosition.LeftHand, "Spade");
+			changeItems[EItemPosition.RightHand] = "Rifle_1";
 			playerEntity.ReplaceChangeItems(changeItems);
 		}
 	}

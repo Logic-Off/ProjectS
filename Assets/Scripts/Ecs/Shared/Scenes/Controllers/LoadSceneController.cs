@@ -1,5 +1,4 @@
-using System.Threading.Tasks;
-using Installers;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -18,7 +17,7 @@ namespace Ecs.Shared {
 			_shared = shared;
 		}
 
-		public async Task OnLoad(LocationId locationId) {
+		public async UniTask OnLoad(LocationId locationId) {
 			var sceneEntity = _shared.SceneEntity;
 			sceneEntity.IsLoading = true;
 			if (sceneEntity.HasLocationData) {
@@ -37,7 +36,7 @@ namespace Ecs.Shared {
 			sceneEntity.IsLoading = false;
 		}
 
-		private async Task<SceneInstance> Load(AssetReference scene) {
+		private async UniTask<SceneInstance> Load(AssetReference scene) {
 			SceneInstance instance;
 			while (true) {
 				var handle = Addressables.LoadSceneAsync(scene, LoadSceneMode.Additive);
@@ -45,7 +44,7 @@ namespace Ecs.Shared {
 
 				if (handle.Status is not AsyncOperationStatus.Succeeded) {
 					Addressables.Release(handle);
-					await Task.Yield();
+					await UniTask.Yield();
 					continue;
 				}
 

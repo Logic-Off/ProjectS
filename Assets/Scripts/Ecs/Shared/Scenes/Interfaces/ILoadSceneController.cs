@@ -1,7 +1,7 @@
-using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 
 namespace Ecs.Shared {
 	public interface ILoadSceneController {
-		Task OnLoad(LocationId locationId);
+		UniTask OnLoad(LocationId locationId);
 	}
 }

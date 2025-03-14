@@ -41,3 +41,24 @@ MonoBehaviour:
       m_SubObjectGUID: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
+  - Name: Rifle_1
+    AssetReference:
+      m_AssetGUID: aaacf1eca316eee40a005b02ed79c744
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - Name: Cell.Inventory.Default
+    AssetReference:
+      m_AssetGUID: b979e0a104797b045b2a4c62906db4e3
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - Name: Cell.Inventory.Locked
+    AssetReference:
+      m_AssetGUID: 4aa72ce11519b9c498099d43dc712cd9
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0

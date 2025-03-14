@@ -2,17 +2,17 @@
 using Zentitas;
 
 namespace Ecs.Common {
-	[Game, Structure, Character, Ability, Command, AnimationEvent]
+	[Game, Structure, Character, Ability, Command, AnimationEvent, Ui, Item]
 	public sealed class IdComponent : IComponent {
 		[PrimaryEntityIndex] public Id Value;
 	}
 
-	[Game, Structure]
+	[Game, Structure, Ui]
 	public sealed class InstanceIdComponent : IComponent {
 		[PrimaryEntityIndex] public int Value;
 	}
 
-	[Game, Structure]
+	[Game, Structure, Ui]
 	public sealed class NameComponent : IComponent {
 		[PrimaryEntityIndex] public string Value;
 	}
@@ -37,7 +37,7 @@ namespace Ecs.Common {
 		public Quaternion Value;
 	}
 
-	[Game, Structure]
+	[Game, Structure, Ui]
 	public sealed class PrefabComponent : IComponent {
 		public string Value;
 	}
@@ -52,13 +52,16 @@ namespace Ecs.Common {
 		public Collider Value;
 	}
 
-	[Ability, Command, AnimationEvent]
+	[Ability, Command, AnimationEvent, Inventory, Item]
 	public sealed class OwnerComponent : IComponent {
 		[EntityIndex] public Id Value;
 	}
 
-	[Command, AnimationEvent]
+	[Ui]
+	public sealed class ParentComponent : IComponent {
+		[EntityIndex] public Id Value;
+	}
+
+	[Command, AnimationEvent, Item]
 	public sealed class DestroyedComponent : IComponent { }
-	
-	
 }

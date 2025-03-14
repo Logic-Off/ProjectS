@@ -15,7 +15,7 @@ MonoBehaviour:
   All:
   - Id: BaseAttack
     AnimationName: BaseAttack
-    Time: 1
+    Time: 1.6666667
     Events:
     - Time: 0
       _data:
@@ -24,7 +24,7 @@ MonoBehaviour:
         BoolValue: 0
         FloatValue: 0
         IntValue: 0
-    _clip: {fileID: 0}
+    _clip: {fileID: 1827226128182048838, guid: 83d0409fec5832d48989f75fd2430543, type: 3}
   - Id: ZombieAttack
     AnimationName: zombie_atk01
     Time: 2.1333334

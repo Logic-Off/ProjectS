@@ -62,4 +62,14 @@ namespace Ecs.Character {
 
 	[Character]
 	public sealed class DeadComponent : IComponent { }
+
+	[Character, Item]
+	public sealed class BuffsComponent : IComponent {
+		public List<ABuff> Values;
+	}
+
+	[Character, Item]
+	public sealed class BuffModifierComponent : IComponent {
+		public List<BuffModifier> Values;
+	}
 }
