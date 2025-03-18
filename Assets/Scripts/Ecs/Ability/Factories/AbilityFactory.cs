@@ -14,21 +14,22 @@ namespace Ecs.Ability {
 		}
 
 		public void Create(AbilityId id, Id owner) {
-			var entry = _database.Get(id);
+			var data = _database.Get(id);
 
 			var ability = _ability.CreateEntity();
 			ability.AddId(IdGenerator.GetNext());
-			ability.AddAbilityId(entry.Id);
-			ability.AddAbilityType(entry.Type);
+			ability.AddAbilityId(data.Id);
+			ability.AddAbilityType(data.Type);
 			ability.AddFloat(0);
 			ability.AddOwner(owner);
-			ability.AddCooldownTime(entry.Cooldown);
-			ability.AddAnimationId(entry.Animation);
-			ability.IsStandingCast = entry.IsStandingCast;
+			ability.AddCooldownTime(data.Cooldown);
+			ability.AddAnimationId(data.Animation);
+			ability.IsStandingCast = data.IsStandingCast;
+			ability.AddAbilityState(data.AbilityState);
 
 			var parameters = new Dictionary<EAbilityParameter, float>();
-			foreach (var data in entry.Parameters)
-				parameters.Add(data.Name, data.Value);
+			foreach (var parameter in data.Parameters)
+				parameters.Add(parameter.Name, parameter.Value);
 
 			ability.AddParameters(parameters);
 		}

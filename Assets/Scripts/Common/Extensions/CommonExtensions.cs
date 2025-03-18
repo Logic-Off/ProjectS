@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Ecs.Animations;
 using Unity.Mathematics;
 using UnityEngine;
 using Random = Unity.Mathematics.Random;
@@ -45,6 +47,13 @@ namespace Common {
 			var x = center.x + radius * math.cos(angle);
 			var z = center.z + radius * math.sin(angle);
 			return new Vector3(x, center.y, z);
+		}
+
+		public static Dictionary<T, V> GetDictionary<T, V>(this List<ReferenceData<T, V>> references) {
+			var dictionary = new Dictionary<T, V>();
+			foreach (var data in references)
+				dictionary.Add(data.Key, data.Value);
+			return dictionary;
 		}
 	}
 }

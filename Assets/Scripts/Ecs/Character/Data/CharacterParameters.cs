@@ -18,5 +18,10 @@ namespace Ecs.Character {
 		public Parameter Psyche;
 		public Parameter Cold;
 		public Parameter Radiation;
+		
+		// Resistance
+		public Parameter ResistanceNormalDamage;
+		public Parameter ResistancePenetratingDamage;
+		public Parameter ResistanceCrushingDamage;
 	}
 }

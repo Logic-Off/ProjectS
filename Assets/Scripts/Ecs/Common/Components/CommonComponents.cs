@@ -37,7 +37,7 @@ namespace Ecs.Common {
 		public Quaternion Value;
 	}
 
-	[Game, Structure, Ui]
+	[Game, Structure, Ui, AnimationEvent]
 	public sealed class PrefabComponent : IComponent {
 		public string Value;
 	}
@@ -52,12 +52,12 @@ namespace Ecs.Common {
 		public Collider Value;
 	}
 
-	[Ability, Command, AnimationEvent, Inventory, Item]
+	[Ability, Command, AnimationEvent, Inventory, Item, Game]
 	public sealed class OwnerComponent : IComponent {
 		[EntityIndex] public Id Value;
 	}
 
-	[Ui]
+	[Ui, Game]
 	public sealed class ParentComponent : IComponent {
 		[EntityIndex] public Id Value;
 	}

@@ -15,7 +15,8 @@ namespace Ecs.AI {
 			IAction bestAction = null;
 			var highestScore = -1f;
 
-			foreach (var action in _actions.Values) {
+			foreach (var actionType in entity.Actions.Values) {
+				var action = _actions[actionType];
 				var score = action.GetScore(entity);
 				if (score <= highestScore)
 					continue;

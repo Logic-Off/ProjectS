@@ -62,3 +62,17 @@ MonoBehaviour:
       m_SubObjectGUID: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
+  - Name: RifleMuzzleStandard
+    AssetReference:
+      m_AssetGUID: f0a995bdfab811743b6ca1eb5ef5a2e0
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - Name: RifleHitStandard
+    AssetReference:
+      m_AssetGUID: f0a995bdfab811743b6ca1eb5ef5a2e0
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0

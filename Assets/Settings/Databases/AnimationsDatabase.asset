@@ -20,10 +20,9 @@ MonoBehaviour:
     - Time: 0
       _data:
         EventName: 0
-        StringValue: 
-        BoolValue: 0
-        FloatValue: 0
-        IntValue: 0
+        StringValues: []
+        FloatValues: []
+        BoolValues: []
     _clip: {fileID: 1827226128182048838, guid: 83d0409fec5832d48989f75fd2430543, type: 3}
   - Id: ZombieAttack
     AnimationName: zombie_atk01
@@ -32,8 +31,34 @@ MonoBehaviour:
     - Time: 0
       _data:
         EventName: 0
-        StringValue: 
-        BoolValue: 0
-        FloatValue: 0
-        IntValue: 0
+        StringValues: []
+        FloatValues: []
+        BoolValues: []
     _clip: {fileID: 5027086419541575805, guid: 28d73902c1ad4ccb9489d330b30b26cc, type: 3}
+  - Id: RifleAttack
+    AnimationName: ShootPrimaryAssaultRifle
+    Time: 0.13333334
+    Events:
+    - Time: 0
+      _data:
+        EventName: 0
+        StringValues: []
+        FloatValues: []
+        BoolValues: []
+    - Time: 0
+      _data:
+        EventName: 1
+        StringValues:
+        - Key: PrefabName
+          Value: RifleMuzzleStandard
+        FloatValues: []
+        BoolValues: []
+    - Time: 0
+      _data:
+        EventName: 2
+        StringValues:
+        - Key: PrefabName
+          Value: RifleHitStandard
+        FloatValues: []
+        BoolValues: []
+    _clip: {fileID: 7400000, guid: 1dc20baf6a58f434c80c54e6ed08a0ba, type: 3}

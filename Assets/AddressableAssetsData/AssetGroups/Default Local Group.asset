@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: ef5d35fa70af20840bb40e52c3fa791f
   m_SerializeEntries:
+  - m_GUID: 0307ec9d2cb967742af0806ffa5f7fdd
+    m_Address: Assets/Prefabs/Ui/PlayerSkills/PlayerSkillsPanel.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0a1f41b070988b84fa1511995f490f7f
     m_Address: Assets/Prefabs/Ui/PlayerInventory/PlayerInventoryPanel.prefab
     m_ReadOnly: 0
@@ -40,6 +45,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 23650ff0cc056c04c9c82c8574f1c30c
+    m_Address: Assets/Prefabs/Ui/Hud/StatusPanel.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2d61ad3bc41915741a1bf62ac0390e07
     m_Address: Assets/Assets/Ui/Ui.spriteatlasv2
     m_ReadOnly: 0
@@ -60,6 +70,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 45f84196f918ff9468112be161a1670b
+    m_Address: Assets/Prefabs/Ui/Craft/CraftPanel.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4aa72ce11519b9c498099d43dc712cd9
     m_Address: Assets/Prefabs/Ui/PlayerInventory/Cell.Locked.prefab
     m_ReadOnly: 0
@@ -67,6 +82,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 56218078b2db16f4a954eaba26c843b4
     m_Address: Assets/Prefabs/Ui/Hud/MovementJoystickPanel.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 673a1e286820e75478df72bbbf954687
+    m_Address: Assets/Prefabs/Ui/CharacterInfo/CharacterInfoPanel.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -85,6 +105,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: aa4b71b8d58ff084a9810c9fa34704af
+    m_Address: Assets/Prefabs/Ui/PlayerHub/PlayerHubPanel.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: aaacf1eca316eee40a005b02ed79c744
     m_Address: Assets/Prefabs/Weapons/Rifle_1.prefab
     m_ReadOnly: 0
@@ -92,6 +117,16 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b979e0a104797b045b2a4c62906db4e3
     m_Address: Assets/Prefabs/Ui/PlayerInventory/Cell.Default.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c4055a6481f94534aaccf711db282dfd
+    m_Address: Assets/Prefabs/Ui/Shop/ShopPanel.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f0a995bdfab811743b6ca1eb5ef5a2e0
+    m_Address: Assets/Prefabs/Weapons/Effects/RifleMuzzleEffect.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

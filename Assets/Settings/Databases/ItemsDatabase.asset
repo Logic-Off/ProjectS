@@ -21,11 +21,8 @@ MonoBehaviour:
   - Id:
       _value: Rifle_1
     BaseAbility:
-      _value: BaseAttack
-    _effects:
-    - Stat: 3
-      Count: 150
-      Multiplier: 0
+      _value: RifleAttack
+    _effects: []
   Clothes: []
   ContainerSettings: []
   ItemFilters: []

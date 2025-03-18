@@ -11,6 +11,6 @@ namespace Ecs.Ui {
 			var element = base.Build(context, parent);
 			_button.onClick.AddListener(() => element.IsClicked = true);
 			return element;
-		} 
+		}
 	}
 }

@@ -62,7 +62,7 @@ namespace Ecs.Inventory {
 			return (result, quantityInEmptyCell);
 		}
 
-		private bool Commit(ItemEntry item, int quantity) {
+		private bool Commit(Item.ItemData item, int quantity) {
 			foreach (var cell in Transaction) {
 				var cellQuantity = _cellHelper.Quantity(cell);
 				if (cellQuantity + quantity <= item.StackSize) {
@@ -78,7 +78,7 @@ namespace Ecs.Inventory {
 			return true;
 		}
 
-		private bool TryPutInUsedCell(ItemEntry item, InventoryEntity cell, ref int quantity) {
+		private bool TryPutInUsedCell(Item.ItemData item, InventoryEntity cell, ref int quantity) {
 			if (!item.IsStackable)
 				return false;
 
@@ -98,7 +98,7 @@ namespace Ecs.Inventory {
 			return false;
 		}
 
-		private bool TryPutInEmptyCell(ItemEntry item, InventoryEntity cell, ref int quantity) {
+		private bool TryPutInEmptyCell(Item.ItemData item, InventoryEntity cell, ref int quantity) {
 			if (!cell.IsEmpty || cell.IsBroken)
 				return false;
 
@@ -181,7 +181,7 @@ namespace Ecs.Inventory {
 		/// </summary>
 		private static bool CanMerge(int quantity, int amount) => amount - quantity > 0;
 
-		private bool CanFitInUsedCell(ItemEntry item, InventoryEntity cell, ref int quantity) {
+		private bool CanFitInUsedCell(Item.ItemData item, InventoryEntity cell, ref int quantity) {
 			if (!item.IsStackable)
 				return false;
 
@@ -199,7 +199,7 @@ namespace Ecs.Inventory {
 			return false;
 		}
 
-		private bool CanFitInEmptyCell(ItemEntry item, InventoryEntity entity, ref int quantity) {
+		private bool CanFitInEmptyCell(Item.ItemData item, InventoryEntity entity, ref int quantity) {
 			if (entity.IsEmpty && !entity.IsBroken) {
 				if (quantity > item.StackSize)
 					quantity -= item.StackSize;
@@ -210,7 +210,7 @@ namespace Ecs.Inventory {
 			return false;
 		}
 
-		private bool CellCantAcceptThatItem(InventoryEntity cell, ItemEntry item)
+		private bool CellCantAcceptThatItem(InventoryEntity cell, Item.ItemData item)
 			=> _cellHelper.Quantity(cell) >= item.StackSize || !_cellHelper.Contains(cell, item.Id);
 
 		public int Count(InventoryEntity cell, ItemId itemId) {

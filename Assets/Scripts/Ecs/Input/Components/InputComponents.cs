@@ -14,4 +14,7 @@ namespace Ecs.Input {
 	public sealed class RotateComponent : IComponent {
 		public Vector2 Value;
 	}
+
+	[Input]
+	public sealed class AttackPressedComponent : IComponent { }
 }

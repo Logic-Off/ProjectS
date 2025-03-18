@@ -6,15 +6,18 @@ namespace Ecs.Command {
 	public class AbilityPlanner : IPlannerCommand {
 		private readonly CommandContext _command;
 		public AbilityPlanner(CommandContext command) => _command = command;
-		public bool Accept(CommandEntity entity) => entity.CommandType.Value == ECommandType.Ability;
+		public bool Accept(CommandEntity command) => command.CommandType.Value == ECommandType.Ability;
 
-		public void Apply(CommandEntity agent) {
-			var ability = _command.CreateState(agent, EState.Ability);
-			ability.AddAbility(agent.Ability.Value);
-			ability.AddCaster(agent.Owner.Value);
+		public void Apply(CommandEntity animationEvent) {
+			var ability = _command.CreateState(animationEvent, EState.Ability);
 
-			if (agent.HasTarget && agent.Target.Value != Id.None)
-				ability.AddTarget(agent.Target.Value);
+			ability.AddAbility(animationEvent.Ability.Value);
+			ability.AddCaster(animationEvent.Owner.Value);
+
+			if (animationEvent.HasTarget && animationEvent.Target.Value != Id.None)
+				ability.AddTarget(animationEvent.Target.Value);
+
+			_command.CreateState(animationEvent, EState.ExitAbility);
 		}
 	}
 }

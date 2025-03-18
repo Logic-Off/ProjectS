@@ -12,12 +12,12 @@ namespace Ecs.Game {
 			_characterDatabase = characterDatabase;
 		}
 
-		public bool Accept(GameEntity entity) => entity.IsPlayer;
+		public bool Accept(GameEntity command) => command.IsPlayer;
 
-		public void Apply(GameEntity agent) {
+		public void Apply(GameEntity animationEvent) {
 			var data = _characterDatabase.Get("Player");
 			var parameters = data.Levels[0].ToParameters;
-			var entity = _character.GetEntityWithId(agent.Id.Value);
+			var entity = _character.GetEntityWithId(animationEvent.Id.Value);
 
 			entity.AddHunger(parameters.Hunger.Value);
 			entity.AddMaxHunger(parameters.Hunger.Value);

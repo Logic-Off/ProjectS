@@ -61,6 +61,21 @@ namespace Ecs.Character {
 	}
 
 	[Character]
+	public sealed class ResistanceNormalDamageComponent : IComponent {
+		public float Value;
+	}
+
+	[Character]
+	public sealed class ResistancePenetratingDamageComponent : IComponent {
+		public float Value;
+	}
+
+	[Character]
+	public sealed class ResistanceCrushingDamageComponent : IComponent {
+		public float Value;
+	}
+
+	[Character]
 	public sealed class DeadComponent : IComponent { }
 
 	[Character, Item]

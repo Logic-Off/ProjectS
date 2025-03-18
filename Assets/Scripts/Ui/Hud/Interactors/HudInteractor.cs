@@ -1,3 +1,4 @@
+using Ui.PlayerHub;
 using Utopia;
 
 namespace Ui.Hud {
@@ -6,6 +7,6 @@ namespace Ui.Hud {
 		private readonly IWindowRouter _windowRouter;
 		public HudInteractor(IWindowRouter windowRouter) => _windowRouter = windowRouter;
 
-		public void OpenInventory() => _windowRouter.OpenWindow(EWindowName.PlayerInventory);
+		public void OpenInventory() => _windowRouter.OpenWindow(EWindowName.PlayerHub, EPlayerHubPanel.Inventory);
 	}
 }

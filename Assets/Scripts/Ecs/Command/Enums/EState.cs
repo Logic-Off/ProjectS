@@ -1,5 +1,7 @@
 namespace Ecs.Command {
 	public enum EState {
-		Ability
+		Ability,
+		ExitAbility,
+		Attack
 	}
 }

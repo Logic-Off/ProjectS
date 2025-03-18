@@ -4,6 +4,7 @@
 		Flee,
 		Idle,
 		Patrol,
-		Alert
+		Alert,
+		Dead
 	}
 }

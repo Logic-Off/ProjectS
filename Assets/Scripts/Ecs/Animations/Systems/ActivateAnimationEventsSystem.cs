@@ -1,4 +1,5 @@
-﻿using Common;
+﻿using System.Collections.Generic;
+using Common;
 using Ecs.Command;
 using Ecs.Common;
 using Utopia;
@@ -58,6 +59,11 @@ namespace Ecs.Animations {
 			animationEvent.AddId(IdGenerator.GetNext());
 			animationEvent.AddOwner(entity.Caster.Value);
 			animationEvent.AddEventName(data.EventName);
+
+			animationEvent.AddString(data.StringValues.GetDictionary());
+			animationEvent.AddFloat(data.FloatValues.GetDictionary());
+			animationEvent.AddBool(data.BoolValues.GetDictionary());
+
 			if (entity.HasTarget)
 				animationEvent.AddTarget(entity.Target.Value);
 

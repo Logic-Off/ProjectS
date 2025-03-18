@@ -45,9 +45,9 @@ namespace Ecs.Command {
 			ability.ReplaceEndCooldownTime((_clock.Time + ability.CooldownTime.Value).ToLong());
 			ability.IsCooldown = true;
 
-			var animator = agent.Animator.Value;
-			animator.Play("Walking");
-			animator.SetLayerWeight(2, 0);
+			// var animator = agent.Animator.Value;
+			// animator.Play("Walking");
+			// animator.SetLayerWeight(2, 0);
 		}
 
 		public bool Execute(GameEntity agent, CommandEntity command) {

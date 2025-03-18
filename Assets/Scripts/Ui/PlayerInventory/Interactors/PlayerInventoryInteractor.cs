@@ -58,7 +58,5 @@ namespace Ui.PlayerInventory {
 			_presenter.SelectedCell.Value.ReplaceSelected(false);
 			_presenter.SelectedCell.Value = null;
 		}
-
-		public void OnClose() => _windowRouter.OnRoot();
 	}
 }

@@ -12,6 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e23e069942cb45da8f1330e2ade12a12, type: 3}
   m_Name: UiPanelsInstaller
   m_EditorClassIdentifier: 
+  _characterInfoBuilder:
+    m_AssetGUID: 673a1e286820e75478df72bbbf954687
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  _craftBuilder:
+    m_AssetGUID: 45f84196f918ff9468112be161a1670b
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   _draggableBuilder:
     m_AssetGUID: a55a2202c6dcee74bb56a78db08b60f4
     m_SubObjectName: 
@@ -36,8 +48,32 @@ MonoBehaviour:
     m_SubObjectGUID: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  _statusBuilder:
+    m_AssetGUID: 23650ff0cc056c04c9c82c8574f1c30c
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  _playerHubBuilder:
+    m_AssetGUID: aa4b71b8d58ff084a9810c9fa34704af
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   _playerInventoryBuilder:
     m_AssetGUID: 0a1f41b070988b84fa1511995f490f7f
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  _playerSkillsBuilder:
+    m_AssetGUID: 0307ec9d2cb967742af0806ffa5f7fdd
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  _shopBuilder:
+    m_AssetGUID: c4055a6481f94534aaccf711db282dfd
     m_SubObjectName: 
     m_SubObjectGUID: 
     m_SubObjectType: 

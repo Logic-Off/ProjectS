@@ -14,7 +14,7 @@ namespace Ui.Hud {
 		}
 
 		protected override void BindView(UiContext context, UiEntity entity) {
-			Find("DefaultAbility").SubscribeOnClickedChange(x => _presenter.OnCastDefaultAbility.Fire());
+			Find("DefaultAbility").SubscribeOnPressedChange(x => _presenter.OnCastDefaultAbility.Value = x.IsPressed);
 		}
 
 		protected override void BindInteractor() {

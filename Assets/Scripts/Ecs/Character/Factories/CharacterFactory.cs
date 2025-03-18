@@ -44,6 +44,9 @@ namespace Ecs.Character {
 			entity.AddVisionAngle(parameters.VisionAngle.Value);
 			entity.AddStealth(parameters.Stealth.Value);
 			entity.AddObservation(parameters.Observation.Value);
+			entity.AddResistanceNormalDamage(parameters.ResistanceNormalDamage.Value);
+			entity.AddResistancePenetratingDamage(parameters.ResistancePenetratingDamage.Value);
+			entity.AddResistanceCrushingDamage(parameters.ResistanceCrushingDamage.Value);
 			entity.AddId(agent.Id.Value);
 			entity.IsPlayer = agent.IsPlayer;
 			entity.IsNpc = agent.IsNpc;
@@ -55,6 +58,7 @@ namespace Ecs.Character {
 
 			agent.AddTeam(data.Team);
 			agent.AddHostileTeams(data.HostileTeams);
+			agent.AddGameType(EGameType.Agent);
 
 			agent.AddCurrentAnimationState(data.BaseAnimationState);
 			agent.AddPreviousAnimationState(data.BaseAnimationState);
@@ -75,8 +79,10 @@ namespace Ecs.Character {
 			agent.AddCurrentItems(new Dictionary<EItemPosition, AsyncOperationHandle<GameObject>>());
 
 			// Вынести в биндер
-			if (agent.IsNpc)
+			if (agent.IsNpc) {
 				agent.AddPreviousAiAction(EAiAction.Idle);
+				agent.AddActions(data.Actions);
+			}
 
 			OnBuild(agent);
 

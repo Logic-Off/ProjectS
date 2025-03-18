@@ -16,6 +16,11 @@ namespace Ecs.Character {
 		public float Psyche;
 		public float Cold;
 		public float Radiation;
+		
+		// Resistance
+		public float ResistanceNormalDamage;
+		public float ResistancePenetratingDamage;
+		public float ResistanceCrushingDamage;
 
 		public CharacterParameters ToParameters => new() {
 			Health = new Parameter(Health),
@@ -29,6 +34,9 @@ namespace Ecs.Character {
 			Psyche = new Parameter(Psyche),
 			Cold = new Parameter(Cold),
 			Radiation = new Parameter(Radiation),
+			ResistanceNormalDamage = new Parameter(ResistanceNormalDamage),
+			ResistancePenetratingDamage = new Parameter(ResistancePenetratingDamage),
+			ResistanceCrushingDamage = new Parameter(ResistanceCrushingDamage),
 		};
 	}
 }

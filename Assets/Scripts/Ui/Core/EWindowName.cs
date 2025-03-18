@@ -1,7 +1,7 @@
 ﻿namespace Ui {
 	public enum EWindowName {
 		Hud,
-		PlayerInventory,
+		PlayerHub,
 		Cheats,
 		Arena
 	}

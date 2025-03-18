@@ -10,6 +10,7 @@ namespace Ecs.Ability {
 		public bool IsLookAtTarget;
 		public bool IsStandingCast;
 		public string Animation;
+		public string AbilityState;
 
 		public List<AbilityParameterData> Parameters;
 	}

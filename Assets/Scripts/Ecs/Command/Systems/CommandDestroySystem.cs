@@ -3,7 +3,7 @@ using Utopia;
 using Zentitas;
 
 namespace Ecs.Command {
-	[InstallerGenerator(InstallerId.Game)]
+	[InstallerGenerator(InstallerId.Game, 10_000_000)]
 	public class CommandDestroySystem : ReactiveSystem<CommandEntity> {
 		private readonly CommandContext _command;
 

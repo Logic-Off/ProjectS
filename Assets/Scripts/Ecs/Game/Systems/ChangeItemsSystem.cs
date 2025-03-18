@@ -2,6 +2,7 @@
 using Common;
 using Ecs.Common;
 using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using Utopia;
 using Zentitas;
 
@@ -29,6 +30,9 @@ namespace Ecs.Game {
 					if (currentItems.ContainsKey(position)) {
 						Addressables.ReleaseInstance(currentItems[position]);
 						currentItems.Remove(position);
+						// Правую руку считаем оружием
+						if (position is EItemPosition.RightHand && entity.HasGunFirePosition)
+							entity.RemoveGunFirePosition();
 					}
 
 					if (name.IsNullOrEmpty())
@@ -37,6 +41,15 @@ namespace Ecs.Game {
 					var reference = _prefabsDatabase.Get(name).AssetReference;
 					var positionTransform = transformPositions[position];
 					var handle = reference.InstantiateAsync(positionTransform);
+					handle.Completed += h => {
+						if (handle.Status is AsyncOperationStatus.Succeeded) {
+							var weapon = h.Result.GetComponent<WeaponBehaviour>();
+							if ((weapon == null && entity.HasGunFirePosition) || weapon != null && weapon.FirePosition == null)
+								entity.RemoveGunFirePosition();
+							else if (weapon != null && weapon.FirePosition != null)
+								entity.AddGunFirePosition(weapon.FirePosition);
+						}
+					};
 					currentItems[position] = handle;
 				}
 

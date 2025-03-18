@@ -5,7 +5,7 @@ using Utopia;
 namespace Ui.Hud {
 	[InstallerGenerator(InstallerId.Ui)]
 	public class ActionButtonsPresenter : IDisposable{
-		public Signal OnCastDefaultAbility = new();
+		public EventProperty<bool> OnCastDefaultAbility = new();
 
 		public void Dispose() => OnCastDefaultAbility?.Dispose();
 	}

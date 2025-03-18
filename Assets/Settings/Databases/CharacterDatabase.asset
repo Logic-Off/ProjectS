@@ -22,11 +22,20 @@ MonoBehaviour:
       CastSpeed: 1
       MovementSpeed: 3.5
       VisionRange: 6
-      VisionAngle: 180
+      VisionAngle: 360
+      Hunger: 100
+      Thirst: 100
+      Psyche: 100
+      Cold: 100
+      Radiation: 100
+      ResistanceNormalDamage: 0
+      ResistancePenetratingDamage: 0
+      ResistanceCrushingDamage: 0
     BaseAnimationState: Rifle
     BaseAbility:
-      _value: BaseAttack
+      _value: RifleAttack
     Abilities: []
+    Actions: 
   - Name: Zombie
     Team: 1
     HostileTeams: 0000000002000000
@@ -37,8 +46,18 @@ MonoBehaviour:
       MovementSpeed: 3.5
       VisionRange: 6
       VisionAngle: 180
+      Hunger: 100
+      Thirst: 100
+      Psyche: 100
+      Cold: 100
+      Radiation: 100
+      ResistanceNormalDamage: 0
+      ResistancePenetratingDamage: 0.95
+      ResistanceCrushingDamage: 0
     BaseAnimationState: Default
     BaseAbility:
       _value: 
     Abilities:
     - _value: ZombieAttack
+    Actions: 0500000002000000030000000400000000000000
+  Buffs: []

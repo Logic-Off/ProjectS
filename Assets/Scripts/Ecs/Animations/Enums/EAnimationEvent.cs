@@ -1,5 +1,7 @@
 namespace Ecs.Animations {
 	public enum EAnimationEvent {
-		DealDamage
+		DealDamage,
+		CreateGunFireEffect,
+		CreateGunHitEffect
 	}
 }

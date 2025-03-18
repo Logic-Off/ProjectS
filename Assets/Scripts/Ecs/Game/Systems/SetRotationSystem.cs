@@ -12,7 +12,7 @@ namespace Ecs.Game {
 			=> context.CreateCollector(GameMatcher.NewRotation);
 
 		protected override bool Filter(GameEntity entity)
-			=> entity.HasNewRotation;
+			=> entity.HasNewRotation && entity.HasTransform;
 
 		protected override void Execute(List<GameEntity> entities) {
 			foreach (var entity in entities) {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Ecs.Ability;
 using Ecs.AI;
+using Ecs.Inventory;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -123,4 +124,15 @@ namespace Ecs.Game {
 
 	[Game]
 	public sealed class StunComponent : IComponent { }
+
+	[Game]
+	public sealed class ActionsComponent : IComponent, IDisposable {
+		public List<EAiAction> Values;
+		public void Dispose() => Values.Clear();
+	}
+
+	[Game]
+	public sealed class CurrentWeaponComponent : IComponent {
+		public ItemInstanceId Value;
+	}
 }

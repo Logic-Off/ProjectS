@@ -66,4 +66,9 @@ namespace Ecs.Ability {
 
 	[Ability]
 	public sealed class StandingCastComponent : IComponent { }
+
+	[Ability]
+	public sealed class AbilityStateComponent : IComponent {
+		public string Value;
+	}
 }

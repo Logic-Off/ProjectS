@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Common;
 using Ecs.Inventory;
 using Ui;
 using UnityEditor.DeviceSimulation;
@@ -26,7 +27,7 @@ namespace Ecs.Ui {
 	[Ui, Event(InstallerId.Ui, EEventType.AddedOrRemoved, 750_000, false, true)]
 	public sealed class ActiveComponent : IComponent { }
 
-	[Ui, Event(InstallerId.Ui, EEventType.AddedOrRemoved, 750_000, false, true)]
+	[Ui, Game, Event(InstallerId.Ui, EEventType.AddedOrRemoved, 750_000, false, true)]
 	public sealed class VisibleComponent : IComponent { }
 
 	[Ui, Event(InstallerId.Ui, EEventType.Added)]
@@ -99,5 +100,15 @@ namespace Ecs.Ui {
 	[Ui]
 	public sealed class OnTouchSubscribersComponent : IComponent {
 		public List<Action<UiEntity, TouchEvent>> List;
+	}
+
+	[Ui, Event(InstallerId.Ui, EEventType.AddedOrRemoved, 750_000, false, true)]
+	public sealed class PressedComponent : IComponent { }
+	
+	
+	[Ui, Event(InstallerId.Ui, EEventType.Added)]
+	public sealed class LocalizationComponent : IComponent {
+		public LocalizationKey Value;
+		public override string ToString() => $"LocalizationKeys[{Value.Key}]";
 	}
 }

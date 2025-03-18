@@ -65,7 +65,7 @@ namespace Ecs.Inventory {
 			return (result, quantityInEmptyCell);
 		}
 
-		private bool Commit(ItemEntry item, int quantity) {
+		private bool Commit(Item.ItemData item, int quantity) {
 			foreach (var cell in Transaction) {
 				var cellQuantity = _cellHelper.Quantity(cell);
 				if (cellQuantity + quantity <= item.StackSize) {
@@ -81,7 +81,7 @@ namespace Ecs.Inventory {
 			return true;
 		}
 
-		private bool TryPutInUsedCell(ItemEntry item, List<InventoryEntity> cells, ref int quantity) {
+		private bool TryPutInUsedCell(Item.ItemData item, List<InventoryEntity> cells, ref int quantity) {
 			if (!item.IsStackable)
 				return false;
 
@@ -103,7 +103,7 @@ namespace Ecs.Inventory {
 			return false;
 		}
 
-		private bool TryPutInEmptyCell(ItemEntry item, List<InventoryEntity> cells, ref int quantity) {
+		private bool TryPutInEmptyCell(Item.ItemData item, List<InventoryEntity> cells, ref int quantity) {
 			foreach (var cell in cells) {
 				if (cell.IsEmpty && !cell.IsBroken) {
 					var instance = _itemsFactory.Create(item.Id);
@@ -194,7 +194,7 @@ namespace Ecs.Inventory {
 		/// </summary>
 		private static bool CanMerge(int quantity, int amount) => amount - quantity > 0;
 
-		private bool CanFitInUsedCell(ItemEntry item, List<InventoryEntity> cells, ref int quantity) {
+		private bool CanFitInUsedCell(Item.ItemData item, List<InventoryEntity> cells, ref int quantity) {
 			if (!item.IsStackable)
 				return false;
 
@@ -214,7 +214,7 @@ namespace Ecs.Inventory {
 			return false;
 		}
 
-		private static bool CanFitInEmptyCell(ItemEntry item, List<InventoryEntity> cells, ref int quantity) {
+		private static bool CanFitInEmptyCell(Item.ItemData item, List<InventoryEntity> cells, ref int quantity) {
 			foreach (var cell in cells) {
 				if (!cell.IsEmpty || cell.IsBroken)
 					continue;
@@ -227,7 +227,7 @@ namespace Ecs.Inventory {
 			return false;
 		}
 
-		private bool CellCantAcceptThatItem(InventoryEntity cell, ItemEntry item)
+		private bool CellCantAcceptThatItem(InventoryEntity cell, Item.ItemData item)
 			=> _cellHelper.Quantity(cell) >= item.StackSize || !_cellHelper.Contains(cell, item.Id);
 
 		public int Count(List<InventoryEntity> cells, ItemId itemId) {

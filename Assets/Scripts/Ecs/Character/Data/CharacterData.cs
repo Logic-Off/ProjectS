@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Ecs.Ability;
+using Ecs.AI;
 using Ecs.Game;
 
 namespace Ecs.Character {
@@ -13,5 +14,6 @@ namespace Ecs.Character {
 		public string BaseAnimationState;
 		public AbilityId BaseAbility;
 		public List<AbilityId> Abilities;
+		public List<EAiAction> Actions;
 	}
 }

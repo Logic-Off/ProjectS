@@ -16,5 +16,10 @@ namespace Ecs.Game {
 			var direction = target.Position.Value - agent.Position.Value;
 			agent.ReplaceNewRotation(Quaternion.LookRotation(direction));
 		}
+
+		public static void ResetPause(this GameEntity agent) {
+			if(agent.HasPause)
+				agent.RemovePause();
+		}
 	}
 }

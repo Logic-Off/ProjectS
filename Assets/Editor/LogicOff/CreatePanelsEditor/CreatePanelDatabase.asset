@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: CreatePanelDatabase
   m_EditorClassIdentifier: 
   Path: R:/Github/Project S/Assets/Scripts/Ui/
-  FolderName: Hud
-  PanelName: Status
+  FolderName: PlayerSkills
+  PanelName: PlayerSkills

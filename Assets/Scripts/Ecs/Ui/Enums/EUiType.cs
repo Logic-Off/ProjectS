@@ -8,6 +8,7 @@ namespace Ecs.Ui {
 		InventoryCell,
 		DragAndDrop,
 		Cell,
-		Icon
+		Icon,
+		Label
 	}
 }

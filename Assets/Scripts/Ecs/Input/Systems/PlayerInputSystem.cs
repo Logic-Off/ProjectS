@@ -13,17 +13,14 @@ namespace Ecs.Input {
 		public void Initialize() {
 			var actions = InputSystem.actions;
 			actions["Move"].performed += OnMove;
-			actions["Move"].canceled += OnCancel;
+			actions["Move"].canceled += OnMoveCancel;
+			actions["Attack"].started += OnStartAttack;
+			actions["Attack"].canceled += OnEndAttack;
 		}
 
-		private void OnMove(InputAction.CallbackContext context) {
-			var playerInput = _input.PlayerInputEntity;
-			playerInput.ReplaceMovement(context.ReadValue<Vector2>());
-		}
-
-		private void OnCancel(InputAction.CallbackContext context) {
-			var playerInput = _input.PlayerInputEntity;
-			playerInput.ReplaceMovement(Vector2.zero);
-		}
+		private void OnMove(InputAction.CallbackContext context) => _input.PlayerInputEntity.ReplaceMovement(context.ReadValue<Vector2>());
+		private void OnMoveCancel(InputAction.CallbackContext context) => _input.PlayerInputEntity.ReplaceMovement(Vector2.zero);
+		private void OnStartAttack(InputAction.CallbackContext context) => _input.PlayerInputEntity.IsAttackPressed = true;
+		private void OnEndAttack(InputAction.CallbackContext context) => _input.PlayerInputEntity.IsAttackPressed = false;
 	}
 }

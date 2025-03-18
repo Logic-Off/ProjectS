@@ -14,22 +14,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Abilities:
   - Id:
-      _value: BaseAttack
-    Type: 0
-    Cooldown: 2
-    IsLookAtTarget: 1
-    IsStandingCast: 1
-    Animation: BaseAttack
-    Parameters:
-    - Name: 0
-      Value: 1.5
-  - Id:
       _value: ZombieAttack
     Type: 0
     Cooldown: 2.5
     IsLookAtTarget: 1
     IsStandingCast: 1
     Animation: ZombieAttack
+    AbilityState: 
     Parameters:
     - Name: 0
       Value: 1.5
+  - Id:
+      _value: BaseAttack
+    Type: 0
+    Cooldown: 2
+    IsLookAtTarget: 1
+    IsStandingCast: 1
+    Animation: BaseAttack
+    AbilityState: 
+    Parameters:
+    - Name: 0
+      Value: 1.5
+  - Id:
+      _value: RifleAttack
+    Type: 0
+    Cooldown: 0.1
+    IsLookAtTarget: 1
+    IsStandingCast: 1
+    Animation: RifleAttack
+    AbilityState: RifleAiming
+    Parameters:
+    - Name: 0
+      Value: 8

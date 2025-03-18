@@ -11,6 +11,11 @@
 		WorldCanvas,
 		TopHudButtons,
 		Arena,
-		Status
+		Status,
+		CharacterInfo,
+		PlayerHub,
+		Shop,
+		Craft,
+		PlayerSkills
 	}
 }
