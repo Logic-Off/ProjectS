@@ -62,3 +62,14 @@ MonoBehaviour:
         FloatValues: []
         BoolValues: []
     _clip: {fileID: 7400000, guid: 1dc20baf6a58f434c80c54e6ed08a0ba, type: 3}
+  - Id: FistAttack
+    AnimationName: RightHand1Combat
+    Time: 0.8333334
+    Events:
+    - Time: 0
+      _data:
+        EventName: 0
+        StringValues: []
+        FloatValues: []
+        BoolValues: []
+    _clip: {fileID: 7400000, guid: 6e827de72b34c3644b944c46b4dd3463, type: 3}

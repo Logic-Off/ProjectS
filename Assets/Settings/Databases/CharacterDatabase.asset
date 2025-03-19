@@ -31,9 +31,9 @@ MonoBehaviour:
       ResistanceNormalDamage: 0
       ResistancePenetratingDamage: 0
       ResistanceCrushingDamage: 0
-    BaseAnimationState: Rifle
+    BaseAnimationState: Default
     BaseAbility:
-      _value: RifleAttack
+      _value: BaseAttack
     Abilities: []
     Actions: 
   - Name: Zombie

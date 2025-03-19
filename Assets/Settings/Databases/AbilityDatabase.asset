@@ -27,10 +27,10 @@ MonoBehaviour:
   - Id:
       _value: BaseAttack
     Type: 0
-    Cooldown: 2
+    Cooldown: 1.5
     IsLookAtTarget: 1
     IsStandingCast: 1
-    Animation: BaseAttack
+    Animation: FistAttack
     AbilityState: 
     Parameters:
     - Name: 0
