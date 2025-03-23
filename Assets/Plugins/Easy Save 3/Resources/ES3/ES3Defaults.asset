@@ -40,8 +40,6 @@ MonoBehaviour:
     - ProjectDawn.Navigation.Hybrid
     - ProjectDawn.ReciprocalAvoidance
     - Sirenix.OdinInspector.Modules.Unity.Addressables
-    - Sirenix.OdinInspector.Modules.UnityLocalization
-    - TriInspector
     - UniTask
     - UniTask.Addressables
     - UniTask.DOTween

@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterDatabase: {fileID: 11400000, guid: 8003bc67ba6c1a543bb491f72ef405b2, type: 2}
   _itemsDatabase: {fileID: 11400000, guid: 5afc147acf34b2c43a15e494262806b7, type: 2}
+  _abilitiesDatabase: {fileID: 11400000, guid: b1faa8cb7e7f1814ca8ce4cfedf93894, type: 2}

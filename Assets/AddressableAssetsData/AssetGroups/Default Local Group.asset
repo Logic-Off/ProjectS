@@ -35,6 +35,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 102319d4a2a7c44468e0f8914819a223
+    m_Address: Assets/Prefabs/Ui/Cheats/CheatsHudPanel.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 11769748ba306d54288d45d1d21ae565
     m_Address: Assets/Prefabs/MainCamera.prefab
     m_ReadOnly: 0
@@ -85,6 +90,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4f7de88a6af27f4469e230df010bb3d6
+    m_Address: Assets/Prefabs/Ui/Cheats/CheatsPanel.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4fd99ae909b50324f8ea6b723b8d576f
     m_Address: Assets/Prefabs/Weapons/Melee/HuntingKnife.prefab
     m_ReadOnly: 0
@@ -115,6 +125,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 872406a4535cc9042aaee195eb61d487
+    m_Address: Assets/Prefabs/Ui/Cheats/SmallCheatButton.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 87833b867b358a146aa745edf7e94fa3
     m_Address: Assets/Assets/Ui/New Sprite Atlas.spriteatlasv2
     m_ReadOnly: 0
@@ -122,6 +137,16 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8be15928a091a424aa12062441075a39
     m_Address: Assets/Scenes/Common/DefaultManager.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8cd71902e751aee4f8541250b53c0dcc
+    m_Address: Assets/Prefabs/Ui/Cheats/CheatText.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 926937264b4ed074da31afd2aed9a8a0
+    m_Address: Assets/Prefabs/Ui/Cheats/CheatHeader.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -157,6 +182,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c4055a6481f94534aaccf711db282dfd
     m_Address: Assets/Prefabs/Ui/Shop/ShopPanel.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c9f37d16ce301a543a57117b5195f3c2
+    m_Address: Assets/Prefabs/Ui/Cheats/CheatButton.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -81,6 +81,11 @@ namespace Ecs.Ui {
 	}
 
 	[Ui, Event(InstallerId.Ui, EEventType.Added)]
+	public sealed class StringComponent : IComponent {
+		public string Value;
+	}
+
+	[Ui, Event(InstallerId.Ui, EEventType.Added)]
 	public sealed class ColorComponent : IComponent {
 		public Color Value;
 	}

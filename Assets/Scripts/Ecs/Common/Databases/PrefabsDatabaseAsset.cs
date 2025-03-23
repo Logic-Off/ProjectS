@@ -7,5 +7,6 @@ namespace Ecs.Common {
 	public sealed class PrefabsDatabaseAsset : ScriptableObject {
 		public List<PrefabData> All;
 		public List<PrefabData> Weapons;
+		public List<PrefabData> Cheats;
 	}
 }

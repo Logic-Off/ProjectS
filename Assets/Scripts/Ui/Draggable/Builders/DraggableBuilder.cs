@@ -12,7 +12,7 @@ namespace Ui.Draggable {
 			_interactor = interactor;
 		}
 
-		protected override void BindView(UiContext context, UiEntity entity) {
+		protected override void BindView(UiEntity entity) {
 			var icon = Find($"Icon");
 			_presenter.Position.AddListener(x => icon.ReplaceVector2(x));
 			_presenter.IconId.AddListener(x => icon.ReplaceIconId(x));

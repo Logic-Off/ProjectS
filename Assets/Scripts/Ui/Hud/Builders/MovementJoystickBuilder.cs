@@ -13,7 +13,7 @@ namespace Ui.Hud {
 			_interactor = interactor;
 		}
 
-		protected override void BindView(UiContext context, UiEntity entity) {
+		protected override void BindView(UiEntity entity) {
 			Find("Joystick").SubscribeOnVector2Change(x => _presenter.OnMovementChange.Fire(x.Vector2.Value));
 		}
 

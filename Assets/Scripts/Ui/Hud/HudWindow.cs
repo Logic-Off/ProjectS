@@ -10,6 +10,10 @@ namespace Ui.Hud {
 			AddBuilder<StatusBuilder>();
 			AddBuilder<MovementJoystickBuilder>();
 			AddBuilder<ActionButtonsBuilder>();
+			
+#if DEBUG
+			AddBuilder<Cheats.CheatsHudBuilder>();
+#endif
 		}
 	}
 }

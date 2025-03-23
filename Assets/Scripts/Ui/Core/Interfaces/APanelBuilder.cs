@@ -51,12 +51,12 @@ namespace Ui {
 		}
 
 		protected virtual void Build(UiContext context, UiEntity panelEntity) {
-			BindView(context, panelEntity);
+			BindView(panelEntity);
 			BindInteractor();
 			Activate();
 		}
 
-		protected virtual void BindView(UiContext context, UiEntity entity) { }
+		protected virtual void BindView(UiEntity entity) { }
 		protected virtual void BindInteractor() { }
 		protected virtual void Activate() { }
 		protected virtual void OnShow() { }

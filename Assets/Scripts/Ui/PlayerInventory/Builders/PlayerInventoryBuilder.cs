@@ -17,7 +17,7 @@ namespace Ui.PlayerInventory {
 			_interactor = interactor;
 		}
 
-		protected override void BindView(UiContext context, UiEntity entity) {
+		protected override void BindView(UiEntity entity) {
 
 			_presenter.Containers.Value[EUiContainerType.Common] = Find("InventoryCellsContainer").Rect.Value;
 			_presenter.Containers.Value[EUiContainerType.Equipment] = Find("EquipmentContainer").Rect.Value;

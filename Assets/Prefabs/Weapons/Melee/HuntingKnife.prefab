@@ -14,35 +14,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4066131270179648, guid: 0382438fca188874582f78853c471286, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.001
       objectReference: {fileID: 0}
     - target: {fileID: 4066131270179648, guid: 0382438fca188874582f78853c471286, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.044
       objectReference: {fileID: 0}
     - target: {fileID: 4066131270179648, guid: 0382438fca188874582f78853c471286, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.022
       objectReference: {fileID: 0}
     - target: {fileID: 4066131270179648, guid: 0382438fca188874582f78853c471286, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.09703999
       objectReference: {fileID: 0}
     - target: {fileID: 4066131270179648, guid: 0382438fca188874582f78853c471286, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.70932955
       objectReference: {fileID: 0}
     - target: {fileID: 4066131270179648, guid: 0382438fca188874582f78853c471286, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.6917224
       objectReference: {fileID: 0}
     - target: {fileID: 4066131270179648, guid: 0382438fca188874582f78853c471286, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.09463124
       objectReference: {fileID: 0}
     - target: {fileID: 4066131270179648, guid: 0382438fca188874582f78853c471286, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 164.42
       objectReference: {fileID: 0}
     - target: {fileID: 4066131270179648, guid: 0382438fca188874582f78853c471286, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4066131270179648, guid: 0382438fca188874582f78853c471286, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 88.56
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

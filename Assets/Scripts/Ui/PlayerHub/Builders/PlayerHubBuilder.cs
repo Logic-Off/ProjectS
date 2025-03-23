@@ -13,7 +13,7 @@ namespace Ui.PlayerHub {
 			_interactor = interactor;
 		}
 
-		protected override void BindView(UiContext context, UiEntity entity) {
+		protected override void BindView(UiEntity entity) {
 			Find("CharacterInfoButton").SubscribeOnClickedChange(x => _presenter.ShowPanel.Fire(EPlayerHubPanel.CharacterInfo));
 			Find("PlayerSkillsButton").SubscribeOnClickedChange(x => _presenter.ShowPanel.Fire(EPlayerHubPanel.PlayerSkills));
 			Find("InventoryButton").SubscribeOnClickedChange(x => _presenter.ShowPanel.Fire(EPlayerHubPanel.Inventory));

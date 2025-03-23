@@ -44,7 +44,7 @@ namespace Ecs.Game {
 					handle.Completed += h => {
 						if (handle.Status is AsyncOperationStatus.Succeeded) {
 							var weapon = h.Result.GetComponent<WeaponBehaviour>();
-							if ((weapon == null && entity.HasGunFirePosition) || weapon != null && weapon.FirePosition == null)
+							if ((weapon == null || weapon.FirePosition == null) && entity.HasGunFirePosition)
 								entity.RemoveGunFirePosition();
 							else if (weapon != null && weapon.FirePosition != null)
 								entity.AddGunFirePosition(weapon.FirePosition);

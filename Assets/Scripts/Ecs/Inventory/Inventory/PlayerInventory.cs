@@ -25,12 +25,15 @@ namespace Ecs.Inventory {
 
 		public bool Add(ItemId itemId, int quantity) {
 			var result = _stackManipulator.Put(GetCells(), itemId, quantity);
+			if (result)
+				D.Error("[PlayerInventory.Add]", itemId, quantity);
 			Refresh();
 			return result;
 		}
 
 		public void Remove(ItemId itemId, int quantity) {
 			_stackManipulator.Remove(GetCells(), itemId, quantity);
+			D.Error("[PlayerInventory.Remove]", itemId, quantity);
 			Refresh();
 		}
 

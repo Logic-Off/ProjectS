@@ -10,6 +10,8 @@ namespace Ecs.Common {
 				Add(data.Name, data);
 			foreach (var data in database.Weapons)
 				Add(data.Name, data);
+			foreach (var data in database.Cheats)
+				Add(data.Name, data);
 		}
 	}
 }

@@ -12,7 +12,7 @@ namespace Ui.PlayerSkills {
 			_interactor = interactor;
 		}
 
-		protected override void BindView(UiContext context, UiEntity entity) {
+		protected override void BindView(UiEntity entity) {
 			_presenter.IsVisible.AddListener(x => entity.IsVisible = x);
 		}
 

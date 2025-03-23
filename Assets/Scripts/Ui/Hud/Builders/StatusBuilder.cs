@@ -12,7 +12,7 @@ namespace Ui.Hud {
 			_interactor = interactor;
 		}
 
-		protected override void BindView(UiContext context, UiEntity entity) {
+		protected override void BindView(UiEntity entity) {
 			_presenter.HealthAmount.AddListener(x => Find("Health").ReplaceFloat(x));
 			_presenter.HungerAmount.AddListener(x => Find("Hunger").ReplaceFloat(x));
 			_presenter.ThirstAmount.AddListener(x => Find("Thirst").ReplaceFloat(x));

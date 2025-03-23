@@ -112,3 +112,32 @@ MonoBehaviour:
       m_SubObjectGUID: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
+  Cheats:
+  - Name: SmallCheatButton
+    AssetReference:
+      m_AssetGUID: 872406a4535cc9042aaee195eb61d487
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 1
+  - Name: CheatButton
+    AssetReference:
+      m_AssetGUID: c9f37d16ce301a543a57117b5195f3c2
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 1
+  - Name: CheatHeader
+    AssetReference:
+      m_AssetGUID: 926937264b4ed074da31afd2aed9a8a0
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 1
+  - Name: CheatText
+    AssetReference:
+      m_AssetGUID: 8cd71902e751aee4f8541250b53c0dcc
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 1

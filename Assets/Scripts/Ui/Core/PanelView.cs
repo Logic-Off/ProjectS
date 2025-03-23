@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Common;
 using Ecs.Ui;
+using Sirenix.OdinInspector;
 using Ui.Core.Panels;
 using UnityEngine;
 
@@ -16,6 +17,7 @@ namespace Ui {
 		private void OnDestroy() => _entity = null;
 
 #if UNITY_EDITOR
+		[Button]
 		public void CollectWidgets() {
 			_widgets.Clear();
 			var widgets = _gameObject.GetComponentsInChildren<AWidget>(true);

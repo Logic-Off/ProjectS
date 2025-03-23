@@ -24,6 +24,7 @@ namespace Ecs.Inventory {
 			if (OnGiveInventory(items))
 				return;
 
+			D.Error("[GiveItemsFacade]", "Add to storage");
 			AddToStorage(items);
 		}
 

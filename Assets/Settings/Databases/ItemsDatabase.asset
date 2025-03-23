@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   All:
   - Id:
+      _value: Weapon.Rifle
+    Type: 1
+    StackSize: 1
+  - Id:
       _value: Weapon.Axe
     Type: 1
     StackSize: 1

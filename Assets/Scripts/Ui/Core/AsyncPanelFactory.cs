@@ -18,7 +18,7 @@ namespace Ui {
 			if (_view != null)
 				return _view;
 
-			var gameObject = await _reference.InstantiateAsync(_parent.Canvas.transform).Task;
+			var gameObject = await _reference.InstantiateAsync(_parent.Canvas.transform).ToUniTask();
 			gameObject.SetActive(false);
 			_view = gameObject.GetComponent<IPanelView>();
 			return _view;

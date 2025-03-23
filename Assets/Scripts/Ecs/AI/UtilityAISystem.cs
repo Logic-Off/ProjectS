@@ -10,7 +10,7 @@ namespace Ecs.AI {
 
 		public UtilityAISystem(GameContext game, UtilityAI utilityAI) {
 			_utilityAI = utilityAI;
-			_group = game.GetGroup(GameMatcher.AllOf(GameMatcher.Npc).NoneOf(GameMatcher.Dead));
+			_group = game.GetGroup(GameMatcher.Npc);
 		}
 
 		public void Update() {
