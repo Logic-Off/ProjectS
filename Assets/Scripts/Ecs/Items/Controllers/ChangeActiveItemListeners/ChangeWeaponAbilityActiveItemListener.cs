@@ -16,6 +16,9 @@ namespace Ecs.Items {
 			if (owner == null)
 				return;
 			owner.ReplaceBaseAbility(item.BaseAbility.Value);
+			var abilities = owner.Abilities.Values;
+			abilities.Add(item.BaseAbility.Value);
+			owner.ReplaceAbilities(abilities);
 			owner.ReplaceCurrentWeapon(item.ItemInstanceId.Value);
 		}
 
@@ -23,7 +26,14 @@ namespace Ecs.Items {
 			var owner = _game.GetEntityWithId(item.Owner.Value);
 			if (owner == null)
 				return;
-			owner.RemoveBaseAbility();
+			if (owner.HasDefaultAbility)
+				owner.ReplaceBaseAbility(owner.DefaultAbility.Value);
+			else
+				owner.RemoveBaseAbility();
+			
+			var abilities = owner.Abilities.Values;
+			abilities.Remove(item.BaseAbility.Value);
+			owner.ReplaceAbilities(abilities);
 			owner.RemoveCurrentWeapon();
 		}
 	}

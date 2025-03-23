@@ -8,6 +8,8 @@ namespace Ecs.Common {
 		public PrefabsDatabase(PrefabsDatabaseAsset database) {
 			foreach (var data in database.All)
 				Add(data.Name, data);
+			foreach (var data in database.Weapons)
+				Add(data.Name, data);
 		}
 	}
 }

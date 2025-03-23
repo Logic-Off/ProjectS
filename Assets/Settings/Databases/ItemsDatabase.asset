@@ -14,14 +14,85 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   All:
   - Id:
-      _value: Rifle_1
+      _value: Weapon.Axe
+    Type: 1
+    StackSize: 1
+  - Id:
+      _value: Weapon.Bat
+    Type: 1
+    StackSize: 1
+  - Id:
+      _value: Weapon.Hammer
+    Type: 1
+    StackSize: 1
+  - Id:
+      _value: Weapon.HuntingKnife
+    Type: 1
+    StackSize: 1
+  - Id:
+      _value: Weapon.Katana
+    Type: 1
+    StackSize: 1
+  - Id:
+      _value: Weapon.Machete
     Type: 1
     StackSize: 1
   Weapons:
   - Id:
-      _value: Rifle_1
+      _value: Weapon.Rifle
+    Type: 1
     BaseAbility:
       _value: RifleAttack
+    DamageType: 1
+    AnimationState: Rifle
+    _effects: []
+  - Id:
+      _value: Weapon.Axe
+    Type: 0
+    BaseAbility:
+      _value: SwordAttack
+    DamageType: 2
+    AnimationState: 
+    _effects: []
+  - Id:
+      _value: Weapon.Bat
+    Type: 0
+    BaseAbility:
+      _value: SwordAttack
+    DamageType: 2
+    AnimationState: 
+    _effects: []
+  - Id:
+      _value: Weapon.Hammer
+    Type: 0
+    BaseAbility:
+      _value: SwordAttack
+    DamageType: 2
+    AnimationState: 
+    _effects: []
+  - Id:
+      _value: Weapon.HuntingKnife
+    Type: 0
+    BaseAbility:
+      _value: SwordAttack
+    DamageType: 3
+    AnimationState: 
+    _effects: []
+  - Id:
+      _value: Weapon.Katana
+    Type: 0
+    BaseAbility:
+      _value: SwordAttack
+    DamageType: 3
+    AnimationState: 
+    _effects: []
+  - Id:
+      _value: Weapon.Machete
+    Type: 0
+    BaseAbility:
+      _value: SwordAttack
+    DamageType: 3
+    AnimationState: 
     _effects: []
   Clothes: []
   ContainerSettings: []

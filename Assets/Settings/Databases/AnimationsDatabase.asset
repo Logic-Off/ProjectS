@@ -39,7 +39,7 @@ MonoBehaviour:
     AnimationName: ShootPrimaryAssaultRifle
     Time: 0.13333334
     Events:
-    - Time: 0
+    - Time: 0.075
       _data:
         EventName: 0
         StringValues: []
@@ -50,7 +50,7 @@ MonoBehaviour:
         EventName: 1
         StringValues:
         - Key: PrefabName
-          Value: RifleMuzzleStandard
+          Value: RifleHitStandard
         FloatValues: []
         BoolValues: []
     - Time: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
     AnimationName: RightHand1Combat
     Time: 0.8333334
     Events:
-    - Time: 0
+    - Time: 0.1
       _data:
         EventName: 0
         StringValues: []

@@ -1,9 +1,6 @@
 ﻿using System.Collections.Generic;
 
 namespace LogicOff.DatabaseDownloader {
-	/// <summary>
-	///   Author: Andrey Abramkin
-	/// </summary>
 	public sealed class TableEntry {
 		/// <summary>
 		/// Имя переменной

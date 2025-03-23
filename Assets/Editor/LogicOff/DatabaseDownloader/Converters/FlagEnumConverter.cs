@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Unity.Plastic.Newtonsoft.Json;
-using Unity.Plastic.Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace LogicOff.DatabaseDownloader {
 	public sealed class FlagEnumConverter<T> : JsonConverter where T : struct {

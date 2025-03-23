@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: ef5d35fa70af20840bb40e52c3fa791f
   m_SerializeEntries:
+  - m_GUID: 0191065febb0d584d8bc23b85663a44f
+    m_Address: Assets/Polygon Arsenal/Models/PolyDiamond.FBX
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0307ec9d2cb967742af0806ffa5f7fdd
     m_Address: Assets/Prefabs/Ui/PlayerSkills/PlayerSkillsPanel.prefab
     m_ReadOnly: 0
@@ -50,13 +55,13 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 2d61ad3bc41915741a1bf62ac0390e07
-    m_Address: Assets/Assets/Ui/Ui.spriteatlasv2
+  - m_GUID: 3a0e8c20df8e072489f46c2f006a5b22
+    m_Address: Assets/Prefabs/Ui/Hud/ActionButtonsPanel.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3a0e8c20df8e072489f46c2f006a5b22
-    m_Address: Assets/Prefabs/Ui/Hud/ActionButtonsPanel.prefab
+  - m_GUID: 3c8b0b9148c385f468bb723190418621
+    m_Address: Assets/Prefabs/Weapons/Melee/Machete.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -80,6 +85,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4fd99ae909b50324f8ea6b723b8d576f
+    m_Address: Assets/Prefabs/Weapons/Melee/HuntingKnife.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 56218078b2db16f4a954eaba26c843b4
     m_Address: Assets/Prefabs/Ui/Hud/MovementJoystickPanel.prefab
     m_ReadOnly: 0
@@ -95,8 +105,28 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 69d3966e5466da24b83d6e3434ff2d9b
+    m_Address: Assets/Prefabs/Weapons/Melee/Bat.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 86b951583f681ff4289b1be3030258de
+    m_Address: Assets/Prefabs/Weapons/Melee/Katana.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 87833b867b358a146aa745edf7e94fa3
+    m_Address: Assets/Assets/Ui/New Sprite Atlas.spriteatlasv2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8be15928a091a424aa12062441075a39
     m_Address: Assets/Scenes/Common/DefaultManager.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a5169dd48d2b8b942bd1ec97d88ac52e
+    m_Address: Assets/Polygon Arsenal/Models/PolySpikeSimple.FBX
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -115,6 +145,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b3aeace37498f3f4a8bf67126eef445e
+    m_Address: Assets/Prefabs/Weapons/Melee/Hammer.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b979e0a104797b045b2a4c62906db4e3
     m_Address: Assets/Prefabs/Ui/PlayerInventory/Cell.Default.prefab
     m_ReadOnly: 0
@@ -127,6 +162,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f0a995bdfab811743b6ca1eb5ef5a2e0
     m_Address: Assets/Prefabs/Weapons/Effects/RifleMuzzleEffect.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f23d1cdf4b40737488ce8a40b040b22d
+    m_Address: Assets/Polygon Arsenal/Models/PolySphereSmall.FBX
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

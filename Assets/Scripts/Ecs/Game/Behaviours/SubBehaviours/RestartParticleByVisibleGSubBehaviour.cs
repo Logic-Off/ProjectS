@@ -9,6 +9,7 @@ namespace Ecs.Game {
 		}
 
 		private void OnChangeVisible(GameEntity entity) {
+			return;
 			if (entity.IsVisible)
 				_particleSystem.Play(true);
 		}

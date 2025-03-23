@@ -1,12 +1,12 @@
 ﻿using System;
 
 namespace LogicOff.DatabaseDownloader {
-	/// <summary>
-	///
-	/// </summary>
 	[Serializable]
-	public struct SheetEntry {
+	public class SheetEntry {
 		public string Name;
-		public string Id;
+		public string StartCell = "A3";
+		public string EndCell = "AZ1000";
+		public string TitleColumn = "A";
+		public int TitleRow = 1;
 	}
 }

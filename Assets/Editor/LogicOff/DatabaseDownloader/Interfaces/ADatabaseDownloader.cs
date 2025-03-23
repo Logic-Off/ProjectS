@@ -7,9 +7,6 @@ using UnityEngine;
 using Debug = UnityEngine.Debug;
 
 namespace LogicOff.DatabaseDownloader {
-	/// <summary>
-	///   Author: Andrey Abramkin
-	/// </summary>
 	public abstract class ADatabaseDownloader : Editor {
 		protected DatabaseSheetsSettings _settings;
 		protected List<IDownloader> _downloaders = new();
@@ -17,11 +14,13 @@ namespace LogicOff.DatabaseDownloader {
 		protected bool _startLoading;
 		protected bool _isLoading;
 
-		protected virtual void OnEnable() => _settings = AssetDatabase.LoadAssetAtPath<DatabaseSheetsSettings>(
-			"Assets/Editor/LogicOff/DatabaseDownloader/DatabasesSheetSettings.asset"
-		);
+		protected virtual void OnEnable() {
+			_settings = Resources.Load<DatabaseSheetsSettings>("DownloadDatabasesSettings");
+		}
 
-		protected virtual void OnDisable() => _downloaders.Clear();
+		protected virtual void OnDisable() {
+			_downloaders.Clear();
+		}
 
 		protected async Task DownloadDatabase<T>(ADownloader<T> downloader, List<T> list, Action callback = null) {
 			if (_isLoading)
@@ -58,7 +57,7 @@ namespace LogicOff.DatabaseDownloader {
 			if (GUILayout.Button("Download All"))
 				OnDownloadAll();
 
-			DrawDefaultInspector();
+			base.OnInspectorGUI();
 		}
 
 		protected virtual void OnDrawButtons() {
@@ -84,7 +83,7 @@ namespace LogicOff.DatabaseDownloader {
 				await DownloadDatabase(downloader);
 			Save();
 			sw.Stop();
-			D.Log("[ADatabaseDownloader]", $"End download all, downloading time: {(sw.ElapsedMilliseconds * 0.001f):F2}s");
+			Debug.Log($"[ADatabaseDownloader] End download all, downloading time: {(sw.ElapsedMilliseconds * 0.001f):F2}s");
 			_startLoading = false;
 		}
 

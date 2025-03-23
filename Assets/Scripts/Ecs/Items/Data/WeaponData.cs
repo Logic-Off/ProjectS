@@ -8,8 +8,10 @@ namespace Ecs.Item {
 	[Serializable]
 	public struct WeaponData : IEquipment {
 		public ItemId Id;
+		public EWeaponType Type;
 		public AbilityId BaseAbility;
 		public EDamageType DamageType;
+		public string AnimationState;
 
 		[SerializeField] private List<EffectEntry> _effects;
 		public List<EffectEntry> Effects => _effects;

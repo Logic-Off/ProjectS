@@ -13,7 +13,7 @@ namespace Ecs.Ability {
 			_ability = ability;
 		}
 
-		public void Create(AbilityId id, Id owner) {
+		public AbilityEntity Create(AbilityId id, Id owner) {
 			var data = _database.Get(id);
 
 			var ability = _ability.CreateEntity();
@@ -32,6 +32,7 @@ namespace Ecs.Ability {
 				parameters.Add(parameter.Name, parameter.Value);
 
 			ability.AddParameters(parameters);
+			return ability;
 		}
 	}
 }

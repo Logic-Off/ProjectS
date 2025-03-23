@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Ecs.Ability;
 using Ecs.AI;
+using Ecs.Common;
 using Ecs.Inventory;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -81,13 +82,18 @@ namespace Ecs.Game {
 
 	[Game]
 	public sealed class AbilitiesComponent : IComponent, IDisposable {
-		public List<AbilityId> Values;
+		public List<Id> Values;
 		public void Dispose() => Values.Clear();
 	}
 
 	[Game, Item]
 	public sealed class BaseAbilityComponent : IComponent {
-		public AbilityId Value;
+		public Id Value;
+	}
+
+	[Game]
+	public sealed class DefaultAbilityComponent : IComponent {
+		public Id Value;
 	}
 
 	[Game]

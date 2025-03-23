@@ -8,7 +8,10 @@ namespace Ecs.Item {
 	/// </summary>
 	[InstallerGenerator(InstallerId.Game, 1_000_000)]
 	public class ItemDestroySystem : ReactiveSystem<ItemEntity> {
-		public ItemDestroySystem(ItemContext item) : base(item) { }
+		private readonly AbilityContext _ability;
+		public ItemDestroySystem(ItemContext item, AbilityContext ability) : base(item) {
+			_ability = ability;
+		}
 
 		protected override ICollector<ItemEntity> GetTrigger(IContext<ItemEntity> context)
 			=> context.CreateCollector(ItemMatcher.Destroyed.Added());
@@ -17,8 +20,12 @@ namespace Ecs.Item {
 			=> entity.IsDestroyed;
 
 		protected override void Execute(List<ItemEntity> entities) {
-			foreach (var entity in entities)
+			foreach (var entity in entities) {
+				var abilities = _ability.GetEntitiesWithOwner(entity.Id.Value);
+				foreach (var abilityEntity in abilities)
+					abilityEntity.IsDestroyed = true;
 				entity.Destroy();
+			}
 		}
 	}
 }

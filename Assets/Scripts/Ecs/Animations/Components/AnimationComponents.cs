@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Ecs.Common;
 using Zentitas;
 
 namespace Ecs.Animations {
@@ -25,5 +26,10 @@ namespace Ecs.Animations {
 	public sealed class StringComponent : IComponent {
 		public Dictionary<string, string> Values;
 		public override string ToString() => $"StringValues";
+	}
+
+	[AnimationEvent]
+	public sealed class AbilityComponent : IComponent {
+		public Id Value;
 	}
 }

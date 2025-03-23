@@ -8,6 +8,8 @@ namespace Common {
 		public IconsDatabase(IconsDatabaseAsset database) {
 			foreach (var entry in database.Icons)
 				Add(entry.Id, entry);
+			foreach (var entry in database.WeaponIcons)
+				Add(entry.Id, entry);
 		}
 	}
 }

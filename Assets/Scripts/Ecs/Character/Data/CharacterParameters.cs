@@ -21,7 +21,8 @@ namespace Ecs.Character {
 		
 		// Resistance
 		public Parameter ResistanceNormalDamage;
-		public Parameter ResistancePenetratingDamage;
+		public Parameter ResistancePiercingDamage;
 		public Parameter ResistanceCrushingDamage;
+		public Parameter ResistanceSlashingDamage;
 	}
 }

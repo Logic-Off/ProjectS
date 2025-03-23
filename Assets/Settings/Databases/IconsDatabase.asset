@@ -12,6 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76248b529bf54a5a9d76cc402eafc681, type: 3}
   m_Name: IconsDatabase
   m_EditorClassIdentifier: 
-  Icons:
-  - Id: Rifle_1
-    Sprite: {fileID: 21300000, guid: 0949b542ec7ab534b8bf068e9c5320e3, type: 3}
+  Icons: []
+  WeaponIcons:
+  - Id: Weapon.Rifle
+    Sprite: {fileID: 21300000, guid: 0e1b4a948b2c17f479ac202bee3ef343, type: 3}
+  - Id: Weapon.Axe
+    Sprite: {fileID: 21300000, guid: 850403b900cf8b949b410058fd2428cc, type: 3}
+  - Id: Weapon.Bat
+    Sprite: {fileID: 21300000, guid: fe119618d06fc6849a9c8e54201da58f, type: 3}
+  - Id: Weapon.Hammer
+    Sprite: {fileID: 21300000, guid: f01e88b22a072964cae2d8c8f9c93a5d, type: 3}
+  - Id: Weapon.HuntingKnife
+    Sprite: {fileID: 21300000, guid: ef6f90a3941787d45b7b815cf8fe87eb, type: 3}
+  - Id: Weapon.Katana
+    Sprite: {fileID: 21300000, guid: 917537c2e4635d4458e8d3ceedca1d42, type: 3}
+  - Id: Weapon.Machete
+    Sprite: {fileID: 21300000, guid: d0dccbe4fdd6d0c4b9b1b253ebab31a1, type: 3}

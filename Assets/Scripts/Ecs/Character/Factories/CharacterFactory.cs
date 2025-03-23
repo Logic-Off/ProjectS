@@ -2,6 +2,7 @@
 using Common;
 using Ecs.Ability;
 using Ecs.AI;
+using Ecs.Common;
 using Ecs.Game;
 using UnityEngine;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -14,17 +15,20 @@ namespace Ecs.Character {
 		private readonly ICharacterDatabase _characterDatabase;
 		private readonly ITeamLayerMaskDatabase _layerMaskDatabase;
 		private readonly List<IAgentBuilder> _builders;
+		private readonly IAbilityFactory _abilityFactory;
 
 		public CharacterFactory(
 			CharacterContext character,
 			ICharacterDatabase characterDatabase,
 			ITeamLayerMaskDatabase layerMaskDatabase,
-			List<IAgentBuilder> builders
+			List<IAgentBuilder> builders,
+			IAbilityFactory abilityFactory
 		) {
 			_character = character;
 			_characterDatabase = characterDatabase;
 			_layerMaskDatabase = layerMaskDatabase;
 			_builders = builders;
+			_abilityFactory = abilityFactory;
 		}
 
 		public CharacterEntity Create(GameEntity agent, string id, int level) {
@@ -45,7 +49,7 @@ namespace Ecs.Character {
 			entity.AddStealth(parameters.Stealth.Value);
 			entity.AddObservation(parameters.Observation.Value);
 			entity.AddResistanceNormalDamage(parameters.ResistanceNormalDamage.Value);
-			entity.AddResistancePenetratingDamage(parameters.ResistancePenetratingDamage.Value);
+			entity.AddResistancePenetratingDamage(parameters.ResistancePiercingDamage.Value);
 			entity.AddResistanceCrushingDamage(parameters.ResistanceCrushingDamage.Value);
 			entity.AddId(agent.Id.Value);
 			entity.IsPlayer = agent.IsPlayer;
@@ -66,11 +70,20 @@ namespace Ecs.Character {
 			agent.AddHostileTargets(new List<TargetData>());
 			agent.AddAttackTargets(new List<TargetData>());
 
-			agent.AddAbilities(new List<AbilityId>(data.Abilities));
+			var abilities = new List<Id>();
 			if (data.BaseAbility.ToString().IsNotNullOrEmpty()) {
-				agent.Abilities.Values.Add(data.BaseAbility); // Убрать
-				agent.AddBaseAbility(data.BaseAbility); // Убрать
+				var ability = _abilityFactory.Create(data.BaseAbility, entity.Id.Value);
+				agent.AddBaseAbility(ability.Id.Value);
+				agent.AddDefaultAbility(ability.Id.Value);
+				abilities.Add(ability.Id.Value);
 			}
+
+			foreach (var abilityId in data.Abilities) {
+				var ability = _abilityFactory.Create(abilityId, entity.Id.Value);
+				abilities.Add(ability.Id.Value);
+			}
+
+			agent.AddAbilities(abilities);
 
 			var layerMaskData = _layerMaskDatabase.Get(agent.Team.Value);
 			agent.AddLayerMask(layerMaskData.Mask, layerMaskData.MaskIndex);

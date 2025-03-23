@@ -31,8 +31,7 @@ namespace Ecs.Item {
 	}
 
 	[Item]
-	public sealed class StackableComponent : IComponent {
-	}
+	public sealed class StackableComponent : IComponent { }
 
 	[Item, Inventory, Structure]
 	public sealed class CellSettingsComponent : IComponent {
@@ -60,11 +59,20 @@ namespace Ecs.Item {
 	}
 
 	[Item]
-	public sealed class BrokenComponent : IComponent {
-	}
+	public sealed class BrokenComponent : IComponent { }
 
 	[Item]
 	public sealed class ToolTypeComponent : IComponent {
 		public EToolType Value;
+	}
+
+	[Item]
+	public sealed class AnimationStateComponent : IComponent {
+		public string Value;
+	}
+
+	[Item]
+	public sealed class WeaponTypeComponent : IComponent {
+		public EWeaponType Value;
 	}
 }

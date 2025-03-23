@@ -2,22 +2,16 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using Unity.Plastic.Newtonsoft.Json;
+using LogicOff.DatabaseDownloader.Google;
+using Newtonsoft.Json;
 using UnityEngine;
-using UnityEngine.Networking;
 
 namespace LogicOff.DatabaseDownloader {
-	/// <summary>
-	///   Author: Andrey Abramkin
-	/// </summary>
 	public abstract class ADownloader<T> : IDownloader {
-		private readonly Action<T[]> _callback;
-		private readonly string _path = "https://docs.google.com/spreadsheets/d/{0}/export?exportFormat=tsv&gid={1}";
-		private readonly string _key;
-		private readonly string _id;
-		protected virtual string Id => _id;
-
+		private Action<T[]> _callback;
+		private string _key;
 		protected virtual string Key => _key;
+		public SheetEntry Entry;
 
 		protected virtual JsonConverter[] Converters => ConvertersList.Converters;
 
@@ -33,9 +27,26 @@ namespace LogicOff.DatabaseDownloader {
 
 		public abstract string Name { get; }
 
-		public ADownloader(string key, string id, Action<T[]> callback) {
+		public ADownloader() { }
+
+		public ADownloader(string key, SheetEntry entry, Action<T[]> callback) {
 			_key = key;
-			_id = id;
+			Entry = entry;
+			_callback = callback;
+		}
+
+		public void Set(string key, SheetEntry entry, List<T> list) {
+			_key = key;
+			Entry = entry;
+			_callback = x => {
+				list.Clear();
+				list.AddRange(x);
+			};
+		}
+
+		public void Set(string key, SheetEntry entry, Action<T[]> callback) {
+			_key = key;
+			Entry = entry;
 			_callback = callback;
 		}
 
@@ -43,36 +54,10 @@ namespace LogicOff.DatabaseDownloader {
 
 		public async Task<T[]> DownloadSheet() {
 			try {
-				var request = UnityWebRequest.Get(string.Format(_path, Key, Id));
-				request.timeout = 10;
-				request.SendWebRequest();
+				var request =
+					await SpreadsheetManager.ReadPublicSpreadsheet(new Spreadsheet(Key, Entry.Name, Entry.StartCell, Entry.EndCell, Entry.TitleColumn, Entry.TitleRow));
 
-				while (!request.isDone)
-					await Task.Delay(10);
-
-				var lines = new List<string>(request.downloadHandler.text.Split('\n'));
-
-				var database = new List<List<string>>();
-				for (var i = 2; i < lines.Count; i++) {
-					var line = lines[i];
-					var cells = line.Split('\t');
-					for (var j = 0; j < cells.Length; j++)
-						cells[j] = cells[j].Trim();
-					
-					database.Add(new List<string>(cells));
-				}
-
-				var json = TableConverter.ConvertDataTableToJson(Schema, database);
-				// код json с построковым индексом
-				var sb = new StringBuilder();
-				sb.Append(Name).Append('\n');
-				var ses = json.Split('\n');
-				for (var i = 0; i < ses.Length; i++) {
-					var s = ses[i];
-					sb.Append(i).Append(": ").Append(s).Append('\n');
-				}
-				
-				D.Warning("[ADownloader]", sb);
+				var json = TableConverter.ConvertDataTableToJson(Schema, request);
 				var result = Read<T>(json, Converters);
 				_callback?.Invoke(result);
 				return result;
@@ -86,6 +71,7 @@ namespace LogicOff.DatabaseDownloader {
 			var _builder = new StringBuilder();
 			var parse = _builder.Append("{ \"List\":").Append(json).Append("\n}").ToString();
 			_builder.Clear();
+			D.Log("[ADownloader]\n", parse);
 			return JsonConvert.DeserializeObject<JsonItems<T>>(parse, converters)?.List.ToArray();
 		}
 

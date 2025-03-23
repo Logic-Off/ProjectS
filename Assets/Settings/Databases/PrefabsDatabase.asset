@@ -34,20 +34,6 @@ MonoBehaviour:
       m_SubObjectGUID: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
-  - Name: Spade
-    AssetReference:
-      m_AssetGUID: 676a10e338cb05a488f13e1df0fc5030
-      m_SubObjectName: 
-      m_SubObjectGUID: 
-      m_SubObjectType: 
-      m_EditorAssetChanged: 0
-  - Name: Rifle_1
-    AssetReference:
-      m_AssetGUID: aaacf1eca316eee40a005b02ed79c744
-      m_SubObjectName: 
-      m_SubObjectGUID: 
-      m_SubObjectType: 
-      m_EditorAssetChanged: 0
   - Name: Cell.Inventory.Default
     AssetReference:
       m_AssetGUID: b979e0a104797b045b2a4c62906db4e3
@@ -72,6 +58,56 @@ MonoBehaviour:
   - Name: RifleHitStandard
     AssetReference:
       m_AssetGUID: f0a995bdfab811743b6ca1eb5ef5a2e0
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  Weapons:
+  - Name: Weapon.Rifle
+    AssetReference:
+      m_AssetGUID: aaacf1eca316eee40a005b02ed79c744
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - Name: Weapon.Axe
+    AssetReference:
+      m_AssetGUID: 676a10e338cb05a488f13e1df0fc5030
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - Name: Weapon.Bat
+    AssetReference:
+      m_AssetGUID: 69d3966e5466da24b83d6e3434ff2d9b
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - Name: Weapon.Hammer
+    AssetReference:
+      m_AssetGUID: b3aeace37498f3f4a8bf67126eef445e
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - Name: Weapon.HuntingKnife
+    AssetReference:
+      m_AssetGUID: 4fd99ae909b50324f8ea6b723b8d576f
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - Name: Weapon.Katana
+    AssetReference:
+      m_AssetGUID: 86b951583f681ff4289b1be3030258de
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - Name: Weapon.Machete
+    AssetReference:
+      m_AssetGUID: 3c8b0b9148c385f468bb723190418621
       m_SubObjectName: 
       m_SubObjectGUID: 
       m_SubObjectType: 

@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ad727570bbb4d55bd5032a13983b839, type: 3}
+  m_Name: DownloadDatabasesSettings
+  m_EditorClassIdentifier: 
+  All:
+  - Name: Items
+    SpreadsheetId: 1gSf-Kjq8R4_xAESAmJccLDwisVKXs16aJDmJjLlp8mk
+    Sheets:
+    - Name: Items
+      StartCell: A3
+      EndCell: AZ1000
+      TitleColumn: A
+      TitleRow: 1
+    - Name: Weapons
+      StartCell: A3
+      EndCell: AZ1000
+      TitleColumn: A
+      TitleRow: 1
+  - Name: Character
+    SpreadsheetId: 1eM0eGxJX0QUgUBaeMPJuwjsfjH6j4e1oTAV6kKVjWOU
+    Sheets:
+    - Name: Characters
+      StartCell: A3
+      EndCell: AZ1000
+      TitleColumn: A
+      TitleRow: 1
+    - Name: Buffs
+      StartCell: A3
+      EndCell: AZ1000
+      TitleColumn: A
+      TitleRow: 1
+  - Name: Ability
+    SpreadsheetId: 1eM0eGxJX0QUgUBaeMPJuwjsfjH6j4e1oTAV6kKVjWOU
+    Sheets:
+    - Name: Abilities
+      StartCell: A3
+      EndCell: AZ1000
+      TitleColumn: A
+      TitleRow: 1

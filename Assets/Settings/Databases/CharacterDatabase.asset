@@ -29,8 +29,9 @@ MonoBehaviour:
       Cold: 100
       Radiation: 100
       ResistanceNormalDamage: 0
-      ResistancePenetratingDamage: 0
+      ResistancePiercingDamage: 0
       ResistanceCrushingDamage: 0
+      ResistanceSlashingDamage: 0
     BaseAnimationState: Default
     BaseAbility:
       _value: BaseAttack
@@ -52,12 +53,12 @@ MonoBehaviour:
       Cold: 100
       Radiation: 100
       ResistanceNormalDamage: 0
-      ResistancePenetratingDamage: 0.95
+      ResistancePiercingDamage: 0
       ResistanceCrushingDamage: 0
+      ResistanceSlashingDamage: 0
     BaseAnimationState: Default
     BaseAbility:
-      _value: 
-    Abilities:
-    - _value: ZombieAttack
+      _value: ZombieAttack
+    Abilities: []
     Actions: 0500000002000000030000000400000000000000
   Buffs: []

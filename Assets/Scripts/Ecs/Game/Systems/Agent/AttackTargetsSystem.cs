@@ -34,8 +34,8 @@ namespace Ecs.Game {
 		}
 
 		private void OnCollectAbilities(GameEntity agent, List<AbilityEntity> abilities) {
-			var allAgentAbilities = _ability.GetEntitiesWithOwner(agent.Id.Value);
-			foreach (var ability in allAgentAbilities) {
+			foreach (var abilityId in agent.Abilities.Values) {
+				var ability = _ability.GetEntityWithId(abilityId);
 				if (ability.AbilityType.Value is not EAbilityType.Attack)
 					continue;
 				abilities.Add(ability);

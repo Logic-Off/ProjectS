@@ -62,6 +62,6 @@ namespace Ecs.Common {
 		[EntityIndex] public Id Value;
 	}
 
-	[Command, AnimationEvent, Item]
+	[Command, AnimationEvent, Item, Ability, Game]
 	public sealed class DestroyedComponent : IComponent { }
 }

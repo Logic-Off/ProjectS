@@ -46,7 +46,7 @@ namespace Ecs.Game {
 					return;
 				}
 
-				var baseAbility = _ability.GetAbility(player.Id.Value, player.BaseAbility.Value);
+				var baseAbility = _ability.GetEntityWithId(player.BaseAbility.Value);
 				if (baseAbility == null) {
 					D.Error("[ActionButtonsInteractor]", "Сущность абилки не найдена");
 					return;

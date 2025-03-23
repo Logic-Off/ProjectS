@@ -11,7 +11,7 @@ namespace Ecs.Character {
 				case EDamageType.Normal:
 					damage = data.Amount - (data.Amount * target.ResistanceNormalDamage.Value);
 					break;
-				case EDamageType.Penetrating:
+				case EDamageType.Piercing:
 					damage = data.Amount - (data.Amount * target.ResistancePenetratingDamage.Value);
 					break;
 				case EDamageType.Crushing:

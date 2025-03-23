@@ -1,10 +1,7 @@
 ﻿using System;
-using Unity.Plastic.Newtonsoft.Json;
+using Newtonsoft.Json;
 
 namespace LogicOff.DatabaseDownloader {
-	/// <summary>
-	///   Author: Andrey Abramkin
-	/// </summary>
 	public sealed class EnumConverter<T> : JsonConverter where T : struct {
 		private readonly Type _type = typeof(T);
 		public override bool CanWrite => false;

@@ -27,18 +27,18 @@ MonoBehaviour:
   - Id:
       _value: BaseAttack
     Type: 0
-    Cooldown: 1.5
+    Cooldown: 0.9
     IsLookAtTarget: 1
     IsStandingCast: 1
     Animation: FistAttack
-    AbilityState: 
+    AbilityState: FistsPose
     Parameters:
     - Name: 0
       Value: 1.5
   - Id:
       _value: RifleAttack
     Type: 0
-    Cooldown: 0.1
+    Cooldown: 0.15
     IsLookAtTarget: 1
     IsStandingCast: 1
     Animation: RifleAttack
@@ -46,3 +46,14 @@ MonoBehaviour:
     Parameters:
     - Name: 0
       Value: 8
+  - Id:
+      _value: SwordAttack
+    Type: 0
+    Cooldown: 0.3
+    IsLookAtTarget: 1
+    IsStandingCast: 1
+    Animation: SwordAttack
+    AbilityState: 
+    Parameters:
+    - Name: 0
+      Value: 2
