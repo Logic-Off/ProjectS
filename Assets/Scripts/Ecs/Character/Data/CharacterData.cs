@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Ecs.Ability;
 using Ecs.AI;
 using Ecs.Game;
+using Sirenix.OdinInspector;
 
 namespace Ecs.Character {
 	[Serializable]

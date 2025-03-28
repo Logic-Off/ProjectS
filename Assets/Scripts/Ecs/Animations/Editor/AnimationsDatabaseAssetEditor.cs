@@ -1,14 +1,18 @@
 ﻿using System.Linq;
 using System.Reflection;
+using Sirenix.OdinInspector.Editor;
 using UnityEditor;
 using UnityEngine;
 
 namespace Ecs.Animations {
 	[CustomEditor(typeof(AnimationsDatabaseAsset))]
-	public sealed class AnimationsDatabaseAssetEditor : Editor {
+	public sealed class AnimationsDatabaseAssetEditor : OdinEditor {
 		private AnimationsDatabaseAsset _target;
 
-		void OnEnable() => _target = serializedObject.targetObject as AnimationsDatabaseAsset;
+		protected override void OnEnable() {
+			base.OnEnable();
+			_target = serializedObject.targetObject as AnimationsDatabaseAsset;
+		}
 
 		public override void OnInspectorGUI() {
 			if (GUILayout.Button("Update settings"))

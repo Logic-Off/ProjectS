@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: CheatsPanelsInstaller
   m_EditorClassIdentifier: 
   _cheatsBuilder:
-    m_AssetGUID: 
+    m_AssetGUID: 4f7de88a6af27f4469e230df010bb3d6
     m_SubObjectName: 
     m_SubObjectGUID: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   _cheatsHudBuilder:
-    m_AssetGUID: 
+    m_AssetGUID: 102319d4a2a7c44468e0f8914819a223
     m_SubObjectName: 
     m_SubObjectGUID: 
     m_SubObjectType: 
-    m_EditorAssetChanged: 0
+    m_EditorAssetChanged: 1

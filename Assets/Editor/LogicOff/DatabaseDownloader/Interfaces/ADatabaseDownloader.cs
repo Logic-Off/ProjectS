@@ -2,23 +2,26 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using Sirenix.OdinInspector.Editor;
 using UnityEditor;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
 namespace LogicOff.DatabaseDownloader {
-	public abstract class ADatabaseDownloader : Editor {
+	public abstract class ADatabaseDownloader : OdinEditor {
 		protected DatabaseSheetsSettings _settings;
 		protected List<IDownloader> _downloaders = new();
 		private bool _foldout;
 		protected bool _startLoading;
 		protected bool _isLoading;
 
-		protected virtual void OnEnable() {
+		protected override void OnEnable() {
+			base.OnEnable();
 			_settings = Resources.Load<DatabaseSheetsSettings>("DownloadDatabasesSettings");
 		}
 
-		protected virtual void OnDisable() {
+		protected override void OnDisable() {
+			base.OnDisable();
 			_downloaders.Clear();
 		}
 

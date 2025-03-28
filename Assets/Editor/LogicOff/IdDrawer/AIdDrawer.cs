@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using Common;
+using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
@@ -31,12 +34,13 @@ public abstract class AIdDrawer<TDataBase, TValue> : PropertyDrawer where TDataB
 		var valueProperty = property.FindPropertyRelative("_value");
 		var previous = Array.IndexOf(items, valueProperty.stringValue);
 
-		position.width -= 35;
 		position.x += 2;
 
-		EditorGUI.LabelField(position, name);
-		position.x += 100;
-		position.width -= 100;
+		if (name.IsNotNullOrEmpty()) {
+			EditorGUI.LabelField(position, name);
+			position.x += 100;
+			position.width -= 100;
+		}
 
 		if (previous == -1) {
 			position.width -= 65;
